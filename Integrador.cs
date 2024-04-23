@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Integrador
 {
-    public partial class Form1 : Form
+    public partial class Integrador : Form
     {
-        public Form1()
+        public Integrador()
         {
             InitializeComponent();
         }
