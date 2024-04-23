@@ -50,6 +50,7 @@
             // 
             // panelEmailConfigure
             // 
+            this.panelEmailConfigure.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelEmailConfigure.Controls.Add(this.sslSaidaCheckBox);
             this.panelEmailConfigure.Controls.Add(this.sslEntradaCheckBox);
             this.panelEmailConfigure.Controls.Add(this.smtpPortaTextBox);
@@ -75,7 +76,7 @@
             this.emailTextBox.Location = new System.Drawing.Point(65, 19);
             this.emailTextBox.Name = "emailTextBox";
             this.emailTextBox.Size = new System.Drawing.Size(219, 20);
-            this.emailTextBox.TabIndex = 1;
+            this.emailTextBox.TabIndex = 0;
             // 
             // PortaDeEnvioLabel
             // 
@@ -145,14 +146,14 @@
             this.entradaServerTextBox.Location = new System.Drawing.Point(130, 83);
             this.entradaServerTextBox.Name = "entradaServerTextBox";
             this.entradaServerTextBox.Size = new System.Drawing.Size(132, 20);
-            this.entradaServerTextBox.TabIndex = 1;
+            this.entradaServerTextBox.TabIndex = 2;
             // 
             // entradaPortaTextBox
             // 
             this.entradaPortaTextBox.Location = new System.Drawing.Point(130, 115);
             this.entradaPortaTextBox.Name = "entradaPortaTextBox";
             this.entradaPortaTextBox.Size = new System.Drawing.Size(62, 20);
-            this.entradaPortaTextBox.TabIndex = 1;
+            this.entradaPortaTextBox.TabIndex = 3;
             // 
             // smtpServerTextBox
             // 
@@ -160,14 +161,14 @@
             this.smtpServerTextBox.Location = new System.Drawing.Point(130, 147);
             this.smtpServerTextBox.Name = "smtpServerTextBox";
             this.smtpServerTextBox.Size = new System.Drawing.Size(132, 20);
-            this.smtpServerTextBox.TabIndex = 1;
+            this.smtpServerTextBox.TabIndex = 5;
             // 
             // smtpPortaTextBox
             // 
             this.smtpPortaTextBox.Location = new System.Drawing.Point(130, 179);
             this.smtpPortaTextBox.Name = "smtpPortaTextBox";
             this.smtpPortaTextBox.Size = new System.Drawing.Size(62, 20);
-            this.smtpPortaTextBox.TabIndex = 1;
+            this.smtpPortaTextBox.TabIndex = 6;
             // 
             // sslEntradaCheckBox
             // 
@@ -175,7 +176,7 @@
             this.sslEntradaCheckBox.Location = new System.Drawing.Point(204, 117);
             this.sslEntradaCheckBox.Name = "sslEntradaCheckBox";
             this.sslEntradaCheckBox.Size = new System.Drawing.Size(46, 17);
-            this.sslEntradaCheckBox.TabIndex = 2;
+            this.sslEntradaCheckBox.TabIndex = 4;
             this.sslEntradaCheckBox.Text = "SSL";
             this.sslEntradaCheckBox.UseVisualStyleBackColor = true;
             // 
@@ -185,7 +186,7 @@
             this.sslSaidaCheckBox.Location = new System.Drawing.Point(204, 181);
             this.sslSaidaCheckBox.Name = "sslSaidaCheckBox";
             this.sslSaidaCheckBox.Size = new System.Drawing.Size(46, 17);
-            this.sslSaidaCheckBox.TabIndex = 2;
+            this.sslSaidaCheckBox.TabIndex = 7;
             this.sslSaidaCheckBox.Text = "SSL";
             this.sslSaidaCheckBox.UseVisualStyleBackColor = true;
             // 
@@ -203,9 +204,10 @@
             this.button1.Location = new System.Drawing.Point(416, 252);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
+            this.button1.TabIndex = 2;
             this.button1.Text = "Sai&r";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // EmailConfigureGUI
             // 
@@ -221,8 +223,9 @@
             this.Name = "EmailConfigureGUI";
             this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Configuração de E-Mail";
+            this.TopMost = true;
             this.panelEmailConfigure.ResumeLayout(false);
             this.panelEmailConfigure.PerformLayout();
             this.ResumeLayout(false);
