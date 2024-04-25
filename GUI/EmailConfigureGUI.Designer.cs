@@ -67,7 +67,7 @@
             this.panelEmailConfigure.Controls.Add(this.EmailLabel);
             this.panelEmailConfigure.Location = new System.Drawing.Point(12, 12);
             this.panelEmailConfigure.Name = "panelEmailConfigure";
-            this.panelEmailConfigure.Size = new System.Drawing.Size(479, 233);
+            this.panelEmailConfigure.Size = new System.Drawing.Size(326, 233);
             this.panelEmailConfigure.TabIndex = 0;
             // 
             // emailTextBox
@@ -77,6 +77,7 @@
             this.emailTextBox.Name = "emailTextBox";
             this.emailTextBox.Size = new System.Drawing.Size(219, 20);
             this.emailTextBox.TabIndex = 0;
+            this.emailTextBox.WordWrap = false;
             // 
             // PortaDeEnvioLabel
             // 
@@ -139,6 +140,7 @@
             this.senhaTextBox.PasswordChar = '*';
             this.senhaTextBox.Size = new System.Drawing.Size(132, 20);
             this.senhaTextBox.TabIndex = 1;
+            this.senhaTextBox.WordWrap = false;
             // 
             // entradaServerTextBox
             // 
@@ -147,6 +149,7 @@
             this.entradaServerTextBox.Name = "entradaServerTextBox";
             this.entradaServerTextBox.Size = new System.Drawing.Size(132, 20);
             this.entradaServerTextBox.TabIndex = 2;
+            this.entradaServerTextBox.WordWrap = false;
             // 
             // entradaPortaTextBox
             // 
@@ -154,6 +157,7 @@
             this.entradaPortaTextBox.Name = "entradaPortaTextBox";
             this.entradaPortaTextBox.Size = new System.Drawing.Size(62, 20);
             this.entradaPortaTextBox.TabIndex = 3;
+            this.entradaPortaTextBox.WordWrap = false;
             // 
             // smtpServerTextBox
             // 
@@ -162,6 +166,7 @@
             this.smtpServerTextBox.Name = "smtpServerTextBox";
             this.smtpServerTextBox.Size = new System.Drawing.Size(132, 20);
             this.smtpServerTextBox.TabIndex = 5;
+            this.smtpServerTextBox.WordWrap = false;
             // 
             // smtpPortaTextBox
             // 
@@ -169,6 +174,7 @@
             this.smtpPortaTextBox.Name = "smtpPortaTextBox";
             this.smtpPortaTextBox.Size = new System.Drawing.Size(62, 20);
             this.smtpPortaTextBox.TabIndex = 6;
+            this.smtpPortaTextBox.WordWrap = false;
             // 
             // sslEntradaCheckBox
             // 
@@ -192,16 +198,17 @@
             // 
             // salvarButton
             // 
-            this.salvarButton.Location = new System.Drawing.Point(317, 252);
+            this.salvarButton.Location = new System.Drawing.Point(164, 251);
             this.salvarButton.Name = "salvarButton";
             this.salvarButton.Size = new System.Drawing.Size(75, 23);
             this.salvarButton.TabIndex = 1;
             this.salvarButton.Text = "&Salvar";
             this.salvarButton.UseVisualStyleBackColor = true;
+            this.salvarButton.Click += new System.EventHandler(this.salvarButton_Click);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(416, 252);
+            this.button1.Location = new System.Drawing.Point(263, 251);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 2;
@@ -213,7 +220,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(505, 292);
+            this.ClientSize = new System.Drawing.Size(353, 292);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.salvarButton);
             this.Controls.Add(this.panelEmailConfigure);
@@ -226,6 +233,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Configuração de E-Mail";
             this.TopMost = true;
+            this.Load += new System.EventHandler(this.EmailConfigureGUI_Load);
             this.panelEmailConfigure.ResumeLayout(false);
             this.panelEmailConfigure.PerformLayout();
             this.ResumeLayout(false);
