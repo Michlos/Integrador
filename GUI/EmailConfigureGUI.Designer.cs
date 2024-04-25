@@ -45,6 +45,7 @@
             this.sslSaidaCheckBox = new System.Windows.Forms.CheckBox();
             this.salvarButton = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.verEmailButton = new System.Windows.Forms.Button();
             this.panelEmailConfigure.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -216,11 +217,21 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // verEmailButton
+            // 
+            this.verEmailButton.Location = new System.Drawing.Point(12, 251);
+            this.verEmailButton.Name = "verEmailButton";
+            this.verEmailButton.Size = new System.Drawing.Size(90, 23);
+            this.verEmailButton.TabIndex = 3;
+            this.verEmailButton.Text = "Listar E-Mails";
+            this.verEmailButton.UseVisualStyleBackColor = true;
+            this.verEmailButton.Click += new System.EventHandler(this.verEmailButton_Click);
+            // 
             // EmailConfigureGUI
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(353, 292);
+            this.Controls.Add(this.verEmailButton);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.salvarButton);
             this.Controls.Add(this.panelEmailConfigure);
@@ -229,10 +240,8 @@
             this.MinimizeBox = false;
             this.Name = "EmailConfigureGUI";
             this.ShowInTaskbar = false;
-            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Configuração de E-Mail";
-            this.TopMost = true;
             this.Load += new System.EventHandler(this.EmailConfigureGUI_Load);
             this.panelEmailConfigure.ResumeLayout(false);
             this.panelEmailConfigure.PerformLayout();
@@ -259,5 +268,6 @@
         private System.Windows.Forms.TextBox smtpPortaTextBox;
         private System.Windows.Forms.Button salvarButton;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button verEmailButton;
     }
 }

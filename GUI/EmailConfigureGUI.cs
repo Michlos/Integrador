@@ -19,7 +19,7 @@ namespace Integrador.GUI
     public partial class EmailConfigureGUI : Form
     {
         private readonly AppDbContext context = new AppDbContext();
-        private EmailConfigureModel model = new EmailConfigureModel();
+        private EmailConfigureModel emailConfigureModel = new EmailConfigureModel();
 
 
         public EmailConfigureGUI(IEmailConfigureRepository emailConfigureRepository)
@@ -34,23 +34,23 @@ namespace Integrador.GUI
 
         private void salvarButton_Click(object sender, EventArgs e)
         {
-            model.Email = emailTextBox.Text;
-            model.Senha = senhaTextBox.Text;
-            model.SmtpServer = smtpServerTextBox.Text;
-            model.SmtpPorta = int.Parse(smtpPortaTextBox.Text);
-            model.SslSaidaHabilitado = sslEntradaCheckBox.Checked;
-            model.EntradaServer = entradaServerTextBox.Text;
-            model.EntradaPorta = int.Parse(entradaPortaTextBox.Text);
-            model.SslEntradaHabilitado = sslEntradaCheckBox.Checked;
+            emailConfigureModel.Email = emailTextBox.Text;
+            emailConfigureModel.Senha = senhaTextBox.Text;
+            emailConfigureModel.SmtpServer = smtpServerTextBox.Text;
+            emailConfigureModel.SmtpPorta = int.Parse(smtpPortaTextBox.Text);
+            emailConfigureModel.SslSaidaHabilitado = sslEntradaCheckBox.Checked;
+            emailConfigureModel.EntradaServer = entradaServerTextBox.Text;
+            emailConfigureModel.EntradaPorta = int.Parse(entradaPortaTextBox.Text);
+            emailConfigureModel.SslEntradaHabilitado = sslEntradaCheckBox.Checked;
 
-            if (model.Id != 0)
+            if (emailConfigureModel.Id != 0)
             {
-                context.Entry(model).State = EntityState.Modified;
+                context.Entry(emailConfigureModel).State = EntityState.Modified;
                 context.SaveChanges();
             }
             else
             {
-                context.EmailConfigure.Add(model);
+                context.EmailConfigure.Add(emailConfigureModel);
                 context.SaveChanges();
             }
         }
@@ -61,19 +61,19 @@ namespace Integrador.GUI
             {
                 if (context.EmailConfigure.Any())
                 {
-                    model = await context.EmailConfigure.FirstOrDefaultAsync();
+                    emailConfigureModel = await context.EmailConfigure.FirstOrDefaultAsync();
                 }
 
-                if (model.Id != 0)
+                if (emailConfigureModel.Id != 0)
                 {
-                    emailTextBox.Text = model.Email;
-                    senhaTextBox.Text = model.Senha;
-                    smtpServerTextBox.Text = model.SmtpServer;
-                    smtpPortaTextBox.Text = model.SmtpPorta.ToString();
-                    sslSaidaCheckBox.Checked = model.SslSaidaHabilitado;
-                    entradaServerTextBox.Text = model.EntradaServer;
-                    entradaPortaTextBox.Text = model.EntradaPorta.ToString();
-                    sslEntradaCheckBox.Checked = model.SslEntradaHabilitado;
+                    emailTextBox.Text = emailConfigureModel.Email;
+                    senhaTextBox.Text = emailConfigureModel.Senha;
+                    smtpServerTextBox.Text = emailConfigureModel.SmtpServer;
+                    smtpPortaTextBox.Text = emailConfigureModel.SmtpPorta.ToString();
+                    sslSaidaCheckBox.Checked = emailConfigureModel.SslSaidaHabilitado;
+                    entradaServerTextBox.Text = emailConfigureModel.EntradaServer;
+                    entradaPortaTextBox.Text = emailConfigureModel.EntradaPorta.ToString();
+                    sslEntradaCheckBox.Checked = emailConfigureModel.SslEntradaHabilitado;
                 }
                 else
                 {
@@ -84,6 +84,12 @@ namespace Integrador.GUI
             {
                 MessageBox.Show("Erro ao carregar a configuração de e-mail: " + ex.Message);
             }
+        }
+
+        private void verEmailButton_Click(object sender, EventArgs e)
+        {
+            MailViewGUI mailViewGUI = new MailViewGUI();
+            mailViewGUI.ShowDialog();
         }
     }
 }

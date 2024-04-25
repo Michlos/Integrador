@@ -37,6 +37,7 @@
             this.sistemasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.onBloxToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainPanel = new System.Windows.Forms.Panel();
+            this.napisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -92,16 +93,18 @@
             // sistemasToolStripMenuItem
             // 
             this.sistemasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.onBloxToolStripMenuItem});
+            this.onBloxToolStripMenuItem,
+            this.napisToolStripMenuItem});
             this.sistemasToolStripMenuItem.Name = "sistemasToolStripMenuItem";
             this.sistemasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.sistemasToolStripMenuItem.Text = "&Sistemas";
             // 
             // onBloxToolStripMenuItem
             // 
+            this.onBloxToolStripMenuItem.Enabled = false;
             this.onBloxToolStripMenuItem.Name = "onBloxToolStripMenuItem";
             this.onBloxToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.onBloxToolStripMenuItem.Text = "On&Blox";
+            this.onBloxToolStripMenuItem.Text = "&Napis";
             // 
             // mainPanel
             // 
@@ -111,6 +114,12 @@
             this.mainPanel.Name = "mainPanel";
             this.mainPanel.Size = new System.Drawing.Size(800, 404);
             this.mainPanel.TabIndex = 2;
+            // 
+            // napisToolStripMenuItem
+            // 
+            this.napisToolStripMenuItem.Name = "napisToolStripMenuItem";
+            this.napisToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.napisToolStripMenuItem.Text = "&OnBlox";
             // 
             // Integrador
             // 
@@ -141,5 +150,6 @@
         private System.Windows.Forms.ToolStripMenuItem sistemasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem onBloxToolStripMenuItem;
         private System.Windows.Forms.Panel mainPanel;
+        private System.Windows.Forms.ToolStripMenuItem napisToolStripMenuItem;
     }
 }

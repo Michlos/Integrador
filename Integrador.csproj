@@ -164,11 +164,19 @@
   <ItemGroup>
     <Compile Include="Domain\EmailConfigure\EmailConfigureModel.cs" />
     <Compile Include="Domain\EmailConfigure\IEmailConfigureModel.cs" />
+    <Compile Include="Domain\EmailView\EmailViewModel.cs" />
+    <Compile Include="Domain\EmailView\IEmailViewModel.cs" />
     <Compile Include="GUI\EmailConfigureGUI.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="GUI\EmailConfigureGUI.Designer.cs">
       <DependentUpon>EmailConfigureGUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\MailViewGUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\MailViewGUI.Designer.cs">
+      <DependentUpon>MailViewGUI.cs</DependentUpon>
     </Compile>
     <Compile Include="Integrador.cs">
       <SubType>Form</SubType>
@@ -188,6 +196,9 @@
     <Compile Include="Services\AppDbContext.cs" />
     <EmbeddedResource Include="GUI\EmailConfigureGUI.resx">
       <DependentUpon>EmailConfigureGUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\MailViewGUI.resx">
+      <DependentUpon>MailViewGUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Integrador.resx">
       <DependentUpon>Integrador.cs</DependentUpon>
