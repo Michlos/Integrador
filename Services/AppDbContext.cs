@@ -14,7 +14,7 @@ namespace Integrador.Services
     public class AppDbContext : DbContext
     {
         public DbSet<EmailConfigureModel> EmailConfigure { get; set; }
-        public DbSet<EmailModel> EmailModel { get; set; }
+        public DbSet<EmailModel> Email { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

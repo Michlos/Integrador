@@ -208,6 +208,10 @@
     <Compile Include="Migrations\20240426020441_Inclusao_EmailModel_Receber_Emails.Designer.cs">
       <DependentUpon>20240426020441_Inclusao_EmailModel_Receber_Emails.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20240426020645_Correcao_Nome_da_tabela_EmailModel_para_Email.cs" />
+    <Compile Include="Migrations\20240426020645_Correcao_Nome_da_tabela_EmailModel_para_Email.Designer.cs">
+      <DependentUpon>20240426020645_Correcao_Nome_da_tabela_EmailModel_para_Email.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AppDbContextModelSnapshot.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
