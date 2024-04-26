@@ -12,6 +12,7 @@ namespace Integrador.Repository.EmailConfigure
     {
         Task<IEmailConfigureModel> GetEmailConfigureAsync();
         Task AddEmailConfigureAsync(IEmailConfigureModel config);
+        Task UpdateEmailConfigureAsync(IEmailConfigureModel config);
 
     }
 }

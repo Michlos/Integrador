@@ -37,5 +37,11 @@ namespace Integrador.Repository.EmailConfigure
             EmailConfigureModel emailConfigureModel = await _context.EmailConfigure.FirstOrDefaultAsync<EmailConfigureModel>();
             return (IEmailConfigureModel)(emailConfigureModel == null ? null : emailConfigureModel);
         }
+
+        public async Task UpdateEmailConfigureAsync(IEmailConfigureModel config)
+        {
+            _context.Entry(config).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+        }
     }
 }

@@ -21,6 +21,22 @@ namespace Integrador.Services.Email
             _emailConfigureModel = emailConfigureModel;
                 
         }
+
+
+        private void ConnectHost()
+        {
+
+            if (_imapClient.IsConnected)
+            {
+                _imapClient.Disconnect(true);
+            }
+            SecureSocketOptions secureSocketOptions = _emailConfigureModel.SslEntradaHabilitado ?
+                SecureSocketOptions.SslOnConnect :
+                SecureSocketOptions.None;
+            _imapClient.Connect(_emailConfigureModel.EntradaServer, _emailConfigureModel.EntradaPorta, secureSocketOptions);
+            _imapClient.Authenticate(_emailConfigureModel.Email, _emailConfigureModel.Senha);
+                
+        }
         public string GetEmail()
         {
             return _emailConfigureModel.Email;
