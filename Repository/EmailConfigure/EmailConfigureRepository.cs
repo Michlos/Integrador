@@ -26,15 +26,16 @@ namespace Integrador.Repository.EmailConfigure
 
         public async Task<IEmailConfigureModel> GetEmailConfigureAsync(AppDbContext context)
         {
-            var emailConfigure = await _context.EmailConfigure.FirstOrDefaultAsync();
+            EmailConfigureModel emailConfigureModel = await _context.EmailConfigure.FirstOrDefaultAsync();
 
-            return emailConfigure ?? new EmailConfigureModel();
+            return (IEmailConfigureModel)(emailConfigureModel == null ? null : emailConfigureModel);
+            //return emailConfigure ?? new EmailConfigureModel();
         }
 
         public async Task<IEmailConfigureModel> GetEmailConfigureAsync()
         {
-            var emailConfigure = await _context.EmailConfigure.FirstOrDefaultAsync();
-            return emailConfigure ?? new EmailConfigureModel();
+            EmailConfigureModel emailConfigureModel = await _context.EmailConfigure.FirstOrDefaultAsync<EmailConfigureModel>();
+            return (IEmailConfigureModel)(emailConfigureModel == null ? null : emailConfigureModel);
         }
     }
 }

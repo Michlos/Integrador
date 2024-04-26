@@ -20,10 +20,12 @@ namespace Integrador.GUI
     {
         private readonly AppDbContext context = new AppDbContext();
         private EmailConfigureModel emailConfigureModel = new EmailConfigureModel();
+        private EmailConfigureRepository _emailConfigureRepository;
 
 
         public EmailConfigureGUI(IEmailConfigureRepository emailConfigureRepository)
         {
+            _emailConfigureRepository = (EmailConfigureRepository)emailConfigureRepository;
             InitializeComponent();
         }
 

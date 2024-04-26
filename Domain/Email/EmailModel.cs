@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Integrador.Domain.EmailView
+namespace Integrador.Domain.Email
 {
-    public class EmailViewModel : IEmailViewModel
+    public class EmailModel
     {
         public int Id { get; set; }
         public string Remetente { get; set; }

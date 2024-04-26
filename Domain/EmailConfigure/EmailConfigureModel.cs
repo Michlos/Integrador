@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Integrador.Domain.EmailConfigure
 {
     [Table("EmailConfigure")]
-    public class EmailConfigureModel : IEmailConfigureModel
+    public class EmailConfigureModel 
     {
         [Key]
         public int Id { get; set; }
