@@ -1,4 +1,5 @@
-﻿using Integrador.Domain.EmailConfigure;
+﻿using Integrador.Domain.Email;
+using Integrador.Domain.EmailConfigure;
 
 using Microsoft.EntityFrameworkCore;
 
@@ -12,7 +13,8 @@ namespace Integrador.Services
 {
     public class AppDbContext : DbContext
     {
-        public DbSet<EmailConfigureModel> EmailConfigure { get; set; }                                                    
+        public DbSet<EmailConfigureModel> EmailConfigure { get; set; }
+        public DbSet<EmailModel> EmailModel { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

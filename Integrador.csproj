@@ -204,6 +204,10 @@
     <Compile Include="Migrations\20240423005445_InitialCreate.Designer.cs">
       <DependentUpon>20240423005445_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20240426020441_Inclusao_EmailModel_Receber_Emails.cs" />
+    <Compile Include="Migrations\20240426020441_Inclusao_EmailModel_Receber_Emails.Designer.cs">
+      <DependentUpon>20240426020441_Inclusao_EmailModel_Receber_Emails.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AppDbContextModelSnapshot.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
