@@ -226,6 +226,10 @@
     <Compile Include="Migrations\20240427024531_Adicao_campo_CaixaDeEmail_em_EmailConfigureModel.Designer.cs">
       <DependentUpon>20240427024531_Adicao_campo_CaixaDeEmail_em_EmailConfigureModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20240427034250_Adicao_campos_extracao_dados_EmailConfigureModel.cs" />
+    <Compile Include="Migrations\20240427034250_Adicao_campos_extracao_dados_EmailConfigureModel.Designer.cs">
+      <DependentUpon>20240427034250_Adicao_campos_extracao_dados_EmailConfigureModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AppDbContextModelSnapshot.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
