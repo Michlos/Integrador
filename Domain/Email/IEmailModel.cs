@@ -4,11 +4,12 @@ namespace Integrador.Domain.Email
 {
     public interface IEmailModel
     {
-        string GetAssunto();
-        string GetConteudoHtml();
-        string GetConteudoTxt();
-        DateTimeOffset GetDataDeRecebimento();
-        int GetId();
-        string GetRemetente();
+        string Assunto { get; set; }
+        string ConteudoHtml { get; set; }
+        string ConteudoTxt { get; set; }
+        DateTimeOffset DataDeRecebimento { get; set; }
+        int Id { get; set; }
+        bool Integrado {  get; set; }
+        string Remetente { get; set; }
     }
 }

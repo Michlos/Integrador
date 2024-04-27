@@ -19,5 +19,11 @@ namespace Integrador.Repository.Email
         //COMANDOS DO BANCO DE DADOS
         Task<List<IEmailModel>> SalvarEmailTodos();
 
+        void Add(IEmailModel model);
+        void Update(IEmailModel model);
+        void Delete(IEmailModel model);
+        void SetarComoIntegrado(IEmailModel comoEnviado);
+
+
     }
 }
