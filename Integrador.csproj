@@ -212,6 +212,10 @@
     <Compile Include="Migrations\20240426020645_Correcao_Nome_da_tabela_EmailModel_para_Email.Designer.cs">
       <DependentUpon>20240426020645_Correcao_Nome_da_tabela_EmailModel_para_Email.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20240427020934_Adicao_campo_id_mail_host_na_classe_emailModel.cs" />
+    <Compile Include="Migrations\20240427020934_Adicao_campo_id_mail_host_na_classe_emailModel.Designer.cs">
+      <DependentUpon>20240427020934_Adicao_campo_id_mail_host_na_classe_emailModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AppDbContextModelSnapshot.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
