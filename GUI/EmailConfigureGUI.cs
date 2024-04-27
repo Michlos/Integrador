@@ -5,6 +5,7 @@ using Integrador.Services;
 using Microsoft.EntityFrameworkCore;
 
 using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -48,13 +49,32 @@ namespace Integrador.GUI
 
             if (emailConfigureModel.Id != 0)
             {
-                context.Entry(emailConfigureModel).State = EntityState.Modified;
-                context.SaveChanges();
+                try
+                {
+                    context.Entry(emailConfigureModel).State = EntityState.Modified;
+                    context.SaveChanges();
+                    MessageBox.Show("Configuração de E-Mail salva com sucesso!");
+
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception($"Não foi possível salvar as configurações no sistema.\nContate o Suporte.\nError: {ex.Message}", ex.InnerException);
+                }
             }
             else
             {
-                context.EmailConfigure.Add(emailConfigureModel);
-                context.SaveChanges();
+                try
+                {
+                    context.EmailConfigure.Add(emailConfigureModel);
+                    context.SaveChanges();
+                    MessageBox.Show("Configuração de E-mail adicionada com sucesso!");
+
+                }
+                catch (Exception ex)
+                {
+
+                    throw new Exception($"Não foi possível adicionar as configurações no sistema.\nContate o Suporte.\nError: {ex.Message}", ex.InnerException);
+                }
             }
         }
 
@@ -86,7 +106,7 @@ namespace Integrador.GUI
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Erro ao carregar a configuração de e-mail: " + ex.Message);
+                throw new Exception($"Erro ao carregar a configuração de e-mail.\nContate o suporte.\nError:{ex.Message}", ex.InnerException);
             }
         }
 
