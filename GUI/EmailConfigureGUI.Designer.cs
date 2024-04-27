@@ -212,7 +212,7 @@
             this.salvarButton.Location = new System.Drawing.Point(578, 245);
             this.salvarButton.Name = "salvarButton";
             this.salvarButton.Size = new System.Drawing.Size(75, 23);
-            this.salvarButton.TabIndex = 1;
+            this.salvarButton.TabIndex = 3;
             this.salvarButton.Text = "&Salvar";
             this.salvarButton.UseVisualStyleBackColor = true;
             this.salvarButton.Click += new System.EventHandler(this.salvarButton_Click);
@@ -222,7 +222,7 @@
             this.button1.Location = new System.Drawing.Point(659, 244);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 2;
+            this.button1.TabIndex = 4;
             this.button1.Text = "Sai&r";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -232,7 +232,7 @@
             this.verEmailButton.Location = new System.Drawing.Point(11, 244);
             this.verEmailButton.Name = "verEmailButton";
             this.verEmailButton.Size = new System.Drawing.Size(90, 23);
-            this.verEmailButton.TabIndex = 3;
+            this.verEmailButton.TabIndex = 2;
             this.verEmailButton.Text = "Listar E-Mails";
             this.verEmailButton.UseVisualStyleBackColor = true;
             this.verEmailButton.Click += new System.EventHandler(this.verEmailButton_Click);
@@ -256,7 +256,7 @@
             this.configContaEmailGroupBox.Location = new System.Drawing.Point(12, 12);
             this.configContaEmailGroupBox.Name = "configContaEmailGroupBox";
             this.configContaEmailGroupBox.Size = new System.Drawing.Size(334, 226);
-            this.configContaEmailGroupBox.TabIndex = 4;
+            this.configContaEmailGroupBox.TabIndex = 0;
             this.configContaEmailGroupBox.TabStop = false;
             this.configContaEmailGroupBox.Text = "Conta de E-Mail";
             // 
@@ -276,17 +276,16 @@
             this.configBuscaEmailGroupBox.Location = new System.Drawing.Point(365, 12);
             this.configBuscaEmailGroupBox.Name = "configBuscaEmailGroupBox";
             this.configBuscaEmailGroupBox.Size = new System.Drawing.Size(369, 226);
-            this.configBuscaEmailGroupBox.TabIndex = 5;
+            this.configBuscaEmailGroupBox.TabIndex = 1;
             this.configBuscaEmailGroupBox.TabStop = false;
             this.configBuscaEmailGroupBox.Text = "Configureção de Busca";
             // 
             // inicioRelatoiroTextBox
             // 
-            this.inicioRelatoiroTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
             this.inicioRelatoiroTextBox.Location = new System.Drawing.Point(118, 58);
             this.inicioRelatoiroTextBox.Name = "inicioRelatoiroTextBox";
             this.inicioRelatoiroTextBox.Size = new System.Drawing.Size(225, 20);
-            this.inicioRelatoiroTextBox.TabIndex = 0;
+            this.inicioRelatoiroTextBox.TabIndex = 1;
             this.inicioRelatoiroTextBox.WordWrap = false;
             // 
             // label2
@@ -309,11 +308,10 @@
             // 
             // finalRelatorioTextBox
             // 
-            this.finalRelatorioTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
             this.finalRelatorioTextBox.Location = new System.Drawing.Point(118, 90);
             this.finalRelatorioTextBox.Name = "finalRelatorioTextBox";
             this.finalRelatorioTextBox.Size = new System.Drawing.Size(225, 20);
-            this.finalRelatorioTextBox.TabIndex = 0;
+            this.finalRelatorioTextBox.TabIndex = 2;
             this.finalRelatorioTextBox.WordWrap = false;
             // 
             // label4
@@ -327,11 +325,10 @@
             // 
             // tagsExtracaoTextBox
             // 
-            this.tagsExtracaoTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
             this.tagsExtracaoTextBox.Location = new System.Drawing.Point(118, 122);
             this.tagsExtracaoTextBox.Name = "tagsExtracaoTextBox";
             this.tagsExtracaoTextBox.Size = new System.Drawing.Size(133, 20);
-            this.tagsExtracaoTextBox.TabIndex = 0;
+            this.tagsExtracaoTextBox.TabIndex = 3;
             this.tagsExtracaoTextBox.WordWrap = false;
             // 
             // label5
@@ -345,11 +342,10 @@
             // 
             // pastaTemporairaTextBox
             // 
-            this.pastaTemporairaTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
             this.pastaTemporairaTextBox.Location = new System.Drawing.Point(118, 154);
             this.pastaTemporairaTextBox.Name = "pastaTemporairaTextBox";
             this.pastaTemporairaTextBox.Size = new System.Drawing.Size(196, 20);
-            this.pastaTemporairaTextBox.TabIndex = 0;
+            this.pastaTemporairaTextBox.TabIndex = 4;
             this.pastaTemporairaTextBox.WordWrap = false;
             // 
             // selecaoPastaTemporariafolderBrowserDialog
@@ -362,7 +358,7 @@
             this.pastaTemporariaButton.Location = new System.Drawing.Point(320, 153);
             this.pastaTemporariaButton.Name = "pastaTemporariaButton";
             this.pastaTemporariaButton.Size = new System.Drawing.Size(23, 23);
-            this.pastaTemporariaButton.TabIndex = 1;
+            this.pastaTemporariaButton.TabIndex = 5;
             this.pastaTemporariaButton.Text = "...";
             this.pastaTemporariaButton.UseVisualStyleBackColor = true;
             this.pastaTemporariaButton.Click += new System.EventHandler(this.pastaTemporariaButton_Click);
