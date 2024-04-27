@@ -11,5 +11,10 @@
         string GetSmtpServer();
         bool GetSslEntradaHabilitado();
         bool GetSslSaidaHabilitado();
+        string GetCaixaDeEmail();
+        string GetInicioRelatorio();
+        string GetFinalRelatorio();
+        string GetTagExtracao();
+        string GetPastaTemporaria();
     }
 }

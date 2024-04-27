@@ -5,6 +5,8 @@ using MailKit;
 using MailKit.Net.Imap;
 using MailKit.Security;
 
+using Microsoft.Identity.Client;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -136,6 +138,31 @@ namespace Integrador.Services.Email
         public bool GetSslSaidaHabilitado()
         {
             return _emailConfigureModel.SslSaidaHabilitado;
+        }
+
+        public string GetCaixaDeEmail()
+        {
+            return _emailConfigureModel.CaixaDeEmail;
+        }
+
+        public string GetInicioRelatorio()
+        {
+            return _emailConfigureModel.InicioRelatorio;
+        }
+
+        public string GetFinalRelatorio()
+        {
+            return _emailConfigureModel.FinalRelatorio;
+        }
+
+        public string GetTagExtracao()
+        {
+            return _emailConfigureModel.TagExtracao;
+        }
+
+        public string GetPastaTemporaria()
+        {
+            return _emailConfigureModel.PastaTemporaria;
         }
     }
 }

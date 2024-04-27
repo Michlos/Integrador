@@ -26,9 +26,10 @@ namespace Integrador.Services.EmailConfigure
             _emailConfigureModel = emailConfigureModel;
         }
 
-
-
-        
+        public string GetCaixaDeEmail()
+        {
+            return _emailConfigureModel.CaixaDeEmail;
+        }
 
         public string GetEmail()
         {
@@ -42,10 +43,27 @@ namespace Integrador.Services.EmailConfigure
         {
             return _emailConfigureModel.EntradaServer;
         }
+
+        public string GetFinalRelatorio()
+        {
+            return _emailConfigureModel.FinalRelatorio;
+        }
+
         public int GetId()
         {
             return _emailConfigureModel.Id;
         }
+
+        public string GetInicioRelatorio()
+        {
+            return _emailConfigureModel.InicioRelatorio;
+        }
+
+        public string GetPastaTemporaria()
+        {
+            return _emailConfigureModel.PastaTemporaria;
+        }
+
         public string GetSenha()
         {
             return _emailConfigureModel.Senha;
@@ -67,6 +85,10 @@ namespace Integrador.Services.EmailConfigure
         {
             return _emailConfigureModel.SslSaidaHabilitado;
         }
-        
+
+        public string GetTagExtracao()
+        {
+            return _emailConfigureModel.TagExtracao;
+        }
     }
 }

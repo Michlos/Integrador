@@ -31,20 +31,24 @@
             this.clientesGroupBox = new System.Windows.Forms.GroupBox();
             this.integrarCheckBox = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.assuntoEmailClienteTextBox = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.tagBuscarClientetextBox = new System.Windows.Forms.TextBox();
             this.clientesGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // clientesGroupBox
             // 
             this.clientesGroupBox.AccessibleRole = System.Windows.Forms.AccessibleRole.ButtonDropDown;
-            this.clientesGroupBox.Controls.Add(this.textBox1);
+            this.clientesGroupBox.Controls.Add(this.tagBuscarClientetextBox);
+            this.clientesGroupBox.Controls.Add(this.label2);
+            this.clientesGroupBox.Controls.Add(this.assuntoEmailClienteTextBox);
             this.clientesGroupBox.Controls.Add(this.label1);
             this.clientesGroupBox.Controls.Add(this.integrarCheckBox);
             this.clientesGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.clientesGroupBox.Location = new System.Drawing.Point(12, 12);
             this.clientesGroupBox.Name = "clientesGroupBox";
-            this.clientesGroupBox.Size = new System.Drawing.Size(575, 138);
+            this.clientesGroupBox.Size = new System.Drawing.Size(496, 138);
             this.clientesGroupBox.TabIndex = 0;
             this.clientesGroupBox.TabStop = false;
             this.clientesGroupBox.Text = "Clientes";
@@ -68,12 +72,28 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Assunto do E-Mail:";
             // 
-            // textBox1
+            // assuntoEmailClienteTextBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(118, 40);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(439, 20);
-            this.textBox1.TabIndex = 2;
+            this.assuntoEmailClienteTextBox.Location = new System.Drawing.Point(118, 40);
+            this.assuntoEmailClienteTextBox.Name = "assuntoEmailClienteTextBox";
+            this.assuntoEmailClienteTextBox.Size = new System.Drawing.Size(357, 20);
+            this.assuntoEmailClienteTextBox.TabIndex = 2;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(39, 79);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(73, 13);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Tag a buscar:";
+            // 
+            // tagBuscarClientetextBox
+            // 
+            this.tagBuscarClientetextBox.Location = new System.Drawing.Point(118, 76);
+            this.tagBuscarClientetextBox.Name = "tagBuscarClientetextBox";
+            this.tagBuscarClientetextBox.Size = new System.Drawing.Size(357, 20);
+            this.tagBuscarClientetextBox.TabIndex = 2;
             // 
             // OnBloxConfigureGUI
             // 
@@ -92,8 +112,10 @@
         #endregion
 
         private System.Windows.Forms.GroupBox clientesGroupBox;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox assuntoEmailClienteTextBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox integrarCheckBox;
+        private System.Windows.Forms.TextBox tagBuscarClientetextBox;
+        private System.Windows.Forms.Label label2;
     }
 }

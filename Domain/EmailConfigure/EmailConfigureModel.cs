@@ -12,11 +12,10 @@ namespace Integrador.Domain.EmailConfigure
     [Table("EmailConfigure")]
     public class EmailConfigureModel 
     {
+        //CONFIGURAÇÃO DE CONTA
         [Key]
         public int Id { get; set; }
 
-        [Required, StringLength(10)]
-        public string CaixaDeEmail { get; set; }
 
         [Required, StringLength(50)]
         public string Email { get; set; }
@@ -41,6 +40,29 @@ namespace Integrador.Domain.EmailConfigure
 
         [Required]
         public bool SslEntradaHabilitado { get; set; }
+
+
+        //CONFIGURAÇÃO DE EXTRAÇÃO DE DADOS
+        
+        //"INBOX"
+        [Required, StringLength(10)]
+        public string CaixaDeEmail { get; set; }
+
+        //"Totais gerais"
+        [Required, StringLength(50)]
+        public string InicioRelatorio { get; set; }
+
+        //"<!-- Start report output -->"
+        [Required, StringLength(50)]
+        public string FinalRelatorio { get; set; }
+
+        // "//tr//td"
+        [Required, StringLength(10)]
+        public string TagExtracao { get; set; }
+
+        [Required, StringLength(200)]
+        public string PastaTemporaria { get; set; }
+
 
     }
 }

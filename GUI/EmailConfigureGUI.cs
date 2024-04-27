@@ -37,7 +37,6 @@ namespace Integrador.GUI
 
         private void salvarButton_Click(object sender, EventArgs e)
         {
-            emailConfigureModel.CaixaDeEmail = caixaDeEmailTextBox.Text;
             emailConfigureModel.Email = emailTextBox.Text;
             emailConfigureModel.Senha = senhaTextBox.Text;
             emailConfigureModel.SmtpServer = smtpServerTextBox.Text;
@@ -46,6 +45,11 @@ namespace Integrador.GUI
             emailConfigureModel.EntradaServer = entradaServerTextBox.Text;
             emailConfigureModel.EntradaPorta = int.Parse(entradaPortaTextBox.Text);
             emailConfigureModel.SslEntradaHabilitado = sslEntradaCheckBox.Checked;
+            emailConfigureModel.CaixaDeEmail = caixaDeEmailTextBox.Text;
+            emailConfigureModel.InicioRelatorio = inicioRelatoiroTextBox.Text;
+            emailConfigureModel.FinalRelatorio = finalRelatorioTextBox.Text;
+            emailConfigureModel.TagExtracao = tagsExtracaoTextBox.Text;
+            emailConfigureModel.PastaTemporaria = pastaTemporairaTextBox.Text;
 
             if (emailConfigureModel.Id != 0)
             {
@@ -89,7 +93,7 @@ namespace Integrador.GUI
 
                 if (emailConfigureModel.Id != 0)
                 {
-                    caixaDeEmailTextBox.Text = emailConfigureModel.CaixaDeEmail;
+                    
                     emailTextBox.Text = emailConfigureModel.Email;
                     senhaTextBox.Text = emailConfigureModel.Senha;
                     smtpServerTextBox.Text = emailConfigureModel.SmtpServer;
@@ -98,6 +102,11 @@ namespace Integrador.GUI
                     entradaServerTextBox.Text = emailConfigureModel.EntradaServer;
                     entradaPortaTextBox.Text = emailConfigureModel.EntradaPorta.ToString();
                     sslEntradaCheckBox.Checked = emailConfigureModel.SslEntradaHabilitado;
+                    caixaDeEmailTextBox.Text = emailConfigureModel.CaixaDeEmail; //"INBOX"
+                    inicioRelatoiroTextBox.Text = emailConfigureModel.InicioRelatorio; //"Totais gerais"
+                    finalRelatorioTextBox.Text = emailConfigureModel.FinalRelatorio; //"<!-- Start report output -->"
+                    tagsExtracaoTextBox.Text = emailConfigureModel.TagExtracao; // "//tr//td"
+                    pastaTemporairaTextBox.Text = emailConfigureModel.PastaTemporaria;
                 }
                 else
                 {
@@ -114,6 +123,21 @@ namespace Integrador.GUI
         {
             MailViewGUI mailViewGUI = new MailViewGUI();
             mailViewGUI.ShowDialog();
+        }
+
+        private void pastaTemporariaButton_Click(object sender, EventArgs e)
+        {
+            using (FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog())
+            {
+                folderBrowserDialog.Description = "Selecione a pasta de arquivos temporários";
+                folderBrowserDialog.RootFolder = Environment.SpecialFolder.MyComputer;
+
+                DialogResult result = folderBrowserDialog.ShowDialog();
+                if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(folderBrowserDialog.SelectedPath))
+                {
+                   pastaTemporairaTextBox.Text = folderBrowserDialog.SelectedPath;
+                }
+            }
         }
     }
 }
