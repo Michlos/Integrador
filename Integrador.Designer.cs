@@ -29,15 +29,15 @@
         private void InitializeComponent()
         {
             this.mainMenuStrip = new System.Windows.Forms.MenuStrip();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.arquivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sairToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configuraçãoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.emailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sistemasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.onBloxToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mainPanel = new System.Windows.Forms.Panel();
             this.napisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.mainPanel = new System.Windows.Forms.Panel();
             this.mainMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,14 +52,6 @@
             this.mainMenuStrip.TabIndex = 0;
             this.mainMenuStrip.Text = "mainMenuStrip";
             // 
-            // statusStrip1
-            // 
-            this.statusStrip1.Location = new System.Drawing.Point(0, 428);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(800, 22);
-            this.statusStrip1.TabIndex = 1;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
             // arquivoToolStripMenuItem
             // 
             this.arquivoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -71,7 +63,7 @@
             // sairToolStripMenuItem
             // 
             this.sairToolStripMenuItem.Name = "sairToolStripMenuItem";
-            this.sairToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.sairToolStripMenuItem.Size = new System.Drawing.Size(93, 22);
             this.sairToolStripMenuItem.Text = "Sai&r";
             // 
             // configuraçãoToolStripMenuItem
@@ -106,6 +98,21 @@
             this.onBloxToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.onBloxToolStripMenuItem.Text = "&Napis";
             // 
+            // napisToolStripMenuItem
+            // 
+            this.napisToolStripMenuItem.Name = "napisToolStripMenuItem";
+            this.napisToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.napisToolStripMenuItem.Text = "&OnBlox";
+            this.napisToolStripMenuItem.Click += new System.EventHandler(this.napisToolStripMenuItem_Click);
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Location = new System.Drawing.Point(0, 428);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(800, 22);
+            this.statusStrip1.TabIndex = 1;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
             // mainPanel
             // 
             this.mainPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -114,12 +121,6 @@
             this.mainPanel.Name = "mainPanel";
             this.mainPanel.Size = new System.Drawing.Size(800, 404);
             this.mainPanel.TabIndex = 2;
-            // 
-            // napisToolStripMenuItem
-            // 
-            this.napisToolStripMenuItem.Name = "napisToolStripMenuItem";
-            this.napisToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.napisToolStripMenuItem.Text = "&OnBlox";
             // 
             // Integrador
             // 

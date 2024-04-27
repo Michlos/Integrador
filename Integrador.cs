@@ -35,5 +35,10 @@ namespace Integrador
             mainPanel.Controls.Add(emailConfigureGUI);
             emailConfigureGUI.Show();
         }
+
+        private void napisToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -194,6 +194,12 @@
     <Compile Include="GUI\MailViewGUI.Designer.cs">
       <DependentUpon>MailViewGUI.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\OnBloxConfigureGUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\OnBloxConfigureGUI.Designer.cs">
+      <DependentUpon>OnBloxConfigureGUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="Integrador.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -216,6 +222,10 @@
     <Compile Include="Migrations\20240427020934_Adicao_campo_id_mail_host_na_classe_emailModel.Designer.cs">
       <DependentUpon>20240427020934_Adicao_campo_id_mail_host_na_classe_emailModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20240427024531_Adicao_campo_CaixaDeEmail_em_EmailConfigureModel.cs" />
+    <Compile Include="Migrations\20240427024531_Adicao_campo_CaixaDeEmail_em_EmailConfigureModel.Designer.cs">
+      <DependentUpon>20240427024531_Adicao_campo_CaixaDeEmail_em_EmailConfigureModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AppDbContextModelSnapshot.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -230,6 +240,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\MailViewGUI.resx">
       <DependentUpon>MailViewGUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\OnBloxConfigureGUI.resx">
+      <DependentUpon>OnBloxConfigureGUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Integrador.resx">
       <DependentUpon>Integrador.cs</DependentUpon>

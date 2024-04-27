@@ -36,6 +36,7 @@ namespace Integrador.GUI
 
         private void salvarButton_Click(object sender, EventArgs e)
         {
+            emailConfigureModel.CaixaDeEmail = caixaDeEmailTextBox.Text;
             emailConfigureModel.Email = emailTextBox.Text;
             emailConfigureModel.Senha = senhaTextBox.Text;
             emailConfigureModel.SmtpServer = smtpServerTextBox.Text;
@@ -68,6 +69,7 @@ namespace Integrador.GUI
 
                 if (emailConfigureModel.Id != 0)
                 {
+                    caixaDeEmailTextBox.Text = emailConfigureModel.CaixaDeEmail;
                     emailTextBox.Text = emailConfigureModel.Email;
                     senhaTextBox.Text = emailConfigureModel.Senha;
                     smtpServerTextBox.Text = emailConfigureModel.SmtpServer;
