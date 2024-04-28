@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace Integrador.Domain.EmailConfigure
 {
     [Table("EmailConfigure")]
-    public class EmailConfigureModel 
+    public class EmailConfigureModel : IEmailConfigureModel
     {
         //CONFIGURAÇÃO DE CONTA
         [Key]
@@ -43,10 +43,13 @@ namespace Integrador.Domain.EmailConfigure
 
 
         //CONFIGURAÇÃO DE EXTRAÇÃO DE DADOS
-        
+
         //"INBOX"
         [Required, StringLength(10)]
         public string CaixaDeEmail { get; set; }
+
+        [Required, StringLength(300)]
+        public string AssuntoEmail { get; set; }
 
         //"Totais gerais"
         [Required, StringLength(50)]

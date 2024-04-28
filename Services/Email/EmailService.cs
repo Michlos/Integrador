@@ -1,10 +1,12 @@
 ﻿using Integrador.Domain.Email;
 using Integrador.Domain.EmailConfigure;
+using Integrador.Repository.Email;
 
 using MailKit;
 using MailKit.Net.Imap;
 using MailKit.Security;
 
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Identity.Client;
 
 using System;
@@ -14,21 +16,27 @@ using System.Net;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms.VisualStyles;
+
 
 namespace Integrador.Services.Email
 {
-    public class EmailService : IEmailConfigureModel
+    public class EmailService
     {
+
         private ImapClient _imapClient = new ImapClient();
         private readonly EmailConfigureModel _emailConfigureModel;
-        public EmailService(EmailConfigureModel emailConfigureModel)
+        private readonly IEmailRepository _emailRepository;
+        private AppDbContext context = new AppDbContext();
+        public EmailService(IEmailRepository emailReponsitory, EmailConfigureModel emailConfigureModel)
         {
+            _emailRepository = emailReponsitory;
             _emailConfigureModel = emailConfigureModel;
 
         }
 
 
-        private void ConnectHost(bool connect)
+        public void ConnectHost(bool connect)
         {
             if (connect)
             {
@@ -61,7 +69,7 @@ namespace Integrador.Services.Email
                 IPHostEntry iPHost = Dns.GetHostEntry(hostName);
                 foreach (IPAddress item in iPHost.AddressList)
                 {
-                     hostIp = item.ToString();
+                    hostIp = item.ToString();
                 }
             }
             catch (Exception e)
@@ -72,12 +80,52 @@ namespace Integrador.Services.Email
             return hostIp;
         }
 
-        private async Task<List<EmailModel>> ReceberMensagens(string caixaDeMensagem, string assunto)
+
+        public async Task<List<EmailModel>> ReceberMensagensAsync(string caixaDeMensagem, string assunto)
         {
             List<EmailModel> emailModelList = new List<EmailModel>();
-            
-            IMailFolder folder = await _imapClient.GetFolderAsync(caixaDeMensagem);
-            await folder.OpenAsync(FolderAccess.ReadOnly);
+
+            using (ImapClient imapClient = new ImapClient())
+            {
+                await imapClient.ConnectAsync(_emailConfigureModel.EntradaServer,
+                    _emailConfigureModel.EntradaPorta, _emailConfigureModel.SslEntradaHabilitado);
+
+
+                await imapClient.AuthenticateAsync(_emailConfigureModel.Email,
+                    _emailConfigureModel.Senha);
+
+                IMailFolder folder = await imapClient.GetFolderAsync(_emailConfigureModel.CaixaDeEmail);
+                await folder.OpenAsync(FolderAccess.ReadOnly);
+
+                var items = await folder.FetchAsync(0, -1, MessageSummaryItems.UniqueId |
+                    MessageSummaryItems.Envelope | MessageSummaryItems.Body);
+                
+                foreach (var item in items)
+                {
+                    emailModelList.Add(
+                        new EmailModel()
+                        {
+                            IdEmailBox = item.UniqueId.Id.ToString(),
+                            Remetente = item.Envelope.From.ToString(),
+                            Assunto = item.Envelope.Subject,
+                            DataDeRecebimento = (DateTimeOffset)item.Envelope.Date,
+                            ConteudoHtml = item.HtmlBody.ToString()
+                        });
+                }
+                //emailModelList = emailModelList.Where(sub => sub.Assunto.Contains(assunto)).ToList();
+                return emailModelList;
+            }
+
+
+
+        }
+
+        public List<EmailModel> ReceberMensagens(string caixaDeMensagem, string assunto)
+        {
+            List<EmailModel> emailModelList = new List<EmailModel>();
+
+            IMailFolder folder = _imapClient.GetFolder(caixaDeMensagem);
+            folder.Open(FolderAccess.ReadOnly);
 
             foreach (var item in folder)
             {
@@ -95,74 +143,29 @@ namespace Integrador.Services.Email
             return emailModelList;
         }
 
-        public string GetEmail()
+        public void SalvarEmailsNoBancoDeDados(List<EmailModel> lista)
         {
-            return _emailConfigureModel.Email;
+
+            foreach (var item in lista)
+            {
+                if (!context.Email.Any(idEmail => idEmail.IdEmailBox == item.IdEmailBox))
+                {
+                    context.Add(item);
+                    context.SaveChanges();
+                }
+                else
+                {
+                    item.Id = context.Email.Where(id => id.Id == item.Id).Select(idDb => idDb.Id).FirstOrDefault();
+                    context.Email.Attach((EmailModel)item);
+                    context.Entry(item).State = EntityState.Modified;
+                    context.SaveChanges();
+                }       
+            }
+
+
+
         }
 
-        public int GetEntradaPorta()
-        {
-            return _emailConfigureModel.EntradaPorta;
-        }
 
-        public string GetEntradaServer()
-        {
-            return _emailConfigureModel.EntradaServer;
-        }
-
-        public int GetId()
-        {
-            return _emailConfigureModel.Id;
-        }
-
-        public string GetSenha()
-        {
-            return _emailConfigureModel.Senha;
-        }
-
-        public int GetSmtpPorta()
-        {
-            return _emailConfigureModel.SmtpPorta;
-        }
-
-        public string GetSmtpServer()
-        {
-            return _emailConfigureModel.SmtpServer;
-        }
-
-        public bool GetSslEntradaHabilitado()
-        {
-            return _emailConfigureModel.SslEntradaHabilitado;
-        }
-
-        public bool GetSslSaidaHabilitado()
-        {
-            return _emailConfigureModel.SslSaidaHabilitado;
-        }
-
-        public string GetCaixaDeEmail()
-        {
-            return _emailConfigureModel.CaixaDeEmail;
-        }
-
-        public string GetInicioRelatorio()
-        {
-            return _emailConfigureModel.InicioRelatorio;
-        }
-
-        public string GetFinalRelatorio()
-        {
-            return _emailConfigureModel.FinalRelatorio;
-        }
-
-        public string GetTagExtracao()
-        {
-            return _emailConfigureModel.TagExtracao;
-        }
-
-        public string GetPastaTemporaria()
-        {
-            return _emailConfigureModel.PastaTemporaria;
-        }
     }
 }

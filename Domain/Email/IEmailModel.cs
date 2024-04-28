@@ -11,5 +11,6 @@ namespace Integrador.Domain.Email
         int Id { get; set; }
         bool Integrado {  get; set; }
         string Remetente { get; set; }
+        string IdEmailBox { get; set; }
     }
 }

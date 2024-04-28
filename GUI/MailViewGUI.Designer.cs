@@ -29,43 +29,25 @@
         private void InitializeComponent()
         {
             this.listMailPanel = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.listaEmailDataGridView = new System.Windows.Forms.DataGridView();
+            this.sairButton = new System.Windows.Forms.Button();
+            this.corpoEmailPanel = new System.Windows.Forms.Panel();
+            this.corpoEmailTextBox = new System.Windows.Forms.TextBox();
+            this.receberEmailsButton = new System.Windows.Forms.Button();
             this.listMailPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listaEmailDataGridView)).BeginInit();
+            this.corpoEmailPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // listMailPanel
             // 
-            this.listMailPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.listMailPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.listMailPanel.Controls.Add(this.listaEmailDataGridView);
             this.listMailPanel.Location = new System.Drawing.Point(12, 13);
             this.listMailPanel.Name = "listMailPanel";
-            this.listMailPanel.Size = new System.Drawing.Size(776, 393);
+            this.listMailPanel.Size = new System.Drawing.Size(776, 187);
             this.listMailPanel.TabIndex = 0;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(713, 415);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Sai&r";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(632, 415);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "&Abrir";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button1_Click);
             // 
             // listaEmailDataGridView
             // 
@@ -77,21 +59,75 @@
             this.listaEmailDataGridView.Location = new System.Drawing.Point(0, 0);
             this.listaEmailDataGridView.Name = "listaEmailDataGridView";
             this.listaEmailDataGridView.ReadOnly = true;
-            this.listaEmailDataGridView.Size = new System.Drawing.Size(776, 393);
+            this.listaEmailDataGridView.RowHeadersVisible = false;
+            this.listaEmailDataGridView.RowHeadersWidth = 100;
+            this.listaEmailDataGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.listaEmailDataGridView.Size = new System.Drawing.Size(776, 187);
             this.listaEmailDataGridView.TabIndex = 0;
+            // 
+            // sairButton
+            // 
+            this.sairButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.sairButton.Location = new System.Drawing.Point(713, 415);
+            this.sairButton.Name = "sairButton";
+            this.sairButton.Size = new System.Drawing.Size(75, 23);
+            this.sairButton.TabIndex = 3;
+            this.sairButton.Text = "Sai&r";
+            this.sairButton.UseVisualStyleBackColor = true;
+            this.sairButton.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // corpoEmailPanel
+            // 
+            this.corpoEmailPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.corpoEmailPanel.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.corpoEmailPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.corpoEmailPanel.Controls.Add(this.corpoEmailTextBox);
+            this.corpoEmailPanel.Location = new System.Drawing.Point(15, 206);
+            this.corpoEmailPanel.Name = "corpoEmailPanel";
+            this.corpoEmailPanel.Size = new System.Drawing.Size(773, 203);
+            this.corpoEmailPanel.TabIndex = 4;
+            // 
+            // corpoEmailTextBox
+            // 
+            this.corpoEmailTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.corpoEmailTextBox.Location = new System.Drawing.Point(3, 3);
+            this.corpoEmailTextBox.Multiline = true;
+            this.corpoEmailTextBox.Name = "corpoEmailTextBox";
+            this.corpoEmailTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.corpoEmailTextBox.Size = new System.Drawing.Size(763, 193);
+            this.corpoEmailTextBox.TabIndex = 0;
+            // 
+            // receberEmailsButton
+            // 
+            this.receberEmailsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.receberEmailsButton.Location = new System.Drawing.Point(15, 415);
+            this.receberEmailsButton.Name = "receberEmailsButton";
+            this.receberEmailsButton.Size = new System.Drawing.Size(142, 23);
+            this.receberEmailsButton.TabIndex = 3;
+            this.receberEmailsButton.Text = "&Receber E-Mails";
+            this.receberEmailsButton.UseVisualStyleBackColor = true;
+            this.receberEmailsButton.Click += new System.EventHandler(this.receberEmailsButton_Click);
             // 
             // MailViewGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.corpoEmailPanel);
+            this.Controls.Add(this.receberEmailsButton);
+            this.Controls.Add(this.sairButton);
             this.Controls.Add(this.listMailPanel);
             this.Name = "MailViewGUI";
             this.Text = "E-Mail View";
+            this.Load += new System.EventHandler(this.MailViewGUI_Load);
             this.listMailPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.listaEmailDataGridView)).EndInit();
+            this.corpoEmailPanel.ResumeLayout(false);
+            this.corpoEmailPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -99,8 +135,10 @@
         #endregion
 
         private System.Windows.Forms.Panel listMailPanel;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button sairButton;
         private System.Windows.Forms.DataGridView listaEmailDataGridView;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Panel corpoEmailPanel;
+        private System.Windows.Forms.TextBox corpoEmailTextBox;
+        private System.Windows.Forms.Button receberEmailsButton;
     }
 }

@@ -37,6 +37,12 @@ namespace Integrador.GUI
 
         private void salvarButton_Click(object sender, EventArgs e)
         {
+            SalvarDadosEmailConfigure();
+            
+        }
+
+        private void SalvarDadosEmailConfigure()
+        {
             emailConfigureModel.Email = emailTextBox.Text;
             emailConfigureModel.Senha = senhaTextBox.Text;
             emailConfigureModel.SmtpServer = smtpServerTextBox.Text;
@@ -46,6 +52,7 @@ namespace Integrador.GUI
             emailConfigureModel.EntradaPorta = int.Parse(entradaPortaTextBox.Text);
             emailConfigureModel.SslEntradaHabilitado = sslEntradaCheckBox.Checked;
             emailConfigureModel.CaixaDeEmail = caixaDeEmailTextBox.Text;
+            emailConfigureModel.AssuntoEmail = emailAssuntoTextBox.Text;
             emailConfigureModel.InicioRelatorio = inicioRelatoiroTextBox.Text;
             emailConfigureModel.FinalRelatorio = finalRelatorioTextBox.Text;
             emailConfigureModel.TagExtracao = tagsExtracaoTextBox.Text;
@@ -82,7 +89,26 @@ namespace Integrador.GUI
             }
         }
 
-        private async void EmailConfigureGUI_Load(object sender, EventArgs e)
+        private void EmailConfigureGUI_Load(object sender, EventArgs e)
+        {
+            CarregarCamposEmailConfigureAsync();
+
+        }
+
+
+        private void verEmailButton_Click(object sender, EventArgs e)
+        {
+            MailViewGUI mailViewGUI = new MailViewGUI(emailConfigureModel);
+            mailViewGUI.ShowDialog();
+        }
+
+        private void pastaTemporariaButton_Click(object sender, EventArgs e)
+        {
+
+            SelecionarPastaTemporaria();
+            
+        }
+        private async void CarregarCamposEmailConfigureAsync()
         {
             try
             {
@@ -93,7 +119,7 @@ namespace Integrador.GUI
 
                 if (emailConfigureModel.Id != 0)
                 {
-                    
+
                     emailTextBox.Text = emailConfigureModel.Email;
                     senhaTextBox.Text = emailConfigureModel.Senha;
                     smtpServerTextBox.Text = emailConfigureModel.SmtpServer;
@@ -103,6 +129,7 @@ namespace Integrador.GUI
                     entradaPortaTextBox.Text = emailConfigureModel.EntradaPorta.ToString();
                     sslEntradaCheckBox.Checked = emailConfigureModel.SslEntradaHabilitado;
                     caixaDeEmailTextBox.Text = emailConfigureModel.CaixaDeEmail; //"INBOX"
+                    emailAssuntoTextBox.Text = emailConfigureModel.AssuntoEmail; //Relatório: [TI] Clientes Faturamento executar em XX/XX/XXXX
                     inicioRelatoiroTextBox.Text = emailConfigureModel.InicioRelatorio; //"Totais gerais"
                     finalRelatorioTextBox.Text = emailConfigureModel.FinalRelatorio; //"<!-- Start report output -->"
                     tagsExtracaoTextBox.Text = emailConfigureModel.TagExtracao; // "//tr//td"
@@ -119,13 +146,7 @@ namespace Integrador.GUI
             }
         }
 
-        private void verEmailButton_Click(object sender, EventArgs e)
-        {
-            MailViewGUI mailViewGUI = new MailViewGUI();
-            mailViewGUI.ShowDialog();
-        }
-
-        private void pastaTemporariaButton_Click(object sender, EventArgs e)
+        private void SelecionarPastaTemporaria()
         {
             using (FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog())
             {
@@ -135,7 +156,7 @@ namespace Integrador.GUI
                 DialogResult result = folderBrowserDialog.ShowDialog();
                 if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(folderBrowserDialog.SelectedPath))
                 {
-                   pastaTemporairaTextBox.Text = folderBrowserDialog.SelectedPath;
+                    pastaTemporairaTextBox.Text = folderBrowserDialog.SelectedPath;
                 }
             }
         }

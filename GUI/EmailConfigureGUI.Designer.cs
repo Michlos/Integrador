@@ -45,20 +45,22 @@
             this.SenhaLabel = new System.Windows.Forms.Label();
             this.EmailLabel = new System.Windows.Forms.Label();
             this.salvarButton = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.sairButton = new System.Windows.Forms.Button();
             this.verEmailButton = new System.Windows.Forms.Button();
             this.configContaEmailGroupBox = new System.Windows.Forms.GroupBox();
             this.configBuscaEmailGroupBox = new System.Windows.Forms.GroupBox();
+            this.pastaTemporariaButton = new System.Windows.Forms.Button();
+            this.pastaTemporairaTextBox = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.tagsExtracaoTextBox = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.finalRelatorioTextBox = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.inicioRelatoiroTextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.finalRelatorioTextBox = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.tagsExtracaoTextBox = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.pastaTemporairaTextBox = new System.Windows.Forms.TextBox();
             this.selecaoPastaTemporariafolderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
-            this.pastaTemporariaButton = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.emailAssuntoTextBox = new System.Windows.Forms.TextBox();
             this.configContaEmailGroupBox.SuspendLayout();
             this.configBuscaEmailGroupBox.SuspendLayout();
             this.SuspendLayout();
@@ -217,15 +219,15 @@
             this.salvarButton.UseVisualStyleBackColor = true;
             this.salvarButton.Click += new System.EventHandler(this.salvarButton_Click);
             // 
-            // button1
+            // sairButton
             // 
-            this.button1.Location = new System.Drawing.Point(659, 244);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Sai&r";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.sairButton.Location = new System.Drawing.Point(659, 244);
+            this.sairButton.Name = "sairButton";
+            this.sairButton.Size = new System.Drawing.Size(75, 23);
+            this.sairButton.TabIndex = 4;
+            this.sairButton.Text = "Sai&r";
+            this.sairButton.UseVisualStyleBackColor = true;
+            this.sairButton.Click += new System.EventHandler(this.button1_Click);
             // 
             // verEmailButton
             // 
@@ -271,6 +273,8 @@
             this.configBuscaEmailGroupBox.Controls.Add(this.label4);
             this.configBuscaEmailGroupBox.Controls.Add(this.finalRelatorioTextBox);
             this.configBuscaEmailGroupBox.Controls.Add(this.label3);
+            this.configBuscaEmailGroupBox.Controls.Add(this.emailAssuntoTextBox);
+            this.configBuscaEmailGroupBox.Controls.Add(this.label6);
             this.configBuscaEmailGroupBox.Controls.Add(this.inicioRelatoiroTextBox);
             this.configBuscaEmailGroupBox.Controls.Add(this.label2);
             this.configBuscaEmailGroupBox.Location = new System.Drawing.Point(365, 12);
@@ -280,9 +284,70 @@
             this.configBuscaEmailGroupBox.TabStop = false;
             this.configBuscaEmailGroupBox.Text = "Configureção de Busca";
             // 
+            // pastaTemporariaButton
+            // 
+            this.pastaTemporariaButton.Location = new System.Drawing.Point(320, 181);
+            this.pastaTemporariaButton.Name = "pastaTemporariaButton";
+            this.pastaTemporariaButton.Size = new System.Drawing.Size(23, 23);
+            this.pastaTemporariaButton.TabIndex = 5;
+            this.pastaTemporariaButton.Text = "...";
+            this.pastaTemporariaButton.UseVisualStyleBackColor = true;
+            this.pastaTemporariaButton.Click += new System.EventHandler(this.pastaTemporariaButton_Click);
+            // 
+            // pastaTemporairaTextBox
+            // 
+            this.pastaTemporairaTextBox.Location = new System.Drawing.Point(118, 182);
+            this.pastaTemporairaTextBox.Name = "pastaTemporairaTextBox";
+            this.pastaTemporairaTextBox.Size = new System.Drawing.Size(196, 20);
+            this.pastaTemporairaTextBox.TabIndex = 4;
+            this.pastaTemporairaTextBox.WordWrap = false;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(19, 185);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(93, 13);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "Pasta Temporária:";
+            // 
+            // tagsExtracaoTextBox
+            // 
+            this.tagsExtracaoTextBox.Location = new System.Drawing.Point(118, 150);
+            this.tagsExtracaoTextBox.Name = "tagsExtracaoTextBox";
+            this.tagsExtracaoTextBox.Size = new System.Drawing.Size(133, 20);
+            this.tagsExtracaoTextBox.TabIndex = 3;
+            this.tagsExtracaoTextBox.WordWrap = false;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(15, 153);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(97, 13);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Tags de  Extração:";
+            // 
+            // finalRelatorioTextBox
+            // 
+            this.finalRelatorioTextBox.Location = new System.Drawing.Point(118, 118);
+            this.finalRelatorioTextBox.Name = "finalRelatorioTextBox";
+            this.finalRelatorioTextBox.Size = new System.Drawing.Size(225, 20);
+            this.finalRelatorioTextBox.TabIndex = 2;
+            this.finalRelatorioTextBox.WordWrap = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(20, 121);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(92, 13);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Final do Relatório:";
+            // 
             // inicioRelatoiroTextBox
             // 
-            this.inicioRelatoiroTextBox.Location = new System.Drawing.Point(118, 58);
+            this.inicioRelatoiroTextBox.Location = new System.Drawing.Point(118, 86);
             this.inicioRelatoiroTextBox.Name = "inicioRelatoiroTextBox";
             this.inicioRelatoiroTextBox.Size = new System.Drawing.Size(225, 20);
             this.inicioRelatoiroTextBox.TabIndex = 1;
@@ -291,77 +356,33 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(15, 61);
+            this.label2.Location = new System.Drawing.Point(15, 89);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(97, 13);
             this.label2.TabIndex = 0;
             this.label2.Text = "Início do Relatório:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(20, 93);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(92, 13);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Final do Relatório:";
-            // 
-            // finalRelatorioTextBox
-            // 
-            this.finalRelatorioTextBox.Location = new System.Drawing.Point(118, 90);
-            this.finalRelatorioTextBox.Name = "finalRelatorioTextBox";
-            this.finalRelatorioTextBox.Size = new System.Drawing.Size(225, 20);
-            this.finalRelatorioTextBox.TabIndex = 2;
-            this.finalRelatorioTextBox.WordWrap = false;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(15, 125);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(97, 13);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "Tags de  Extração:";
-            // 
-            // tagsExtracaoTextBox
-            // 
-            this.tagsExtracaoTextBox.Location = new System.Drawing.Point(118, 122);
-            this.tagsExtracaoTextBox.Name = "tagsExtracaoTextBox";
-            this.tagsExtracaoTextBox.Size = new System.Drawing.Size(133, 20);
-            this.tagsExtracaoTextBox.TabIndex = 3;
-            this.tagsExtracaoTextBox.WordWrap = false;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(19, 157);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(93, 13);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "Pasta Temporária:";
-            // 
-            // pastaTemporairaTextBox
-            // 
-            this.pastaTemporairaTextBox.Location = new System.Drawing.Point(118, 154);
-            this.pastaTemporairaTextBox.Name = "pastaTemporairaTextBox";
-            this.pastaTemporairaTextBox.Size = new System.Drawing.Size(196, 20);
-            this.pastaTemporairaTextBox.TabIndex = 4;
-            this.pastaTemporairaTextBox.WordWrap = false;
             // 
             // selecaoPastaTemporariafolderBrowserDialog
             // 
             this.selecaoPastaTemporariafolderBrowserDialog.RootFolder = System.Environment.SpecialFolder.MyComputer;
             this.selecaoPastaTemporariafolderBrowserDialog.SelectedPath = "C:\\";
             // 
-            // pastaTemporariaButton
+            // label6
             // 
-            this.pastaTemporariaButton.Location = new System.Drawing.Point(320, 153);
-            this.pastaTemporariaButton.Name = "pastaTemporariaButton";
-            this.pastaTemporariaButton.Size = new System.Drawing.Size(23, 23);
-            this.pastaTemporariaButton.TabIndex = 5;
-            this.pastaTemporariaButton.Text = "...";
-            this.pastaTemporariaButton.UseVisualStyleBackColor = true;
-            this.pastaTemporariaButton.Click += new System.EventHandler(this.pastaTemporariaButton_Click);
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(15, 61);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(95, 13);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "Assunto do E-Mail:";
+            // 
+            // emailAssuntoTextBox
+            // 
+            this.emailAssuntoTextBox.Location = new System.Drawing.Point(118, 58);
+            this.emailAssuntoTextBox.Name = "emailAssuntoTextBox";
+            this.emailAssuntoTextBox.Size = new System.Drawing.Size(225, 20);
+            this.emailAssuntoTextBox.TabIndex = 1;
+            this.emailAssuntoTextBox.WordWrap = false;
             // 
             // EmailConfigureGUI
             // 
@@ -370,7 +391,7 @@
             this.Controls.Add(this.configBuscaEmailGroupBox);
             this.Controls.Add(this.configContaEmailGroupBox);
             this.Controls.Add(this.verEmailButton);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.sairButton);
             this.Controls.Add(this.salvarButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
@@ -404,7 +425,7 @@
         private System.Windows.Forms.CheckBox sslEntradaCheckBox;
         private System.Windows.Forms.TextBox smtpPortaTextBox;
         private System.Windows.Forms.Button salvarButton;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button sairButton;
         private System.Windows.Forms.Button verEmailButton;
         private System.Windows.Forms.TextBox caixaDeEmailTextBox;
         private System.Windows.Forms.Label label1;
@@ -420,5 +441,7 @@
         private System.Windows.Forms.TextBox pastaTemporairaTextBox;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.FolderBrowserDialog selecaoPastaTemporariafolderBrowserDialog;
+        private System.Windows.Forms.TextBox emailAssuntoTextBox;
+        private System.Windows.Forms.Label label6;
     }
 }

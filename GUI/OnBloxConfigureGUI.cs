@@ -16,5 +16,22 @@ namespace Integrador.GUI
         {
             InitializeComponent();
         }
+
+        private void localArquivoButton_Click(object sender, EventArgs e)
+        {
+
+            
+            using (FolderBrowserDialog localArquivoBrowserDialog = new FolderBrowserDialog())
+            {
+                localArquivoBrowserDialog.Description = "Selecione uma pasta.";
+                localArquivoBrowserDialog.RootFolder = Environment.SpecialFolder.MyComputer;
+
+                DialogResult result = localArquivoBrowserDialog.ShowDialog();
+                if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(localArquivoBrowserDialog.SelectedPath))
+                {
+                    localArquivoTextBox.Text = localArquivoBrowserDialog.SelectedPath;
+                }
+            }
+        }
     }
 }

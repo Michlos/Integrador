@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace Integrador.Services.EmailConfigure
 {
-    public class EmailConfigureService : IEmailConfigureModel
+    public class EmailConfigureService : IEmailConfigureRepository
     {
         private readonly AppDbContext Context= new AppDbContext();
         private readonly EmailConfigureRepository _emailConfigureRepository;
@@ -26,69 +26,19 @@ namespace Integrador.Services.EmailConfigure
             _emailConfigureModel = emailConfigureModel;
         }
 
-        public string GetCaixaDeEmail()
+        public Task AddEmailConfigureAsync(IEmailConfigureModel config)
         {
-            return _emailConfigureModel.CaixaDeEmail;
+            throw new NotImplementedException();
         }
 
-        public string GetEmail()
+        public Task<IEmailConfigureModel> GetEmailConfigureAsync()
         {
-            return _emailConfigureModel.Email;
-        }
-        public int GetEntradaPorta()
-        {
-            return _emailConfigureModel.EntradaPorta;
-        }
-        public string GetEntradaServer()
-        {
-            return _emailConfigureModel.EntradaServer;
+            throw new NotImplementedException();
         }
 
-        public string GetFinalRelatorio()
+        public Task UpdateEmailConfigureAsync(IEmailConfigureModel config)
         {
-            return _emailConfigureModel.FinalRelatorio;
-        }
-
-        public int GetId()
-        {
-            return _emailConfigureModel.Id;
-        }
-
-        public string GetInicioRelatorio()
-        {
-            return _emailConfigureModel.InicioRelatorio;
-        }
-
-        public string GetPastaTemporaria()
-        {
-            return _emailConfigureModel.PastaTemporaria;
-        }
-
-        public string GetSenha()
-        {
-            return _emailConfigureModel.Senha;
-        }
-        public int GetSmtpPorta()
-        {
-            return _emailConfigureModel.SmtpPorta;
-
-        }
-        public string GetSmtpServer()
-        {
-            return _emailConfigureModel.SmtpServer;
-        }
-        public bool GetSslEntradaHabilitado()
-        {
-            return _emailConfigureModel.SslEntradaHabilitado;
-        }
-        public bool GetSslSaidaHabilitado()
-        {
-            return _emailConfigureModel.SslSaidaHabilitado;
-        }
-
-        public string GetTagExtracao()
-        {
-            return _emailConfigureModel.TagExtracao;
+            throw new NotImplementedException();
         }
     }
 }

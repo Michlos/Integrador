@@ -39,8 +39,8 @@
     <Reference Include="BouncyCastle.Cryptography, Version=2.0.0.0, Culture=neutral, PublicKeyToken=072edcf4a5328938, processorArchitecture=MSIL">
       <HintPath>packages\BouncyCastle.Cryptography.2.3.0\lib\net461\BouncyCastle.Cryptography.dll</HintPath>
     </Reference>
-    <Reference Include="MailKit, Version=3.3.0.0, Culture=neutral, PublicKeyToken=4e064fe7c44a8f1b, processorArchitecture=MSIL">
-      <HintPath>packages\MailKit.3.3.0\lib\net48\MailKit.dll</HintPath>
+    <Reference Include="MailKit, Version=4.5.0.0, Culture=neutral, PublicKeyToken=4e064fe7c44a8f1b, processorArchitecture=MSIL">
+      <HintPath>packages\MailKit.4.5.0\lib\net48\MailKit.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Bcl.AsyncInterfaces.1.1.1\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
@@ -182,6 +182,8 @@
     <Compile Include="Domain\EmailConfigure\IEmailConfigureModel.cs" />
     <Compile Include="Domain\Email\EmailModel.cs" />
     <Compile Include="Domain\Email\IEmailModel.cs" />
+    <Compile Include="Domain\OnBloxConfigure\IOnBloxConfigureModel.cs" />
+    <Compile Include="Domain\OnBloxConfigure\OnBloxConfigureModel.cs" />
     <Compile Include="GUI\EmailConfigureGUI.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -230,11 +232,16 @@
     <Compile Include="Migrations\20240427034250_Adicao_campos_extracao_dados_EmailConfigureModel.Designer.cs">
       <DependentUpon>20240427034250_Adicao_campos_extracao_dados_EmailConfigureModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20240427180636_InclusaoCampoAssuntoEmailConfigureModel.cs" />
+    <Compile Include="Migrations\20240427180636_InclusaoCampoAssuntoEmailConfigureModel.Designer.cs">
+      <DependentUpon>20240427180636_InclusaoCampoAssuntoEmailConfigureModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AppDbContextModelSnapshot.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\EmailConfigure\EmailConfigureRepository.cs" />
     <Compile Include="Repository\EmailConfigure\IEmailConfigureRepository.cs" />
+    <Compile Include="Repository\Email\EmailRepository.cs" />
     <Compile Include="Repository\Email\IEmailRepository.cs" />
     <Compile Include="Services\AppDbContext.cs" />
     <Compile Include="Services\EmailConfigure\EmailConfigureService.cs" />
