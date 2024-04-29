@@ -1,0 +1,20 @@
+﻿namespace Integrador.Domain.Cliente
+{
+    public interface IClienteModel
+    {
+        string bairro { get; set; }
+        string cep { get; set; }
+        string cgc { get; set; }
+        string cidade { get; set; }
+        string codigo { get; set; }
+        string fantasia { get; set; }
+        string fone { get; set; }
+        long Id { get; set; }
+        string integracao { get; set; }
+        string logradouro { get; set; }
+        string nome { get; set; }
+        string numero { get; set; }
+        string tpDoc { get; set; }
+        string uf { get; set; }
+    }
+}

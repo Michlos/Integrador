@@ -4,71 +4,22 @@ using Integrador.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Integrador.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240429011604_AdicionandoClienteModelParaExportacaoDeDadosDosEmails")]
+    partial class AdicionandoClienteModelParaExportacaoDeDadosDosEmails
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.32")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("Integrador.Domain.Cliente.ClienteModel", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("bairro")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("cep")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("cgc")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("cidade")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("codigo")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("fantasia")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("fone")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("integracao")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("logradouro")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("nome")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("numero")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("tpDoc")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("uf")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Cliente");
-                });
 
             modelBuilder.Entity("Integrador.Domain.Email.EmailModel", b =>
                 {
