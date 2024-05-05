@@ -97,6 +97,7 @@ namespace Integrador.GUI
             listaEmailDataGridView.Columns[1].Width = 200;
             listaEmailDataGridView.Columns[2].Width = 200;
             listaEmailDataGridView.Columns[3].Width = 100;
+            listaEmailDataGridView.Columns[4].Width = 70;
       
         }
 
@@ -113,6 +114,7 @@ namespace Integrador.GUI
                     row["Remetente"] = model.Remetente.ToString();
                     row["Assunto"] = model.Assunto.ToString();
                     row["Data"] = model.DataDeRecebimento;
+                    row["Integrado"] = model.Integrado ? 1 : 0;
 
                     tableMail.Rows.Add(row);
 
@@ -128,6 +130,7 @@ namespace Integrador.GUI
             table.Columns.Add("Remetente", typeof(string));
             table.Columns.Add("Assunto", typeof(string));
             table.Columns.Add("Data", typeof(DateTimeOffset));
+            table.Columns.Add("Integrado", typeof(bool));
 
             return table;
         }
