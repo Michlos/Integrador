@@ -34,6 +34,7 @@
             this.corpoEmailPanel = new System.Windows.Forms.Panel();
             this.corpoEmailTextBox = new System.Windows.Forms.TextBox();
             this.receberEmailsButton = new System.Windows.Forms.Button();
+            this.salvarClienteButton = new System.Windows.Forms.Button();
             this.listMailPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listaEmailDataGridView)).BeginInit();
             this.corpoEmailPanel.SuspendLayout();
@@ -112,11 +113,22 @@
             this.receberEmailsButton.UseVisualStyleBackColor = true;
             this.receberEmailsButton.Click += new System.EventHandler(this.receberEmailsButton_Click);
             // 
+            // salvarClienteButton
+            // 
+            this.salvarClienteButton.Location = new System.Drawing.Point(174, 415);
+            this.salvarClienteButton.Name = "salvarClienteButton";
+            this.salvarClienteButton.Size = new System.Drawing.Size(105, 23);
+            this.salvarClienteButton.TabIndex = 5;
+            this.salvarClienteButton.Text = "Salvar Cliente";
+            this.salvarClienteButton.UseVisualStyleBackColor = true;
+            this.salvarClienteButton.Click += new System.EventHandler(this.salvarClienteButton_Click);
+            // 
             // MailViewGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.salvarClienteButton);
             this.Controls.Add(this.corpoEmailPanel);
             this.Controls.Add(this.receberEmailsButton);
             this.Controls.Add(this.sairButton);
@@ -140,5 +152,6 @@
         private System.Windows.Forms.Panel corpoEmailPanel;
         private System.Windows.Forms.TextBox corpoEmailTextBox;
         private System.Windows.Forms.Button receberEmailsButton;
+        private System.Windows.Forms.Button salvarClienteButton;
     }
 }

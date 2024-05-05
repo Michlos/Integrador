@@ -39,6 +39,9 @@
     <Reference Include="BouncyCastle.Cryptography, Version=2.0.0.0, Culture=neutral, PublicKeyToken=072edcf4a5328938, processorArchitecture=MSIL">
       <HintPath>packages\BouncyCastle.Cryptography.2.3.0\lib\net461\BouncyCastle.Cryptography.dll</HintPath>
     </Reference>
+    <Reference Include="HtmlAgilityPack, Version=1.11.60.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>packages\HtmlAgilityPack.1.11.60\lib\Net45\HtmlAgilityPack.dll</HintPath>
+    </Reference>
     <Reference Include="MailKit, Version=4.5.0.0, Culture=neutral, PublicKeyToken=4e064fe7c44a8f1b, processorArchitecture=MSIL">
       <HintPath>packages\MailKit.4.5.0\lib\net48\MailKit.dll</HintPath>
     </Reference>
@@ -246,6 +249,10 @@
     <Compile Include="Migrations\20240429011822_AdicionandoClienteModelParaExportacaoDeDadosDosEmailsCorrecao.Designer.cs">
       <DependentUpon>20240429011822_AdicionandoClienteModelParaExportacaoDeDadosDosEmailsCorrecao.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20240505133230_AlteracaoChavePrimariaIdentityDeCliente.cs" />
+    <Compile Include="Migrations\20240505133230_AlteracaoChavePrimariaIdentityDeCliente.Designer.cs">
+      <DependentUpon>20240505133230_AlteracaoChavePrimariaIdentityDeCliente.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AppDbContextModelSnapshot.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -254,6 +261,7 @@
     <Compile Include="Repository\Email\EmailRepository.cs" />
     <Compile Include="Repository\Email\IEmailRepository.cs" />
     <Compile Include="Services\AppDbContext.cs" />
+    <Compile Include="Services\Cliente\ClienteService.cs" />
     <Compile Include="Services\EmailConfigure\EmailConfigureService.cs" />
     <Compile Include="Services\Email\EmailService.cs" />
     <EmbeddedResource Include="GUI\EmailConfigureGUI.resx">

@@ -21,11 +21,11 @@ namespace Integrador.GUI
     {
         private readonly AppDbContext context = new AppDbContext();
         private EmailConfigureModel _emailConfigureModel;
-        private readonly EmailService emailService;
         private EmailModel emailModel = new EmailModel();
         private List<EmailModel> EmailListData = new List<EmailModel>();
         private IEnumerable<EmailModel> EmailListEnum = null;
         private readonly IEmailRepository _emailReponsitory;
+        private EmailService emailService;
 
         public MailViewGUI(EmailConfigureModel emailConfigureModel)
         {
@@ -47,7 +47,8 @@ namespace Integrador.GUI
 
         private void MailViewGUI_Load(object sender, EventArgs e)
         {
-
+            PopulaDataGridView();
+            PreencheDataGridView();
         }
         private void ReceberEmail(EmailService emailService)
         {
@@ -68,6 +69,15 @@ namespace Integrador.GUI
             ReceberEmail(GetEmailService());
             PreencheDataGridView();
             
+        }
+
+        private void PopulaDataGridView()
+        {
+            List<EmailModel> emailModelList = new List<EmailModel>();
+            emailService = new EmailService(_emailReponsitory, _emailConfigureModel);
+            emailModelList = emailService.LerEmailsDoBancoDeDados();
+            EmailListData = emailModelList;
+
         }
 
         private void PreencheDataGridView()
@@ -120,6 +130,13 @@ namespace Integrador.GUI
             table.Columns.Add("Data", typeof(DateTimeOffset));
 
             return table;
+        }
+
+        private void salvarClienteButton_Click(object sender, EventArgs e)
+        {
+            
+            
+            emailService.SalvarClienteNoBanco();
         }
     }
 }

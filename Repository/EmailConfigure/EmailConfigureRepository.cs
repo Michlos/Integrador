@@ -18,6 +18,10 @@ namespace Integrador.Repository.EmailConfigure
         {
             _context = context;
         }
+        public EmailConfigureRepository()
+        {
+            
+        }
         public async Task AddEmailConfigureAsync(IEmailConfigureModel config)
         {
             _context.EmailConfigure.Add((EmailConfigureModel)config);
@@ -30,6 +34,11 @@ namespace Integrador.Repository.EmailConfigure
 
             return (IEmailConfigureModel)(emailConfigureModel == null ? null : emailConfigureModel);
             //return emailConfigure ?? new EmailConfigureModel();
+        }
+
+        public IEmailConfigureModel GetEmailConfigure(AppDbContext context)
+        {
+            return _context.EmailConfigure.FirstOrDefault();
         }
 
         public async Task<IEmailConfigureModel> GetEmailConfigureAsync()
