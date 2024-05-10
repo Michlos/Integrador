@@ -75,25 +75,25 @@ namespace Integrador.Services.Email
             }
         }
 
-        private string IPAdressSet(string hostName)
-        {
-            string hostIp = null;
-            try
-            {
-                ASCIIEncoding aSCII = new ASCIIEncoding();
-                IPHostEntry iPHost = Dns.GetHostEntry(hostName);
-                foreach (IPAddress item in iPHost.AddressList)
-                {
-                    hostIp = item.ToString();
-                }
-            }
-            catch (Exception e)
-            {
+        //private string IPAdressSet(string hostName)
+        //{
+        //    string hostIp = null;
+        //    try
+        //    {
+        //        ASCIIEncoding aSCII = new ASCIIEncoding();
+        //        IPHostEntry iPHost = Dns.GetHostEntry(hostName);
+        //        foreach (IPAddress item in iPHost.AddressList)
+        //        {
+        //            hostIp = item.ToString();
+        //        }
+        //    }
+        //    catch (Exception e)
+        //    {
 
-                throw;
-            }
-            return hostIp;
-        }
+        //        throw;
+        //    }
+        //    return hostIp;
+        //}
 
 
         public async Task<List<EmailModel>> ReceberMensagensAsync(string caixaDeMensagem, string assunto)
