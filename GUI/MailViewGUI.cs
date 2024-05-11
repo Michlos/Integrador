@@ -141,5 +141,11 @@ namespace Integrador.GUI
             
             emailService.SalvarClienteNoBanco();
         }
+
+        private void testIntegracaoButton_Click(object sender, EventArgs e)
+        {
+            ClientesListGUI clienteForm = new ClientesListGUI();
+            clienteForm.ShowDialog();
+        }
     }
 }

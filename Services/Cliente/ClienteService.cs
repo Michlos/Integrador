@@ -1,5 +1,5 @@
-﻿using Integrador.Domain.Email;
-using Integrador.Services.Email;
+﻿using Integrador.Domain.Cliente;
+using Integrador.Repository.Cliente;
 
 using System;
 using System.Collections.Generic;
@@ -9,16 +9,29 @@ using System.Threading.Tasks;
 
 namespace Integrador.Services.Cliente
 {
-    public class ClienteService
+    public class ClienteService : IClienteRepository
     {
-        EmailModel emailModel = new EmailModel();
-        
+        private IClienteRepository _clienteRepository;
 
-        private void GeraAquivoTemporario()
+
+
+        public ClienteService(IClienteRepository clienteRepository)
         {
-           throw new NotImplementedException();
+            _clienteRepository = clienteRepository;
+        }
+        public ClienteModel Add(IClienteModel clienteModel)
+        {
+            return _clienteRepository.Add(clienteModel);
         }
 
-        
+        public IEnumerable<IClienteModel> GetAll()
+        {
+            return _clienteRepository.GetAll();
+        }
+
+        public ClienteModel GetById(int id)
+        {
+            return _clienteRepository.GetById(id);
+        }
     }
 }

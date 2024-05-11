@@ -259,9 +259,19 @@
     <Compile Include="Migrations\20240505133230_AlteracaoChavePrimariaIdentityDeCliente.Designer.cs">
       <DependentUpon>20240505133230_AlteracaoChavePrimariaIdentityDeCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20240511124225_AlteraCampoIntegracaoParaBoleano.cs" />
+    <Compile Include="Migrations\20240511124225_AlteraCampoIntegracaoParaBoleano.Designer.cs">
+      <DependentUpon>20240511124225_AlteraCampoIntegracaoParaBoleano.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20240511161637_CorrigindoCampoIntegracaoAPIAddicionandoBoleanoIntegrado.cs" />
+    <Compile Include="Migrations\20240511161637_CorrigindoCampoIntegracaoAPIAddicionandoBoleanoIntegrado.Designer.cs">
+      <DependentUpon>20240511161637_CorrigindoCampoIntegracaoAPIAddicionandoBoleanoIntegrado.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AppDbContextModelSnapshot.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\Cliente\ClienteRepository.cs" />
+    <Compile Include="Repository\Cliente\IClienteRepository.cs" />
     <Compile Include="Repository\EmailConfigure\EmailConfigureRepository.cs" />
     <Compile Include="Repository\EmailConfigure\IEmailConfigureRepository.cs" />
     <Compile Include="Repository\Email\EmailRepository.cs" />

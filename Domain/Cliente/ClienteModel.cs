@@ -8,8 +8,10 @@ using System.Threading.Tasks;
 
 namespace Integrador.Domain.Cliente
 {
-    public class ClienteModel : IClienteModel
+    public class ClienteModel : IClienteModel, IDisposable
     {
+        void IDisposable.Dispose() { }
+        public void Dispose() { }
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -27,5 +29,7 @@ namespace Integrador.Domain.Cliente
         public string bairro { get; set; }
         public string cidade { get; set; }
         public string uf { get; set; }
+        public bool integrado { get; set; } = false;
+
     }
 }

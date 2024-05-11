@@ -16,24 +16,42 @@ namespace Integrador.WebService
     {
         private static readonly HttpClient client = new HttpClient();
 
-        public async Task<string> SendData(ClienteModel clienteModel)
+        public async void SendData(ClienteModel clienteModel)
         {
-            var json = JsonConvert.SerializeObject(clienteModel);
+            ClienteModel cliEnviar = new ClienteModel()
+            {
+                Id = clienteModel.Id,
+                nome = clienteModel.nome,
+                codigo = clienteModel.codigo,
+                integracao = clienteModel.integracao,
+                tpDoc = clienteModel.tpDoc,
+                cgc = clienteModel.cgc,
+                fantasia = clienteModel.fantasia,
+                fone = clienteModel.fone,
+                cep = clienteModel.cep,
+                logradouro = clienteModel.logradouro,
+                numero = clienteModel.numero,
+                bairro = clienteModel.bairro,
+                uf = clienteModel.uf
+
+            };
+            var json = JsonConvert.SerializeObject(cliEnviar);
             var data = new StringContent(json, Encoding.UTF8, "application/json");
 
-            var response = await client.PostAsync("https://192.168.0.5/onblox/api/cliente", data);
-
-            string result = response.Content.ReadAsStringAsync().Result;
-
-
-            if (response.IsSuccessStatusCode)
+            using (var response = await client.PostAsync("http://192.252.3.79/onblox/api/cliente", data))
             {
-                return "positivo";
+                if (response.IsSuccessStatusCode)
+                {
+
+                    var result = await response.Content.ReadAsStringAsync();
+                }
+                else
+                {
+                    var result = response.Content.ReadAsStringAsync();
+                }
             }
-            else
-            {
-                return "negativo";
-            }
+
+            
         }
     }
 }

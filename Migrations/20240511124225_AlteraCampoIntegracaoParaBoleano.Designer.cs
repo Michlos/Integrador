@@ -4,14 +4,16 @@ using Integrador.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Integrador.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240511124225_AlteraCampoIntegracaoParaBoleano")]
+    partial class AlteraCampoIntegracaoParaBoleano
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -47,10 +49,7 @@ namespace Integrador.Migrations
                     b.Property<string>("fone")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("integracao")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("integrado")
+                    b.Property<bool>("integracao")
                         .HasColumnType("bit");
 
                     b.Property<string>("logradouro")

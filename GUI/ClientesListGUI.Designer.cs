@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.clientListPanel = new System.Windows.Forms.Panel();
-            this.clientContenPanel = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.clientesDataGridView = new System.Windows.Forms.DataGridView();
+            this.IntegraButton = new System.Windows.Forms.Button();
             this.clientListPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.clientesDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // clientListPanel
@@ -40,46 +40,47 @@
             this.clientListPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.clientListPanel.Controls.Add(this.dataGridView1);
+            this.clientListPanel.Controls.Add(this.clientesDataGridView);
             this.clientListPanel.Location = new System.Drawing.Point(12, 12);
             this.clientListPanel.Name = "clientListPanel";
-            this.clientListPanel.Size = new System.Drawing.Size(303, 426);
+            this.clientListPanel.Size = new System.Drawing.Size(425, 381);
             this.clientListPanel.TabIndex = 0;
             // 
-            // clientContenPanel
+            // clientesDataGridView
             // 
-            this.clientContenPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.clientContenPanel.Location = new System.Drawing.Point(321, 12);
-            this.clientContenPanel.Name = "clientContenPanel";
-            this.clientContenPanel.Size = new System.Drawing.Size(541, 426);
-            this.clientContenPanel.TabIndex = 0;
+            this.clientesDataGridView.AllowUserToAddRows = false;
+            this.clientesDataGridView.AllowUserToDeleteRows = false;
+            this.clientesDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.clientesDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.clientesDataGridView.Location = new System.Drawing.Point(0, 0);
+            this.clientesDataGridView.Name = "clientesDataGridView";
+            this.clientesDataGridView.ReadOnly = true;
+            this.clientesDataGridView.Size = new System.Drawing.Size(425, 381);
+            this.clientesDataGridView.TabIndex = 0;
+            this.clientesDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.clientesDataGridView_CellClick);
             // 
-            // dataGridView1
+            // IntegraButton
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(303, 426);
-            this.dataGridView1.TabIndex = 0;
+            this.IntegraButton.Location = new System.Drawing.Point(362, 415);
+            this.IntegraButton.Name = "IntegraButton";
+            this.IntegraButton.Size = new System.Drawing.Size(75, 23);
+            this.IntegraButton.TabIndex = 1;
+            this.IntegraButton.Text = "Integra";
+            this.IntegraButton.UseVisualStyleBackColor = true;
+            this.IntegraButton.Click += new System.EventHandler(this.IntegraButton_Click);
             // 
             // ClientesListGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(874, 450);
-            this.Controls.Add(this.clientContenPanel);
+            this.ClientSize = new System.Drawing.Size(449, 450);
+            this.Controls.Add(this.IntegraButton);
             this.Controls.Add(this.clientListPanel);
             this.Name = "ClientesListGUI";
             this.Text = "ClientesListGUI";
             this.Load += new System.EventHandler(this.ClientesListGUI_Load);
             this.clientListPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.clientesDataGridView)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -87,7 +88,7 @@
         #endregion
 
         private System.Windows.Forms.Panel clientListPanel;
-        private System.Windows.Forms.Panel clientContenPanel;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView clientesDataGridView;
+        private System.Windows.Forms.Button IntegraButton;
     }
 }

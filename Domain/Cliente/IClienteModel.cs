@@ -1,6 +1,8 @@
-﻿namespace Integrador.Domain.Cliente
+﻿using System;
+
+namespace Integrador.Domain.Cliente
 {
-    public interface IClienteModel
+    public interface IClienteModel : IDisposable
     {
         string bairro { get; set; }
         string cep { get; set; }
@@ -16,5 +18,6 @@
         string numero { get; set; }
         string tpDoc { get; set; }
         string uf { get; set; }
+        bool integrado { get; set; }
     }
 }

@@ -35,6 +35,7 @@
             this.corpoEmailTextBox = new System.Windows.Forms.TextBox();
             this.receberEmailsButton = new System.Windows.Forms.Button();
             this.salvarClienteButton = new System.Windows.Forms.Button();
+            this.testIntegracaoButton = new System.Windows.Forms.Button();
             this.listMailPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listaEmailDataGridView)).BeginInit();
             this.corpoEmailPanel.SuspendLayout();
@@ -123,11 +124,22 @@
             this.salvarClienteButton.UseVisualStyleBackColor = true;
             this.salvarClienteButton.Click += new System.EventHandler(this.salvarClienteButton_Click);
             // 
+            // testIntegracaoButton
+            // 
+            this.testIntegracaoButton.Location = new System.Drawing.Point(306, 414);
+            this.testIntegracaoButton.Name = "testIntegracaoButton";
+            this.testIntegracaoButton.Size = new System.Drawing.Size(75, 23);
+            this.testIntegracaoButton.TabIndex = 6;
+            this.testIntegracaoButton.Text = "Integração";
+            this.testIntegracaoButton.UseVisualStyleBackColor = true;
+            this.testIntegracaoButton.Click += new System.EventHandler(this.testIntegracaoButton_Click);
+            // 
             // MailViewGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.testIntegracaoButton);
             this.Controls.Add(this.salvarClienteButton);
             this.Controls.Add(this.corpoEmailPanel);
             this.Controls.Add(this.receberEmailsButton);
@@ -153,5 +165,6 @@
         private System.Windows.Forms.TextBox corpoEmailTextBox;
         private System.Windows.Forms.Button receberEmailsButton;
         private System.Windows.Forms.Button salvarClienteButton;
+        private System.Windows.Forms.Button testIntegracaoButton;
     }
 }
