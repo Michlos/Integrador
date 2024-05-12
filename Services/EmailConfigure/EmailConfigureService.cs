@@ -16,11 +16,11 @@ namespace Integrador.Services.EmailConfigure
         /// <summary>
         /// Adiciona a nova configuração de e-mail
         /// </summary>
-        /// <param name="emailConfigureRepository"></param>
+        /// <param name="emailConfigureModel"></param>
         /// <returns></returns>
-        public EmailConfigureModel Add(IEmailConfigureModel emailConfigureRepository)
+        public EmailConfigureModel Add(IEmailConfigureModel emailConfigureModel)
         {
-            return _emailConfigureRepository.Add(emailConfigureRepository);  
+            return _emailConfigureRepository.Add(emailConfigureModel);  
         }
 
         /// <summary>
@@ -36,11 +36,11 @@ namespace Integrador.Services.EmailConfigure
         /// <summary>
         /// Atualiza a atual configuração do e-mail existente
         /// </summary>
-        /// <param name="emailConfigureRepository"></param>
+        /// <param name="emailConfigureModel"></param>
         /// <returns></returns>
-        public EmailConfigureModel Update(IEmailConfigureModel emailConfigureRepository)
+        public EmailConfigureModel Update(IEmailConfigureModel emailConfigureModel)
         {
-            return _emailConfigureRepository.Update(emailConfigureRepository);
+            return _emailConfigureRepository.Update(emailConfigureModel);
         }
     }
 }

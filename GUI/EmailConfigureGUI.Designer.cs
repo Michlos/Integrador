@@ -56,11 +56,11 @@
             this.label4 = new System.Windows.Forms.Label();
             this.finalRelatorioTextBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.emailAssuntoTextBox = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.inicioRelatoiroTextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.selecaoPastaTemporariafolderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
-            this.label6 = new System.Windows.Forms.Label();
-            this.emailAssuntoTextBox = new System.Windows.Forms.TextBox();
             this.configContaEmailGroupBox.SuspendLayout();
             this.configBuscaEmailGroupBox.SuspendLayout();
             this.SuspendLayout();
@@ -227,7 +227,7 @@
             this.sairButton.TabIndex = 4;
             this.sairButton.Text = "Sai&r";
             this.sairButton.UseVisualStyleBackColor = true;
-            this.sairButton.Click += new System.EventHandler(this.button1_Click);
+            this.sairButton.Click += new System.EventHandler(this.sairButton_Click);
             // 
             // verEmailButton
             // 
@@ -345,6 +345,23 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "Final do Relatório:";
             // 
+            // emailAssuntoTextBox
+            // 
+            this.emailAssuntoTextBox.Location = new System.Drawing.Point(118, 58);
+            this.emailAssuntoTextBox.Name = "emailAssuntoTextBox";
+            this.emailAssuntoTextBox.Size = new System.Drawing.Size(225, 20);
+            this.emailAssuntoTextBox.TabIndex = 1;
+            this.emailAssuntoTextBox.WordWrap = false;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(15, 61);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(95, 13);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "Assunto do E-Mail:";
+            // 
             // inicioRelatoiroTextBox
             // 
             this.inicioRelatoiroTextBox.Location = new System.Drawing.Point(118, 86);
@@ -366,23 +383,6 @@
             // 
             this.selecaoPastaTemporariafolderBrowserDialog.RootFolder = System.Environment.SpecialFolder.MyComputer;
             this.selecaoPastaTemporariafolderBrowserDialog.SelectedPath = "C:\\";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(15, 61);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(95, 13);
-            this.label6.TabIndex = 0;
-            this.label6.Text = "Assunto do E-Mail:";
-            // 
-            // emailAssuntoTextBox
-            // 
-            this.emailAssuntoTextBox.Location = new System.Drawing.Point(118, 58);
-            this.emailAssuntoTextBox.Name = "emailAssuntoTextBox";
-            this.emailAssuntoTextBox.Size = new System.Drawing.Size(225, 20);
-            this.emailAssuntoTextBox.TabIndex = 1;
-            this.emailAssuntoTextBox.WordWrap = false;
             // 
             // EmailConfigureGUI
             // 

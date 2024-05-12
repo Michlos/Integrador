@@ -41,6 +41,7 @@ namespace Integrador.Services.Email
         private readonly EmailConfigureModel _emailConfigureModel;
         private readonly IEmailRepository _emailRepository;
         private EmailConfigureRepository _emailConfigureRepository = new EmailConfigureRepository(new AppDbContext());
+
         //public ClienteModel Cliente = new ClienteModel();
         public List<ClienteModel> ClienteModelList = new List<ClienteModel>();
         public EmailService(IEmailRepository emailReponsitory, EmailConfigureModel emailConfigureModel)
@@ -302,23 +303,25 @@ namespace Integrador.Services.Email
 
 
         //ENCONTRA O INICIO E FINAL DO TXT SALVO
-        private static Indice GetIndice(string[] lines)
+        private Indice GetIndice(string[] lines)
         {
-            EmailConfigureRepository repositoryMail = new EmailConfigureRepository(new AppDbContext());
+            //EmailConfigureRepository repositoryMail = new EmailConfigureRepository(new AppDbContext());
             var indices = new Indice();
             indices.inicio = 0;
             indices.fim = 0;
             int linha = 0;
+            string textoInicioRelatorio = _emailConfigureRepository.GetEmailConfigure().InicioRelatorio.ToString();
+            string textoFinalRelatorio = _emailConfigureRepository.GetEmailConfigure().FinalRelatorio.ToString();
 
             while (indices.fim == 0 || indices.inicio == 0)
             {
 
-                if (lines[linha].Contains(repositoryMail.GetEmailConfigure().FinalRelatorio.ToString()))
+                if (lines[linha].Contains(textoFinalRelatorio))
                 {
                     indices.fim = linha;
                 }
 
-                if (lines[linha].Contains(repositoryMail.GetEmailConfigure().InicioRelatorio.ToString()))
+                if (lines[linha].Contains(textoInicioRelatorio))
                 {
                     indices.inicio = linha + 2;
                 }
@@ -328,10 +331,12 @@ namespace Integrador.Services.Email
             return indices;
         }
 
-        private static String[] RetornaLinhas(EmailModel mail)
+        private String[] RetornaLinhas(EmailModel mail)
         {
             //CRIA ARQUIVO PARA RECEBER O CORPO DO E-MAIL
-            StreamWriter sw = new StreamWriter("\\INTEGRADOR\\Temp.txt");
+            string caminhoDoBanco = _emailConfigureRepository.GetEmailConfigure().PastaTemporaria.ToString();
+            string caminhoConvertido = caminhoDoBanco.Replace(@"\", @"\\");
+            StreamWriter sw = new StreamWriter($"{caminhoConvertido}\\Temp.txt");
 
             //SALVA O CORPO DO E-MAIL NO ARQUIVO CRIADO
             sw.WriteLine(mail.ConteudoHtml);
@@ -340,7 +345,7 @@ namespace Integrador.Services.Email
             sw.Close();
 
             //SALVA DADOS DO ARQUIVO EM UM ARRAY
-            var lines = File.ReadAllLines("\\INTEGRADOR\\Temp.txt");
+            var lines = File.ReadAllLines($"{caminhoConvertido}\\Temp.txt");
 
             //APAGA ARQUIVO TEMPORARIO
             //File.Delete("\\INTEGRADOR\\Temp.txt");

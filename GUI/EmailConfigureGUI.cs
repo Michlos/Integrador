@@ -1,6 +1,7 @@
 ﻿using Integrador.Domain.EmailConfigure;
 using Integrador.Repository.EmailConfigure;
 using Integrador.Services;
+using Integrador.Services.EmailConfigure;
 
 using Microsoft.EntityFrameworkCore;
 
@@ -19,30 +20,37 @@ namespace Integrador.GUI
 {
     public partial class EmailConfigureGUI : Form
     {
-        private readonly AppDbContext context = new AppDbContext();
-        private EmailConfigureModel emailConfigureModel = new EmailConfigureModel();
-        private EmailConfigureRepository _emailConfigureRepository;
+        private EmailConfigureModel emailConfigureModel;
+        private EmailConfigureService _emailConfigureService;
 
 
-        public EmailConfigureGUI(IEmailConfigureRepository emailConfigureRepository)
+
+        //private readonly AppDbContext context = new AppDbContext();
+        //private EmailConfigureModel emailConfigureModel = new EmailConfigureModel();
+        //private EmailConfigureRepository _emailConfigureRepository;
+
+
+        public EmailConfigureGUI()
         {
-            _emailConfigureRepository = (EmailConfigureRepository)emailConfigureRepository;
             InitializeComponent();
+            _emailConfigureService = new EmailConfigureService(new EmailConfigureRepository(new AppDbContext()));
+        }
+        private void EmailConfigureGUI_Load(object sender, EventArgs e)
+        {
+            CarregarCamposEmailConfigure();
+
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
 
         private void salvarButton_Click(object sender, EventArgs e)
         {
             SalvarDadosEmailConfigure();
-            
+
         }
 
         private void SalvarDadosEmailConfigure()
         {
+            
             emailConfigureModel.Email = emailTextBox.Text;
             emailConfigureModel.Senha = senhaTextBox.Text;
             emailConfigureModel.SmtpServer = smtpServerTextBox.Text;
@@ -58,42 +66,22 @@ namespace Integrador.GUI
             emailConfigureModel.TagExtracao = tagsExtracaoTextBox.Text;
             emailConfigureModel.PastaTemporaria = pastaTemporairaTextBox.Text;
 
+
+
             if (emailConfigureModel.Id != 0)
             {
-                try
-                {
-                    context.Entry(emailConfigureModel).State = EntityState.Modified;
-                    context.SaveChanges();
-                    MessageBox.Show("Configuração de E-Mail salva com sucesso!");
+                _emailConfigureService.Update(emailConfigureModel);
+                MessageBox.Show("Configuração de E-Mail salva com sucesso!");
 
-                }
-                catch (Exception ex)
-                {
-                    throw new Exception($"Não foi possível salvar as configurações no sistema.\nContate o Suporte.\nError: {ex.Message}", ex.InnerException);
-                }
             }
             else
             {
-                try
-                {
-                    context.EmailConfigure.Add(emailConfigureModel);
-                    context.SaveChanges();
-                    MessageBox.Show("Configuração de E-mail adicionada com sucesso!");
+                _emailConfigureService.Add(emailConfigureModel);
+                MessageBox.Show("Configuração de E-mail adicionada com sucesso!");
 
-                }
-                catch (Exception ex)
-                {
-
-                    throw new Exception($"Não foi possível adicionar as configurações no sistema.\nContate o Suporte.\nError: {ex.Message}", ex.InnerException);
-                }
             }
         }
 
-        private void EmailConfigureGUI_Load(object sender, EventArgs e)
-        {
-            CarregarCamposEmailConfigureAsync();
-
-        }
 
 
         private void verEmailButton_Click(object sender, EventArgs e)
@@ -106,44 +94,27 @@ namespace Integrador.GUI
         {
 
             SelecionarPastaTemporaria();
-            
+
         }
-        private async void CarregarCamposEmailConfigureAsync()
+        private void CarregarCamposEmailConfigure()
         {
-            try
-            {
-                if (context.EmailConfigure.Any())
-                {
-                    emailConfigureModel = await context.EmailConfigure.FirstOrDefaultAsync();
-                }
+            emailConfigureModel = _emailConfigureService.GetEmailConfigure();
 
-                if (emailConfigureModel.Id != 0)
-                {
+            emailTextBox.Text = emailConfigureModel.Email;
+            senhaTextBox.Text = emailConfigureModel.Senha;
+            smtpServerTextBox.Text = emailConfigureModel.SmtpServer;
+            smtpPortaTextBox.Text = emailConfigureModel.SmtpPorta.ToString();
+            sslSaidaCheckBox.Checked = emailConfigureModel.SslSaidaHabilitado;
+            entradaServerTextBox.Text = emailConfigureModel.EntradaServer;
+            entradaPortaTextBox.Text = emailConfigureModel.EntradaPorta.ToString();
+            sslEntradaCheckBox.Checked = emailConfigureModel.SslEntradaHabilitado;
+            caixaDeEmailTextBox.Text = emailConfigureModel.CaixaDeEmail; //"INBOX"
+            emailAssuntoTextBox.Text = emailConfigureModel.AssuntoEmail; //Relatório: [TI] Clientes Faturamento executar em XX/XX/XXXX
+            inicioRelatoiroTextBox.Text = emailConfigureModel.InicioRelatorio; //"Totais gerais"
+            finalRelatorioTextBox.Text = emailConfigureModel.FinalRelatorio; //"<!-- Start report output -->"
+            tagsExtracaoTextBox.Text = emailConfigureModel.TagExtracao; // "//tr//td"
+            pastaTemporairaTextBox.Text = emailConfigureModel.PastaTemporaria;
 
-                    emailTextBox.Text = emailConfigureModel.Email;
-                    senhaTextBox.Text = emailConfigureModel.Senha;
-                    smtpServerTextBox.Text = emailConfigureModel.SmtpServer;
-                    smtpPortaTextBox.Text = emailConfigureModel.SmtpPorta.ToString();
-                    sslSaidaCheckBox.Checked = emailConfigureModel.SslSaidaHabilitado;
-                    entradaServerTextBox.Text = emailConfigureModel.EntradaServer;
-                    entradaPortaTextBox.Text = emailConfigureModel.EntradaPorta.ToString();
-                    sslEntradaCheckBox.Checked = emailConfigureModel.SslEntradaHabilitado;
-                    caixaDeEmailTextBox.Text = emailConfigureModel.CaixaDeEmail; //"INBOX"
-                    emailAssuntoTextBox.Text = emailConfigureModel.AssuntoEmail; //Relatório: [TI] Clientes Faturamento executar em XX/XX/XXXX
-                    inicioRelatoiroTextBox.Text = emailConfigureModel.InicioRelatorio; //"Totais gerais"
-                    finalRelatorioTextBox.Text = emailConfigureModel.FinalRelatorio; //"<!-- Start report output -->"
-                    tagsExtracaoTextBox.Text = emailConfigureModel.TagExtracao; // "//tr//td"
-                    pastaTemporairaTextBox.Text = emailConfigureModel.PastaTemporaria;
-                }
-                else
-                {
-                    MessageBox.Show("Nenhuma configuração de e-mail.");
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($"Erro ao carregar a configuração de e-mail.\nContate o suporte.\nError:{ex.Message}", ex.InnerException);
-            }
         }
 
         private void SelecionarPastaTemporaria()
@@ -159,6 +130,11 @@ namespace Integrador.GUI
                     pastaTemporairaTextBox.Text = folderBrowserDialog.SelectedPath;
                 }
             }
+        }
+
+        private void sairButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

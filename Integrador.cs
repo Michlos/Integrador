@@ -15,7 +15,7 @@ namespace Integrador
 {
     public partial class Integrador : Form
     {
-        private readonly IEmailConfigureRepository _emailConfigureRepository;
+        //private readonly IEmailConfigureRepository _emailConfigureRepository;
         public Integrador()
         {
             InitializeComponent();
@@ -23,7 +23,7 @@ namespace Integrador
 
         private void emailToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            EmailConfigureGUI emailConfigureGUI = new EmailConfigureGUI(_emailConfigureRepository);
+            EmailConfigureGUI emailConfigureGUI = new EmailConfigureGUI();
             emailConfigureGUI.TopLevel = false;
             
             //Centralizando o formulário EmailConfigureGUI no centro do painel
