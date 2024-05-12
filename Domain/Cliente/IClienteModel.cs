@@ -2,7 +2,7 @@
 
 namespace Integrador.Domain.Cliente
 {
-    public interface IClienteModel : IDisposable
+    public interface IClienteModel
     {
         string bairro { get; set; }
         string cep { get; set; }

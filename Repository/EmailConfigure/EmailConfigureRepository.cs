@@ -3,54 +3,40 @@ using Integrador.Services;
 
 using Microsoft.EntityFrameworkCore;
 
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Integrador.Repository.EmailConfigure
 {
     internal class EmailConfigureRepository : IEmailConfigureRepository
     {
         private readonly AppDbContext _context;
+
         public EmailConfigureRepository(AppDbContext context)
         {
             _context = context;
         }
-        public EmailConfigureRepository()
-        {
-            
-        }
-        public async Task AddEmailConfigureAsync(IEmailConfigureModel config)
-        {
-            _context.EmailConfigure.Add((EmailConfigureModel)config);
-            await _context.SaveChangesAsync();
-        }
 
-        public async Task<IEmailConfigureModel> GetEmailConfigureAsync(AppDbContext context)
+        public EmailConfigureModel Add(IEmailConfigureModel configure)
         {
-            EmailConfigureModel emailConfigureModel = await _context.EmailConfigure.FirstOrDefaultAsync();
 
-            return (IEmailConfigureModel)(emailConfigureModel == null ? null : emailConfigureModel);
-            //return emailConfigure ?? new EmailConfigureModel();
+            var emailConfigureModel = configure as EmailConfigureModel;
+            _context.EmailConfigure.Add(emailConfigureModel);
+            _context.SaveChanges();
+            return emailConfigureModel;
         }
 
-        public IEmailConfigureModel GetEmailConfigure(AppDbContext context)
+        public EmailConfigureModel GetEmailConfigure()
         {
             return _context.EmailConfigure.FirstOrDefault();
         }
 
-        public async Task<IEmailConfigureModel> GetEmailConfigureAsync()
+        public EmailConfigureModel Update(IEmailConfigureModel configure)
         {
-            EmailConfigureModel emailConfigureModel = await _context.EmailConfigure.FirstOrDefaultAsync<EmailConfigureModel>();
-            return (IEmailConfigureModel)(emailConfigureModel == null ? null : emailConfigureModel);
-        }
+            var emailConfigureModel = configure as EmailConfigureModel;
+            _context.Entry(emailConfigureModel).State = EntityState.Modified;
+            _context.SaveChanges();
+            return emailConfigureModel;
 
-        public async Task UpdateEmailConfigureAsync(IEmailConfigureModel config)
-        {
-            _context.Entry(config).State = EntityState.Modified;
-            await _context.SaveChangesAsync();
         }
     }
 }

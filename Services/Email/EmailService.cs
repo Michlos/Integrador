@@ -40,7 +40,7 @@ namespace Integrador.Services.Email
         private ImapClient _imapClient = new ImapClient();
         private readonly EmailConfigureModel _emailConfigureModel;
         private readonly IEmailRepository _emailRepository;
-        private EmailConfigureRepository _emailConfigureRepository = new EmailConfigureRepository();
+        private EmailConfigureRepository _emailConfigureRepository = new EmailConfigureRepository(new AppDbContext());
         //public ClienteModel Cliente = new ClienteModel();
         public List<ClienteModel> ClienteModelList = new List<ClienteModel>();
         public EmailService(IEmailRepository emailReponsitory, EmailConfigureModel emailConfigureModel)
@@ -304,7 +304,7 @@ namespace Integrador.Services.Email
         //ENCONTRA O INICIO E FINAL DO TXT SALVO
         private static Indice GetIndice(string[] lines)
         {
-            EmailConfigureRepository repositoryMail = new EmailConfigureRepository();
+            EmailConfigureRepository repositoryMail = new EmailConfigureRepository(new AppDbContext());
             var indices = new Indice();
             indices.inicio = 0;
             indices.fim = 0;
@@ -313,12 +313,12 @@ namespace Integrador.Services.Email
             while (indices.fim == 0 || indices.inicio == 0)
             {
 
-                if (lines[linha].Contains("Totais gerais"))
+                if (lines[linha].Contains(repositoryMail.GetEmailConfigure().FinalRelatorio.ToString()))
                 {
                     indices.fim = linha;
                 }
 
-                if (lines[linha].Contains("<!-- Start report output -->"))
+                if (lines[linha].Contains(repositoryMail.GetEmailConfigure().InicioRelatorio.ToString()))
                 {
                     indices.inicio = linha + 2;
                 }

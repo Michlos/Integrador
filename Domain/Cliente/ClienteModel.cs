@@ -8,10 +8,8 @@ using System.Threading.Tasks;
 
 namespace Integrador.Domain.Cliente
 {
-    public class ClienteModel : IClienteModel, IDisposable
+    public class ClienteModel : IClienteModel
     {
-        void IDisposable.Dispose() { }
-        public void Dispose() { }
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

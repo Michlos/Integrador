@@ -1,44 +1,46 @@
-﻿using Integrador.Domain.Email;
-using Integrador.Domain.EmailConfigure;
+﻿using Integrador.Domain.EmailConfigure;
 using Integrador.Repository.EmailConfigure;
-
-using Microsoft.EntityFrameworkCore;
-
-using System;
-using System.CodeDom;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Integrador.Services.EmailConfigure
 {
     public class EmailConfigureService : IEmailConfigureRepository
     {
-        private readonly AppDbContext Context= new AppDbContext();
-        private readonly EmailConfigureRepository _emailConfigureRepository;
-        private readonly EmailConfigureModel _emailConfigureModel;
+        private IEmailConfigureRepository _emailConfigureRepository;
 
-
-        public EmailConfigureService(EmailConfigureModel emailConfigureModel)
+        public EmailConfigureService(IEmailConfigureRepository emailConfigureRepository)
         {
-            _emailConfigureModel = emailConfigureModel;
+            _emailConfigureRepository = emailConfigureRepository;
         }
 
-        public Task AddEmailConfigureAsync(IEmailConfigureModel config)
+
+        /// <summary>
+        /// Adiciona a nova configuração de e-mail
+        /// </summary>
+        /// <param name="emailConfigureRepository"></param>
+        /// <returns></returns>
+        public EmailConfigureModel Add(IEmailConfigureModel emailConfigureRepository)
         {
-            throw new NotImplementedException();
+            return _emailConfigureRepository.Add(emailConfigureRepository);  
         }
 
-        public Task<IEmailConfigureModel> GetEmailConfigureAsync()
+        /// <summary>
+        /// Busca a atual configuração do e-mail
+        /// </summary>
+        /// <returns></returns>
+        public EmailConfigureModel GetEmailConfigure()
         {
-            throw new NotImplementedException();
+            return _emailConfigureRepository.GetEmailConfigure();
         }
 
-        public Task UpdateEmailConfigureAsync(IEmailConfigureModel config)
+
+        /// <summary>
+        /// Atualiza a atual configuração do e-mail existente
+        /// </summary>
+        /// <param name="emailConfigureRepository"></param>
+        /// <returns></returns>
+        public EmailConfigureModel Update(IEmailConfigureModel emailConfigureRepository)
         {
-            throw new NotImplementedException();
+            return _emailConfigureRepository.Update(emailConfigureRepository);
         }
     }
 }
