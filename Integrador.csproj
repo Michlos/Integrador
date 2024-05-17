@@ -276,10 +276,13 @@
     <Compile Include="Repository\EmailConfigure\IEmailConfigureRepository.cs" />
     <Compile Include="Repository\Email\EmailRepository.cs" />
     <Compile Include="Repository\Email\IEmailRepository.cs" />
+    <Compile Include="Repository\OnBloxConfigure\IOnBloxConfigureRepository.cs" />
+    <Compile Include="Repository\OnBloxConfigure\OnBloxConfigureRepository.cs" />
     <Compile Include="Services\AppDbContext.cs" />
     <Compile Include="Services\Cliente\ClienteService.cs" />
     <Compile Include="Services\EmailConfigure\EmailConfigureService.cs" />
     <Compile Include="Services\Email\EmailService.cs" />
+    <Compile Include="Services\OnBloxConfigure\OnBloxService.cs" />
     <Compile Include="WebService\JsonService.cs" />
     <EmbeddedResource Include="GUI\ClientesListGUI.resx">
       <DependentUpon>ClientesListGUI.cs</DependentUpon>
@@ -319,9 +322,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Repository\OnBloxConfigure\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>

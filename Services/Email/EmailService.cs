@@ -336,7 +336,7 @@ namespace Integrador.Services.Email
             //CRIA ARQUIVO PARA RECEBER O CORPO DO E-MAIL
             string caminhoDoBanco = _emailConfigureRepository.GetEmailConfigure().PastaTemporaria.ToString();
             string caminhoConvertido = caminhoDoBanco.Replace(@"\", @"\\");
-            StreamWriter sw = new StreamWriter($"{caminhoConvertido}\\Temp.txt");
+            StreamWriter sw = new StreamWriter($@"{caminhoDoBanco}\Temp.txt");
 
             //SALVA O CORPO DO E-MAIL NO ARQUIVO CRIADO
             sw.WriteLine(mail.ConteudoHtml);
