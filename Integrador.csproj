@@ -272,6 +272,10 @@
     <Compile Include="Migrations\20240518020426_InclusaoOnBloxConfigure.Designer.cs">
       <DependentUpon>20240518020426_InclusaoOnBloxConfigure.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20240518021026_AlterandoCampoCEPparaTipoInteiro.cs" />
+    <Compile Include="Migrations\20240518021026_AlterandoCampoCEPparaTipoInteiro.Designer.cs">
+      <DependentUpon>20240518021026_AlterandoCampoCEPparaTipoInteiro.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AppDbContextModelSnapshot.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

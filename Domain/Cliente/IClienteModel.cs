@@ -5,7 +5,7 @@ namespace Integrador.Domain.Cliente
     public interface IClienteModel
     {
         string bairro { get; set; }
-        string cep { get; set; }
+        int cep { get; set; }
         string cgc { get; set; }
         string cidade { get; set; }
         string codigo { get; set; }

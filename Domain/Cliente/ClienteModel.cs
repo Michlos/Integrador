@@ -23,7 +23,7 @@ namespace Integrador.Domain.Cliente
         public string cgc { get; set; }
         public string fantasia { get; set; }
         public string fone { get; set; }
-        public string cep { get; set; }
+        public int cep { get; set; }
         public string logradouro { get; set; }
         public string numero { get; set; }
         public string bairro { get; set; }

@@ -279,7 +279,7 @@ namespace Integrador.Services.Email
                 cliente.cgc = cliente.tpDoc.ToString() == "CPF" ? valuesExtract[3].ToString().Substring(3, 11) : valuesExtract[3].ToString().Substring(3, 14);
                 cliente.fantasia = valuesExtract[4];
                 cliente.fone = valuesExtract[5];
-                cliente.cep = valuesExtract[6];
+                cliente.cep = int.Parse(valuesExtract[6]);
                 string[] endreco = valuesExtract[7].Split(',');
                 cliente.logradouro = endreco[0];
                 string[] numero = endreco[1].Split('-');
