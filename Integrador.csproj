@@ -187,6 +187,7 @@
     <Compile Include="Domain\EmailConfigure\IEmailConfigureModel.cs" />
     <Compile Include="Domain\Email\EmailModel.cs" />
     <Compile Include="Domain\Email\IEmailModel.cs" />
+    <Compile Include="Domain\LogIntegracao\LogIntegracao.cs" />
     <Compile Include="Domain\OnBloxConfigure\IOnBloxConfigureModel.cs" />
     <Compile Include="Domain\OnBloxConfigure\OnBloxConfigureModel.cs" />
     <Compile Include="GUI\ClientesListGUI.cs">
@@ -266,6 +267,10 @@
     <Compile Include="Migrations\20240511161637_CorrigindoCampoIntegracaoAPIAddicionandoBoleanoIntegrado.cs" />
     <Compile Include="Migrations\20240511161637_CorrigindoCampoIntegracaoAPIAddicionandoBoleanoIntegrado.Designer.cs">
       <DependentUpon>20240511161637_CorrigindoCampoIntegracaoAPIAddicionandoBoleanoIntegrado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20240518020426_InclusaoOnBloxConfigure.cs" />
+    <Compile Include="Migrations\20240518020426_InclusaoOnBloxConfigure.Designer.cs">
+      <DependentUpon>20240518020426_InclusaoOnBloxConfigure.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\AppDbContextModelSnapshot.cs" />
     <Compile Include="Program.cs" />

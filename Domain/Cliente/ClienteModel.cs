@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -27,6 +29,8 @@ namespace Integrador.Domain.Cliente
         public string bairro { get; set; }
         public string cidade { get; set; }
         public string uf { get; set; }
+        
+        [JsonIgnore]
         public bool integrado { get; set; } = false;
 
     }
