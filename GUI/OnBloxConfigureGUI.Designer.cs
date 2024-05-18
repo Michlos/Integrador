@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.clientesGroupBox = new System.Windows.Forms.GroupBox();
+            this.uriPostTextBox = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.assuntoEmailClienteTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.integraClienteCheckBox = new System.Windows.Forms.CheckBox();
@@ -38,14 +40,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.integraBateladaCheckBox = new System.Windows.Forms.CheckBox();
             this.localArquivoBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
-            this.label3 = new System.Windows.Forms.Label();
-            this.uriPostTextBox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.usuarioTextBox = new System.Windows.Forms.TextBox();
             this.userGroupBox = new System.Windows.Forms.GroupBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.senhaTextBox = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.salvarButton = new System.Windows.Forms.Button();
+            this.idTextBox = new System.Windows.Forms.TextBox();
             this.clientesGroupBox.SuspendLayout();
             this.bateladaGroupBox.SuspendLayout();
             this.userGroupBox.SuspendLayout();
@@ -63,16 +64,32 @@
             this.clientesGroupBox.Location = new System.Drawing.Point(12, 119);
             this.clientesGroupBox.Name = "clientesGroupBox";
             this.clientesGroupBox.Size = new System.Drawing.Size(496, 110);
-            this.clientesGroupBox.TabIndex = 0;
+            this.clientesGroupBox.TabIndex = 1;
             this.clientesGroupBox.TabStop = false;
             this.clientesGroupBox.Text = "Clientes";
+            // 
+            // uriPostTextBox
+            // 
+            this.uriPostTextBox.Location = new System.Drawing.Point(118, 66);
+            this.uriPostTextBox.Name = "uriPostTextBox";
+            this.uriPostTextBox.Size = new System.Drawing.Size(357, 20);
+            this.uriPostTextBox.TabIndex = 2;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(59, 69);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(53, 13);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "URI Post:";
             // 
             // assuntoEmailClienteTextBox
             // 
             this.assuntoEmailClienteTextBox.Location = new System.Drawing.Point(118, 40);
             this.assuntoEmailClienteTextBox.Name = "assuntoEmailClienteTextBox";
             this.assuntoEmailClienteTextBox.Size = new System.Drawing.Size(357, 20);
-            this.assuntoEmailClienteTextBox.TabIndex = 2;
+            this.assuntoEmailClienteTextBox.TabIndex = 1;
             // 
             // label1
             // 
@@ -104,7 +121,7 @@
             this.bateladaGroupBox.Location = new System.Drawing.Point(12, 248);
             this.bateladaGroupBox.Name = "bateladaGroupBox";
             this.bateladaGroupBox.Size = new System.Drawing.Size(496, 93);
-            this.bateladaGroupBox.TabIndex = 0;
+            this.bateladaGroupBox.TabIndex = 2;
             this.bateladaGroupBox.TabStop = false;
             this.bateladaGroupBox.Text = "Batelada";
             // 
@@ -113,7 +130,7 @@
             this.localArquivoButton.Location = new System.Drawing.Point(457, 39);
             this.localArquivoButton.Name = "localArquivoButton";
             this.localArquivoButton.Size = new System.Drawing.Size(27, 23);
-            this.localArquivoButton.TabIndex = 3;
+            this.localArquivoButton.TabIndex = 1;
             this.localArquivoButton.Text = "...";
             this.localArquivoButton.UseVisualStyleBackColor = true;
             this.localArquivoButton.Click += new System.EventHandler(this.localArquivoButton_Click);
@@ -144,22 +161,6 @@
             this.integraBateladaCheckBox.Text = "integrar";
             this.integraBateladaCheckBox.UseVisualStyleBackColor = true;
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(59, 69);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 13);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "URI Post:";
-            // 
-            // uriPostTextBox
-            // 
-            this.uriPostTextBox.Location = new System.Drawing.Point(118, 66);
-            this.uriPostTextBox.Name = "uriPostTextBox";
-            this.uriPostTextBox.Size = new System.Drawing.Size(357, 20);
-            this.uriPostTextBox.TabIndex = 2;
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -174,7 +175,7 @@
             this.usuarioTextBox.Location = new System.Drawing.Point(117, 19);
             this.usuarioTextBox.Name = "usuarioTextBox";
             this.usuarioTextBox.Size = new System.Drawing.Size(139, 20);
-            this.usuarioTextBox.TabIndex = 2;
+            this.usuarioTextBox.TabIndex = 0;
             // 
             // userGroupBox
             // 
@@ -185,9 +186,17 @@
             this.userGroupBox.Location = new System.Drawing.Point(13, 13);
             this.userGroupBox.Name = "userGroupBox";
             this.userGroupBox.Size = new System.Drawing.Size(272, 88);
-            this.userGroupBox.TabIndex = 1;
+            this.userGroupBox.TabIndex = 0;
             this.userGroupBox.TabStop = false;
             this.userGroupBox.Text = "Configurações do Usuário";
+            // 
+            // senhaTextBox
+            // 
+            this.senhaTextBox.Location = new System.Drawing.Point(117, 55);
+            this.senhaTextBox.Name = "senhaTextBox";
+            this.senhaTextBox.PasswordChar = '*';
+            this.senhaTextBox.Size = new System.Drawing.Size(139, 20);
+            this.senhaTextBox.TabIndex = 1;
             // 
             // label5
             // 
@@ -198,22 +207,22 @@
             this.label5.TabIndex = 1;
             this.label5.Text = "Senha:";
             // 
-            // senhaTextBox
-            // 
-            this.senhaTextBox.Location = new System.Drawing.Point(117, 55);
-            this.senhaTextBox.Name = "senhaTextBox";
-            this.senhaTextBox.PasswordChar = '*';
-            this.senhaTextBox.Size = new System.Drawing.Size(139, 20);
-            this.senhaTextBox.TabIndex = 2;
-            // 
             // salvarButton
             // 
             this.salvarButton.Location = new System.Drawing.Point(433, 357);
             this.salvarButton.Name = "salvarButton";
             this.salvarButton.Size = new System.Drawing.Size(75, 23);
-            this.salvarButton.TabIndex = 2;
+            this.salvarButton.TabIndex = 3;
             this.salvarButton.Text = "&Salvar";
             this.salvarButton.UseVisualStyleBackColor = true;
+            this.salvarButton.Click += new System.EventHandler(this.salvarButton_Click);
+            // 
+            // idTextBox
+            // 
+            this.idTextBox.Location = new System.Drawing.Point(370, 28);
+            this.idTextBox.Name = "idTextBox";
+            this.idTextBox.Size = new System.Drawing.Size(139, 20);
+            this.idTextBox.TabIndex = 0;
             // 
             // OnBloxConfigureGUI
             // 
@@ -222,10 +231,12 @@
             this.ClientSize = new System.Drawing.Size(521, 392);
             this.Controls.Add(this.salvarButton);
             this.Controls.Add(this.userGroupBox);
+            this.Controls.Add(this.idTextBox);
             this.Controls.Add(this.bateladaGroupBox);
             this.Controls.Add(this.clientesGroupBox);
             this.Name = "OnBloxConfigureGUI";
             this.Text = "Configuração para Integração do OnBlox";
+            this.Load += new System.EventHandler(this.OnBloxConfigureGUI_Load);
             this.clientesGroupBox.ResumeLayout(false);
             this.clientesGroupBox.PerformLayout();
             this.bateladaGroupBox.ResumeLayout(false);
@@ -233,6 +244,7 @@
             this.userGroupBox.ResumeLayout(false);
             this.userGroupBox.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -256,5 +268,6 @@
         private System.Windows.Forms.TextBox senhaTextBox;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button salvarButton;
+        private System.Windows.Forms.TextBox idTextBox;
     }
 }

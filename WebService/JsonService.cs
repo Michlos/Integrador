@@ -2,7 +2,10 @@
 using Integrador.Domain.EmailConfigure;
 using Integrador.Domain.LogIntegracao;
 using Integrador.Repository.EmailConfigure;
+using Integrador.Repository.OnBloxConfigure;
+using Integrador.Services;
 using Integrador.Services.EmailConfigure;
+using Integrador.Services.OnBloxConfigure;
 
 using Newtonsoft.Json;
 
@@ -23,6 +26,12 @@ namespace Integrador.WebService
     {
         private static readonly HttpClient client = new HttpClient();
         private HttpResponseMessage ResponseMessage = new HttpResponseMessage();
+        private readonly OnBloxService _onBloxConfigureService;
+
+        public JsonService()
+        {
+            _onBloxConfigureService = new OnBloxService(new OnBloxConfigureRepository(new AppDbContext()));
+        }
 
         public async void SendData(ClienteModel clienteModel)
         {
@@ -51,7 +60,7 @@ namespace Integrador.WebService
 
             try
             {
-                ResponseMessage = await client.PostAsync("http://191.252.3.79:9001/onblox/api/cliente", data);
+                ResponseMessage = await client.PostAsync(_onBloxConfigureService.GetOnBloxConfigure().ClienteURIPost.ToString(), data);
 
             }
             catch (Exception e)

@@ -38,7 +38,17 @@ namespace Integrador
 
         private void napisToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            OnBloxConfigureGUI onBloxConfigureGUI = new OnBloxConfigureGUI();
+            onBloxConfigureGUI.TopLevel = false;
 
+            //Centralizando o formulário OnBloxConfigureGui no centro do painel
+            int x = (mainPanel.Width - onBloxConfigureGUI.Width) / 2;
+            int y = (mainPanel.Height - onBloxConfigureGUI.Height) / 2;
+            onBloxConfigureGUI.Location = new Point(x, y);
+
+            //Chamando o formulário OnBloxConfigureGUI no mainPainel
+            mainPanel.Controls.Add(onBloxConfigureGUI);
+            onBloxConfigureGUI.Show();
         }
     }
 }

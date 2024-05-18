@@ -14,9 +14,9 @@ namespace Integrador.Repository.OnBloxConfigure
     public class OnBloxConfigureRepository : IOnBloxConfigureRepository
     {
         private readonly AppDbContext _context;
-        public OnBloxConfigureRepository()
+        public OnBloxConfigureRepository(AppDbContext context)
         {
-            _context = new AppDbContext();
+            _context = context;
         }
 
         public OnBloxConfigureModel Add(IOnBloxConfigureModel model)
