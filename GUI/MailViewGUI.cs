@@ -30,6 +30,7 @@ namespace Integrador.GUI
         public MailViewGUI(EmailConfigureModel emailConfigureModel)
         {
             _emailConfigureModel = emailConfigureModel;
+            _emailReponsitory = new EmailRepository(new EmailModel());
             InitializeComponent();
 
         }
@@ -137,8 +138,6 @@ namespace Integrador.GUI
 
         private void salvarClienteButton_Click(object sender, EventArgs e)
         {
-            
-            
             emailService.SalvarClienteNoBanco();
         }
 

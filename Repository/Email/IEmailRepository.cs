@@ -17,12 +17,8 @@ namespace Integrador.Repository.Email
         Task<List<IEmailModel>> ReceberEmailPorAssuntoPorData(string caixaEmail, string assunto, DateTime data);
 
         //COMANDOS DO BANCO DE DADOS
-        Task<List<IEmailModel>> SalvarEmailTodos(List<IEmailModel> emailModelList);
-
-        void Add(IEmailModel model);
-        void Update(IEmailModel model);
-        void Delete(IEmailModel model);
-        void SetarComoIntegrado(IEmailModel comoEnviado);
-        void SalvarEmailTodos(List<EmailModel> emailModelList);
+        EmailModel Add(IEmailModel model);
+        EmailModel SetarComoIntegrado(IEmailModel comoEnviado);
+        List<EmailModel> GetAll();
     }
 }

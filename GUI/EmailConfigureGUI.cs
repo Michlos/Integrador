@@ -110,8 +110,8 @@ namespace Integrador.GUI
             sslEntradaCheckBox.Checked = emailConfigureModel.SslEntradaHabilitado;
             caixaDeEmailTextBox.Text = emailConfigureModel.CaixaDeEmail; //"INBOX"
             emailAssuntoTextBox.Text = emailConfigureModel.AssuntoEmail; //Relatório: [TI] Clientes Faturamento executar em XX/XX/XXXX
-            inicioRelatoiroTextBox.Text = emailConfigureModel.InicioRelatorio; //"Totais gerais"
-            finalRelatorioTextBox.Text = emailConfigureModel.FinalRelatorio; //"<!-- Start report output -->"
+            inicioRelatoiroTextBox.Text = emailConfigureModel.InicioRelatorio; //"<!-- Start report output -->"
+            finalRelatorioTextBox.Text = emailConfigureModel.FinalRelatorio;  //"Totais gerais"
             tagsExtracaoTextBox.Text = emailConfigureModel.TagExtracao; // "//tr//td"
             pastaTemporairaTextBox.Text = emailConfigureModel.PastaTemporaria;
 

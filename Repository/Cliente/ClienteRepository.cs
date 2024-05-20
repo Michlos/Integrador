@@ -24,6 +24,7 @@ namespace Integrador.Repository.Cliente
             cliente = new ClienteModel();
             cliente = clienteModel as ClienteModel;
             _context.Cliente.Add(cliente);
+            _context.SaveChanges();
             return cliente;
         }
 

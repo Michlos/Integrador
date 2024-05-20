@@ -3,8 +3,11 @@
 using Integrador.Domain.Cliente;
 using Integrador.Domain.Email;
 using Integrador.Domain.EmailConfigure;
+using Integrador.Repository.Cliente;
 using Integrador.Repository.Email;
 using Integrador.Repository.EmailConfigure;
+using Integrador.Services.ArquivoTemporario;
+using Integrador.Services.Cliente;
 using Integrador.Services.EmailConfigure;
 
 using MailKit;
@@ -28,26 +31,29 @@ using System.Windows.Forms.VisualStyles;
 
 namespace Integrador.Services.Email
 {
-    class Indice
-    {
-        public int inicio;
-        public int fim;
-    }
+    //class Indice
+    //{
+    //    public int inicio;
+    //    public int fim;
+    //}
     public class EmailService
     {
 
-        public AppDbContext context = new AppDbContext();
+        //public AppDbContext context = new AppDbContext();
         private ImapClient _imapClient = new ImapClient();
         private readonly EmailConfigureModel _emailConfigureModel;
         private readonly IEmailRepository _emailRepository;
         private EmailConfigureRepository _emailConfigureRepository = new EmailConfigureRepository(new AppDbContext());
+        private readonly IClienteRepository _clienteRepository;
 
-        //public ClienteModel Cliente = new ClienteModel();
         public List<ClienteModel> ClienteModelList = new List<ClienteModel>();
+        public List<EmailModel> EmailModelList;
         public EmailService(IEmailRepository emailReponsitory, EmailConfigureModel emailConfigureModel)
         {
             _emailRepository = emailReponsitory;
             _emailConfigureModel = emailConfigureModel;
+            _clienteRepository = new ClienteRepository();
+            
 
         }
 
@@ -75,27 +81,6 @@ namespace Integrador.Services.Email
                 }
             }
         }
-
-        //private string IPAdressSet(string hostName)
-        //{
-        //    string hostIp = null;
-        //    try
-        //    {
-        //        ASCIIEncoding aSCII = new ASCIIEncoding();
-        //        IPHostEntry iPHost = Dns.GetHostEntry(hostName);
-        //        foreach (IPAddress item in iPHost.AddressList)
-        //        {
-        //            hostIp = item.ToString();
-        //        }
-        //    }
-        //    catch (Exception e)
-        //    {
-
-        //        throw;
-        //    }
-        //    return hostIp;
-        //}
-
 
         public async Task<List<EmailModel>> ReceberMensagensAsync(string caixaDeMensagem, string assunto)
         {
@@ -128,7 +113,6 @@ namespace Integrador.Services.Email
                             ConteudoHtml = item.HtmlBody.ToString()
                         });
                 }
-                //emailModelList = emailModelList.Where(sub => sub.Assunto.Contains(assunto)).ToList();
                 return emailModelList;
             }
 
@@ -138,9 +122,7 @@ namespace Integrador.Services.Email
 
         public List<EmailModel> LerEmailsDoBancoDeDados()
         {
-            List<EmailModel> emailModelList = new List<EmailModel>();
-            emailModelList = context.Email.ToList();
-            return emailModelList;
+            return _emailRepository.GetAll();
         }
 
         public List<EmailModel> ReceberMensagens(string caixaDeMensagem, string assunto)
@@ -168,109 +150,89 @@ namespace Integrador.Services.Email
 
         public void SalvarEmailsNoBancoDeDados(List<EmailModel> lista)
         {
-
             foreach (var item in lista)
             {
-                if (!context.Email.Any(idEmail => idEmail.IdEmailBox == item.IdEmailBox))
+                if (EmailModelList.Any(idMail => idMail.IdEmailBox == item.IdEmailBox))
                 {
-                    context.Add(item);
-                    context.SaveChanges();
+                    _emailRepository.Add(item);
                 }
-                //else
-                //{
-                //    item.Id = context.Email.Where(id => id.Id == item.Id).Select(idDb => idDb.Id).FirstOrDefault();
-                //    context.Email.Attach((EmailModel)item);
-                //    context.Entry(item).State = EntityState.Modified;
-                //    context.SaveChanges();
-                //}
             }
-
-
-
         }
 
         public void SalvarClienteNoBanco()
         {
             EmailModel emailModel = new EmailModel();
             List<EmailModel> emailModelList = new List<EmailModel>();
-            emailModelList = context.Email.ToList();
+
+            emailModelList = _emailRepository.GetAll();
             string[] valuesExtract = new string[10];
+
             try
             {
                 foreach (var mail in emailModelList)
                 {
-                    var lines = RetornaLinhas(mail);
-                    Indice indice = GetIndice(lines);
-                    for (int indiceLines = indice.inicio; indiceLines < indice.fim; indiceLines++)
+                    //verifica se já foi extraido ou não
+                    if (!mail.Integrado)
                     {
-                        var htmlNodes = ExtractNodes(lines[indiceLines]);
-                        int indextExtrat = 0;
-                        foreach (var node in htmlNodes)
+                        ArquivoTemporarioService _arquivoTemporario = new ArquivoTemporarioService(mail);
+                        var lines = _arquivoTemporario.RetornaLInhas();
+                        var indice = _arquivoTemporario.GetIndice(lines);
+                        for (int indiceLines = indice.inicio; indiceLines < indice.fim; indiceLines++)
                         {
-                            valuesExtract[indextExtrat] = node.InnerText;
-                            indextExtrat++;
-                        }
-                        ClienteModel cli = AddCliente(valuesExtract, mail);
-                        if (cli.nome != null)
-                        {
-                            context.Cliente.Add(cli);
-                            context.SaveChanges(true);
-                        }
+                            var htmlNodes = ExtractNodes(lines[indiceLines]);
 
+
+                            int indextExtrat = 0;
+                            foreach (var node in htmlNodes)
+                            {
+                                if (indextExtrat < valuesExtract.Length)
+                                {
+                                    valuesExtract[indextExtrat] = node.InnerText;
+                                    indextExtrat++;
+
+                                }
+                                else
+                                {
+
+                                    throw new Exception();
+                                }
+                            }
+
+
+
+
+
+                            ClienteModel cli = new ClienteModel();
+                            cli = PreparaCliente(valuesExtract, mail);
+                            if (cli != null && cli.nome != null)
+                            {
+
+                                _clienteRepository.Add(cli);
+
+                            }
+
+                        }
+                        _emailRepository.SetarComoIntegrado(mail);
                     }
 
-                }
 
-
-
-                //SaveClienteChange(ClienteModelList);
-                MarcarComoIntegrado(emailModelList);
-
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-        }
-
-        private void MarcarComoIntegrado(List<EmailModel> emailModelList)
-        {
-            foreach (var mail in emailModelList)
-            {
-
-                mail.Integrado = true;
-                context.Email.Attach(mail);
-                context.Entry(mail).State = EntityState.Modified;
-                context.SaveChanges();
-            }
-        }
-
-        private void SaveClienteChange(List<ClienteModel> listaClientes)
-        {
-            foreach (var cliente in listaClientes)
-            {
-                try
-                {
-
-                    context.Cliente.Add(cliente);
-                    context.SaveChanges();
-                }
-                catch (Exception e)
-                {
-
-                    throw new Exception($"Erro ao salvar o cliente no banco de dados: {e.Message} ", e.InnerException);
                 }
 
             }
+            catch (Exception e)
+            {
+
+                throw new Exception($"ErrorMessage: {e.Message}", e.InnerException);
+            }
         }
 
-        private ClienteModel AddCliente(string[] valuesExtract, EmailModel mail)
+
+
+
+        public ClienteModel PreparaCliente(string[] valuesExtract, EmailModel mail)
         {
             ClienteModel cliente = new ClienteModel();
-            //EmailModel emailModel = new EmailModel();
-            //emailModel = mail;
-            if (!mail.Integrado)
+            if (!cliente.integrado)
             {
 
                 cliente.nome = valuesExtract[1];
@@ -288,12 +250,13 @@ namespace Integrador.Services.Email
                 cliente.cidade = valuesExtract[8];
                 cliente.uf = valuesExtract[9];
 
+
             }
             return cliente;
 
         }
 
-        private static HtmlNodeCollection ExtractNodes(string line)
+        public HtmlNodeCollection ExtractNodes(string line)
         {
             var htmlExtract = new HtmlAgilityPack.HtmlDocument();
             htmlExtract.LoadHtml(line);
@@ -302,56 +265,5 @@ namespace Integrador.Services.Email
         }
 
 
-        //ENCONTRA O INICIO E FINAL DO TXT SALVO
-        private Indice GetIndice(string[] lines)
-        {
-            //EmailConfigureRepository repositoryMail = new EmailConfigureRepository(new AppDbContext());
-            var indices = new Indice();
-            indices.inicio = 0;
-            indices.fim = 0;
-            int linha = 0;
-            string textoInicioRelatorio = _emailConfigureRepository.GetEmailConfigure().InicioRelatorio.ToString();
-            string textoFinalRelatorio = _emailConfigureRepository.GetEmailConfigure().FinalRelatorio.ToString();
-
-            while (indices.fim == 0 || indices.inicio == 0)
-            {
-
-                if (lines[linha].Contains(textoFinalRelatorio))
-                {
-                    indices.fim = linha;
-                }
-
-                if (lines[linha].Contains(textoInicioRelatorio))
-                {
-                    indices.inicio = linha + 2;
-                }
-                linha++;
-            }
-
-            return indices;
-        }
-
-        private String[] RetornaLinhas(EmailModel mail)
-        {
-            //CRIA ARQUIVO PARA RECEBER O CORPO DO E-MAIL
-            string caminhoDoBanco = _emailConfigureRepository.GetEmailConfigure().PastaTemporaria.ToString();
-            string caminhoConvertido = caminhoDoBanco.Replace(@"\", @"\\");
-            StreamWriter sw = new StreamWriter($@"{caminhoDoBanco}\Temp.txt");
-
-            //SALVA O CORPO DO E-MAIL NO ARQUIVO CRIADO
-            sw.WriteLine(mail.ConteudoHtml);
-
-            //FECHA ARQUIVO
-            sw.Close();
-
-            //SALVA DADOS DO ARQUIVO EM UM ARRAY
-            var lines = File.ReadAllLines($"{caminhoConvertido}\\Temp.txt");
-
-            //APAGA ARQUIVO TEMPORARIO
-            //File.Delete("\\INTEGRADOR\\Temp.txt");
-
-            //RETORNA O ARRAY COM O CORPO DO E-MAIL.
-            return lines;
-        }
     }
 }
