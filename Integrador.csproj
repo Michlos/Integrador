@@ -276,6 +276,10 @@
     <Compile Include="Migrations\20240518021026_AlterandoCampoCEPparaTipoInteiro.Designer.cs">
       <DependentUpon>20240518021026_AlterandoCampoCEPparaTipoInteiro.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20240522102856_AddHoraExecucaoInOnBloxConfigureModel.cs" />
+    <Compile Include="Migrations\20240522102856_AddHoraExecucaoInOnBloxConfigureModel.Designer.cs">
+      <DependentUpon>20240522102856_AddHoraExecucaoInOnBloxConfigureModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AppDbContextModelSnapshot.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

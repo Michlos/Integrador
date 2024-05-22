@@ -59,7 +59,8 @@ namespace Integrador.GUI
                 ClienteAssuntoEmail = assuntoEmailClienteTextBox.Text,
                 ClienteURIPost = uriPostTextBox.Text,
                 BateladaIntegra = integraBateladaCheckBox.Checked,
-                BateladaLocalArquivo = localArquivoTextBox.Text
+                BateladaLocalArquivo = localArquivoTextBox.Text,
+                HoraExecucao = TimeSpan.Parse(horaExecuçãoTextBox.Text)
             };
 
             try
@@ -87,6 +88,7 @@ namespace Integrador.GUI
             _onBloxConfigureModel.ClienteURIPost = uriPostTextBox.Text;
             _onBloxConfigureModel.BateladaIntegra = integraBateladaCheckBox.Checked;
             _onBloxConfigureModel.BateladaLocalArquivo = localArquivoTextBox.Text;
+            _onBloxConfigureModel.HoraExecucao = TimeSpan.Parse(horaExecuçãoTextBox.Text);
 
 
             try
@@ -146,6 +148,7 @@ namespace Integrador.GUI
                 uriPostTextBox.Text = _onBloxConfigureModel.ClienteURIPost;
                 integraBateladaCheckBox.Checked = _onBloxConfigureModel.BateladaIntegra;
                 localArquivoTextBox.Text = _onBloxConfigureModel.BateladaLocalArquivo;
+                horaExecuçãoTextBox.Text = _onBloxConfigureModel.HoraExecucao.ToString();
             }
 
         }

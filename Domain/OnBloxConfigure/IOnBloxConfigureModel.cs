@@ -1,4 +1,6 @@
-﻿namespace Integrador.Domain.OnBloxConfigure
+﻿using System;
+
+namespace Integrador.Domain.OnBloxConfigure
 {
     public interface IOnBloxConfigureModel
     {
@@ -11,5 +13,6 @@
         int Id { get; set; }
         string Senha { get; set; }
         string Usuario { get; set; }
+        TimeSpan HoraExecucao { get; set; }
     }
 }

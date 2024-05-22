@@ -16,6 +16,9 @@ namespace Integrador.Domain.OnBloxConfigure
         public string Usuario { get; set; }
         public string Senha { get; set; }
 
+        //HORA DE EXECUÇÃO
+        public TimeSpan HoraExecucao { get; set; }
+
         //INTEGRAÇÃO DE CLIENTES
         public string ClienteAssuntoEmail { get; set; }
         public bool ClienteIntegra { get; set; }

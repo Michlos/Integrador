@@ -47,9 +47,13 @@
             this.label5 = new System.Windows.Forms.Label();
             this.salvarButton = new System.Windows.Forms.Button();
             this.idTextBox = new System.Windows.Forms.TextBox();
+            this.execuçãoGroupBox = new System.Windows.Forms.GroupBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.horaExecuçãoTextBox = new System.Windows.Forms.TextBox();
             this.clientesGroupBox.SuspendLayout();
             this.bateladaGroupBox.SuspendLayout();
             this.userGroupBox.SuspendLayout();
+            this.execuçãoGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // clientesGroupBox
@@ -219,19 +223,48 @@
             // 
             // idTextBox
             // 
-            this.idTextBox.Location = new System.Drawing.Point(370, 28);
+            this.idTextBox.Location = new System.Drawing.Point(101, 55);
             this.idTextBox.Name = "idTextBox";
-            this.idTextBox.Size = new System.Drawing.Size(139, 20);
+            this.idTextBox.Size = new System.Drawing.Size(67, 20);
             this.idTextBox.TabIndex = 0;
+            this.idTextBox.Visible = false;
+            // 
+            // execuçãoGroupBox
+            // 
+            this.execuçãoGroupBox.Controls.Add(this.horaExecuçãoTextBox);
+            this.execuçãoGroupBox.Controls.Add(this.label6);
+            this.execuçãoGroupBox.Controls.Add(this.idTextBox);
+            this.execuçãoGroupBox.Location = new System.Drawing.Point(309, 13);
+            this.execuçãoGroupBox.Name = "execuçãoGroupBox";
+            this.execuçãoGroupBox.Size = new System.Drawing.Size(199, 88);
+            this.execuçãoGroupBox.TabIndex = 4;
+            this.execuçãoGroupBox.TabStop = false;
+            this.execuçãoGroupBox.Text = "Configuração de Execução";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(59, 29);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(33, 13);
+            this.label6.TabIndex = 1;
+            this.label6.Text = "Hora:";
+            // 
+            // horaExecuçãoTextBox
+            // 
+            this.horaExecuçãoTextBox.Location = new System.Drawing.Point(98, 26);
+            this.horaExecuçãoTextBox.Name = "horaExecuçãoTextBox";
+            this.horaExecuçãoTextBox.Size = new System.Drawing.Size(70, 20);
+            this.horaExecuçãoTextBox.TabIndex = 0;
             // 
             // OnBloxConfigureGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(521, 392);
+            this.Controls.Add(this.execuçãoGroupBox);
             this.Controls.Add(this.salvarButton);
             this.Controls.Add(this.userGroupBox);
-            this.Controls.Add(this.idTextBox);
             this.Controls.Add(this.bateladaGroupBox);
             this.Controls.Add(this.clientesGroupBox);
             this.Name = "OnBloxConfigureGUI";
@@ -243,8 +276,9 @@
             this.bateladaGroupBox.PerformLayout();
             this.userGroupBox.ResumeLayout(false);
             this.userGroupBox.PerformLayout();
+            this.execuçãoGroupBox.ResumeLayout(false);
+            this.execuçãoGroupBox.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -269,5 +303,8 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button salvarButton;
         private System.Windows.Forms.TextBox idTextBox;
+        private System.Windows.Forms.GroupBox execuçãoGroupBox;
+        private System.Windows.Forms.TextBox horaExecuçãoTextBox;
+        private System.Windows.Forms.Label label6;
     }
 }
