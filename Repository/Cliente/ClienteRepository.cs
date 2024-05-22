@@ -1,5 +1,8 @@
 ﻿using Integrador.Domain.Cliente;
+using Integrador.Domain.Email;
 using Integrador.Services;
+
+using Microsoft.EntityFrameworkCore;
 
 using System;
 using System.Collections.Generic;
@@ -39,6 +42,16 @@ namespace Integrador.Repository.Cliente
         {
             cliente = _context.Cliente.FirstOrDefault(x => x.Id == id);
             return cliente;
+        }
+
+        public ClienteModel SetIntegrado(ClienteModel clienteModel)
+        {
+            clienteModel.integrado = true;
+            _context.Cliente.Attach(clienteModel);
+            _context.Entry(clienteModel).State = EntityState.Modified;
+            _context.SaveChanges();
+            return clienteModel;
+                
         }
     }
 }

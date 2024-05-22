@@ -33,5 +33,10 @@ namespace Integrador.Services.Cliente
         {
             return _clienteRepository.GetById(id);
         }
+
+        public ClienteModel SetIntegrado(ClienteModel clienteModel)
+        {
+            return _clienteRepository.SetIntegrado(clienteModel);
+        }
     }
 }

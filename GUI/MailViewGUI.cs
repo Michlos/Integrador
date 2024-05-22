@@ -1,28 +1,20 @@
 ﻿using Integrador.Domain.Email;
 using Integrador.Domain.EmailConfigure;
 using Integrador.Repository.Email;
-using Integrador.Services;
 using Integrador.Services.Email;
 
 using System;
 using System.Collections.Generic;
-using System.Collections.Immutable;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Integrador.GUI
 {
     public partial class MailViewGUI : Form
     {
-        private readonly AppDbContext context = new AppDbContext();
         private EmailConfigureModel _emailConfigureModel;
-        private EmailModel emailModel = new EmailModel();
-        private List<EmailModel> EmailListData = new List<EmailModel>();
+        private List<EmailModel> EmailListData;
         private IEnumerable<EmailModel> EmailListEnum = null;
         private readonly IEmailRepository _emailReponsitory;
         private EmailService emailService;
@@ -31,6 +23,7 @@ namespace Integrador.GUI
         {
             _emailConfigureModel = emailConfigureModel;
             _emailReponsitory = new EmailRepository(new EmailModel());
+            EmailListData = new List<EmailModel>();
             InitializeComponent();
 
         }

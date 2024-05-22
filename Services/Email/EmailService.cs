@@ -46,7 +46,6 @@ namespace Integrador.Services.Email
         private EmailConfigureRepository _emailConfigureRepository = new EmailConfigureRepository(new AppDbContext());
         private readonly IClienteRepository _clienteRepository;
 
-        public List<ClienteModel> ClienteModelList = new List<ClienteModel>();
         public List<EmailModel> EmailModelList;
         public EmailService(IEmailRepository emailReponsitory, EmailConfigureModel emailConfigureModel)
         {
@@ -161,8 +160,7 @@ namespace Integrador.Services.Email
 
         public void SalvarClienteNoBanco()
         {
-            EmailModel emailModel = new EmailModel();
-            List<EmailModel> emailModelList = new List<EmailModel>();
+            List<EmailModel> emailModelList;
 
             emailModelList = _emailRepository.GetAll();
             string[] valuesExtract = new string[10];
