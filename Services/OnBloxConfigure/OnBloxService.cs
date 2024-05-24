@@ -28,6 +28,11 @@ namespace Integrador.Services.OnBloxConfigure
             return _repository.GetOnBloxConfigure();
         }
 
+        public long SetarUltimoIdIntegrado(long id)
+        {
+            return _repository.SetarUltimoIdIntegrado(id);
+        }
+
         public OnBloxConfigureModel Update(IOnBloxConfigureModel model)
         {
             return _repository.Update(model);

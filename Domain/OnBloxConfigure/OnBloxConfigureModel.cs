@@ -20,6 +20,7 @@ namespace Integrador.Domain.OnBloxConfigure
         public TimeSpan HoraExecucao { get; set; }
 
         //INTEGRAÇÃO DE CLIENTES
+        public long ClienteUlimoIdIntegrado { get; set; }
         public string ClienteAssuntoEmail { get; set; }
         public bool ClienteIntegra { get; set; }
         public string ClienteURIPost { get; set; }

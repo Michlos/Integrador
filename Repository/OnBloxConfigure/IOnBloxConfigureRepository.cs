@@ -7,5 +7,6 @@ namespace Integrador.Repository.OnBloxConfigure
         OnBloxConfigureModel Add(IOnBloxConfigureModel model);
         OnBloxConfigureModel GetOnBloxConfigure();
         OnBloxConfigureModel Update(IOnBloxConfigureModel model);
+        long SetarUltimoIdIntegrado(long id);
     }
 }

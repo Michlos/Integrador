@@ -280,6 +280,10 @@
     <Compile Include="Migrations\20240522102856_AddHoraExecucaoInOnBloxConfigureModel.Designer.cs">
       <DependentUpon>20240522102856_AddHoraExecucaoInOnBloxConfigureModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20240524171848_AdicionandoUltimoIdIntegradoinOnBloxConfigure.cs" />
+    <Compile Include="Migrations\20240524171848_AdicionandoUltimoIdIntegradoinOnBloxConfigure.Designer.cs">
+      <DependentUpon>20240524171848_AdicionandoUltimoIdIntegradoinOnBloxConfigure.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AppDbContextModelSnapshot.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

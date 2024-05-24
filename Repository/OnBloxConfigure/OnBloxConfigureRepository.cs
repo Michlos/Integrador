@@ -39,5 +39,14 @@ namespace Integrador.Repository.OnBloxConfigure
             _context.SaveChanges();
             return onbloxConfigureModel;
         }
+
+        public long SetarUltimoIdIntegrado(long id)
+        {
+            OnBloxConfigureModel model = _context.OnBloxConfigure.FirstOrDefault();
+            model.ClienteUlimoIdIntegrado = id;
+            _context.Entry(model).State = EntityState.Modified;
+            _context.SaveChanges();
+            return id;
+        }
     }
 }

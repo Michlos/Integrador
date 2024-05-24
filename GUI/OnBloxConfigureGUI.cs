@@ -60,7 +60,8 @@ namespace Integrador.GUI
                 ClienteURIPost = uriPostTextBox.Text,
                 BateladaIntegra = integraBateladaCheckBox.Checked,
                 BateladaLocalArquivo = localArquivoTextBox.Text,
-                HoraExecucao = TimeSpan.Parse(horaExecuçãoTextBox.Text)
+                HoraExecucao = TimeSpan.Parse(horaExecuçãoMaskedTextBox.Text),
+                ClienteUlimoIdIntegrado = long.Parse(ultimoIdIntegradoTextBox.Text)
             };
 
             try
@@ -88,7 +89,8 @@ namespace Integrador.GUI
             _onBloxConfigureModel.ClienteURIPost = uriPostTextBox.Text;
             _onBloxConfigureModel.BateladaIntegra = integraBateladaCheckBox.Checked;
             _onBloxConfigureModel.BateladaLocalArquivo = localArquivoTextBox.Text;
-            _onBloxConfigureModel.HoraExecucao = TimeSpan.Parse(horaExecuçãoTextBox.Text);
+            _onBloxConfigureModel.HoraExecucao = TimeSpan.Parse(horaExecuçãoMaskedTextBox.Text);
+            _onBloxConfigureModel.ClienteUlimoIdIntegrado = long.Parse(ultimoIdIntegradoTextBox.Text);
 
 
             try
@@ -148,7 +150,8 @@ namespace Integrador.GUI
                 uriPostTextBox.Text = _onBloxConfigureModel.ClienteURIPost;
                 integraBateladaCheckBox.Checked = _onBloxConfigureModel.BateladaIntegra;
                 localArquivoTextBox.Text = _onBloxConfigureModel.BateladaLocalArquivo;
-                horaExecuçãoTextBox.Text = _onBloxConfigureModel.HoraExecucao.ToString();
+                horaExecuçãoMaskedTextBox.Text = _onBloxConfigureModel.HoraExecucao.ToString();
+                ultimoIdIntegradoTextBox.Text = _onBloxConfigureModel.ClienteUlimoIdIntegrado.ToString();
             }
 
         }

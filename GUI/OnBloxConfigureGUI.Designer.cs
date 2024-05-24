@@ -49,7 +49,9 @@
             this.idTextBox = new System.Windows.Forms.TextBox();
             this.execuçãoGroupBox = new System.Windows.Forms.GroupBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.horaExecuçãoTextBox = new System.Windows.Forms.TextBox();
+            this.horaExecuçãoMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.ultimoIdIntegradoTextBox = new System.Windows.Forms.TextBox();
             this.clientesGroupBox.SuspendLayout();
             this.bateladaGroupBox.SuspendLayout();
             this.userGroupBox.SuspendLayout();
@@ -61,6 +63,8 @@
             this.clientesGroupBox.AccessibleRole = System.Windows.Forms.AccessibleRole.ButtonDropDown;
             this.clientesGroupBox.Controls.Add(this.uriPostTextBox);
             this.clientesGroupBox.Controls.Add(this.label3);
+            this.clientesGroupBox.Controls.Add(this.ultimoIdIntegradoTextBox);
+            this.clientesGroupBox.Controls.Add(this.label7);
             this.clientesGroupBox.Controls.Add(this.assuntoEmailClienteTextBox);
             this.clientesGroupBox.Controls.Add(this.label1);
             this.clientesGroupBox.Controls.Add(this.integraClienteCheckBox);
@@ -107,7 +111,7 @@
             // integraClienteCheckBox
             // 
             this.integraClienteCheckBox.AutoSize = true;
-            this.integraClienteCheckBox.Location = new System.Drawing.Point(17, 19);
+            this.integraClienteCheckBox.Location = new System.Drawing.Point(414, 17);
             this.integraClienteCheckBox.Name = "integraClienteCheckBox";
             this.integraClienteCheckBox.Size = new System.Drawing.Size(61, 17);
             this.integraClienteCheckBox.TabIndex = 0;
@@ -158,7 +162,7 @@
             // integraBateladaCheckBox
             // 
             this.integraBateladaCheckBox.AutoSize = true;
-            this.integraBateladaCheckBox.Location = new System.Drawing.Point(17, 19);
+            this.integraBateladaCheckBox.Location = new System.Drawing.Point(414, 16);
             this.integraBateladaCheckBox.Name = "integraBateladaCheckBox";
             this.integraBateladaCheckBox.Size = new System.Drawing.Size(61, 17);
             this.integraBateladaCheckBox.TabIndex = 0;
@@ -231,7 +235,7 @@
             // 
             // execuçãoGroupBox
             // 
-            this.execuçãoGroupBox.Controls.Add(this.horaExecuçãoTextBox);
+            this.execuçãoGroupBox.Controls.Add(this.horaExecuçãoMaskedTextBox);
             this.execuçãoGroupBox.Controls.Add(this.label6);
             this.execuçãoGroupBox.Controls.Add(this.idTextBox);
             this.execuçãoGroupBox.Location = new System.Drawing.Point(309, 13);
@@ -244,18 +248,36 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(59, 29);
+            this.label6.Location = new System.Drawing.Point(6, 22);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(33, 13);
+            this.label6.Size = new System.Drawing.Size(93, 13);
             this.label6.TabIndex = 1;
-            this.label6.Text = "Hora:";
+            this.label6.Text = "Hora de Exeução:";
             // 
-            // horaExecuçãoTextBox
+            // horaExecuçãoMaskedTextBox
             // 
-            this.horaExecuçãoTextBox.Location = new System.Drawing.Point(98, 26);
-            this.horaExecuçãoTextBox.Name = "horaExecuçãoTextBox";
-            this.horaExecuçãoTextBox.Size = new System.Drawing.Size(70, 20);
-            this.horaExecuçãoTextBox.TabIndex = 0;
+            this.horaExecuçãoMaskedTextBox.Location = new System.Drawing.Point(101, 19);
+            this.horaExecuçãoMaskedTextBox.Mask = "00:00";
+            this.horaExecuçãoMaskedTextBox.Name = "horaExecuçãoMaskedTextBox";
+            this.horaExecuçãoMaskedTextBox.Size = new System.Drawing.Size(44, 20);
+            this.horaExecuçãoMaskedTextBox.TabIndex = 2;
+            this.horaExecuçãoMaskedTextBox.ValidatingType = typeof(System.DateTime);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(11, 17);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(101, 13);
+            this.label7.TabIndex = 1;
+            this.label7.Text = "Último ID Integrado:";
+            // 
+            // ultimoIdIntegradoTextBox
+            // 
+            this.ultimoIdIntegradoTextBox.Location = new System.Drawing.Point(118, 14);
+            this.ultimoIdIntegradoTextBox.Name = "ultimoIdIntegradoTextBox";
+            this.ultimoIdIntegradoTextBox.Size = new System.Drawing.Size(84, 20);
+            this.ultimoIdIntegradoTextBox.TabIndex = 1;
             // 
             // OnBloxConfigureGUI
             // 
@@ -304,7 +326,9 @@
         private System.Windows.Forms.Button salvarButton;
         private System.Windows.Forms.TextBox idTextBox;
         private System.Windows.Forms.GroupBox execuçãoGroupBox;
-        private System.Windows.Forms.TextBox horaExecuçãoTextBox;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.MaskedTextBox horaExecuçãoMaskedTextBox;
+        private System.Windows.Forms.TextBox ultimoIdIntegradoTextBox;
+        private System.Windows.Forms.Label label7;
     }
 }

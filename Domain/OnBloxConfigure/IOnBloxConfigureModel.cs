@@ -14,5 +14,6 @@ namespace Integrador.Domain.OnBloxConfigure
         string Senha { get; set; }
         string Usuario { get; set; }
         TimeSpan HoraExecucao { get; set; }
+        long ClienteUlimoIdIntegrado { get; set; }
     }
 }
