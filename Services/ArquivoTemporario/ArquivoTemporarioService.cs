@@ -22,7 +22,6 @@ namespace Integrador.Services.ArquivoTemporario
     public class ArquivoTemporarioService
     {
         private EmailModel _emailModel = new EmailModel();
-        private readonly EmailService _emailService;
         private EmailConfigureService _emailConfigureService;
         private readonly EmailConfigureModel _emailConfigureModel;
 

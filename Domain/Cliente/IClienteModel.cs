@@ -19,5 +19,6 @@ namespace Integrador.Domain.Cliente
         string tpDoc { get; set; }
         string uf { get; set; }
         bool integrado { get; set; }
+        long IdOnBlox { get; set; }
     }
 }

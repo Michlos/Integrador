@@ -284,6 +284,10 @@
     <Compile Include="Migrations\20240524171848_AdicionandoUltimoIdIntegradoinOnBloxConfigure.Designer.cs">
       <DependentUpon>20240524171848_AdicionandoUltimoIdIntegradoinOnBloxConfigure.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20240524194455_Inclusao_IdOnBlox_in_ClienteModel.cs" />
+    <Compile Include="Migrations\20240524194455_Inclusao_IdOnBlox_in_ClienteModel.Designer.cs">
+      <DependentUpon>20240524194455_Inclusao_IdOnBlox_in_ClienteModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AppDbContextModelSnapshot.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
