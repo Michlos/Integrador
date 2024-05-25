@@ -44,14 +44,16 @@ namespace Integrador.Services.Email
         private readonly EmailConfigureModel _emailConfigureModel;
         private readonly IEmailRepository _emailRepository;
         private EmailConfigureRepository _emailConfigureRepository = new EmailConfigureRepository(new AppDbContext());
-        private readonly IClienteRepository _clienteRepository;
+        //private readonly IClienteRepository _clienteRepository;
+        private readonly ClienteService _clienteService;
 
         public List<EmailModel> EmailModelList;
         public EmailService(IEmailRepository emailReponsitory, EmailConfigureModel emailConfigureModel)
         {
             _emailRepository = emailReponsitory;
             _emailConfigureModel = emailConfigureModel;
-            _clienteRepository = new ClienteRepository();
+            //_clienteRepository = new ClienteRepository();
+            _clienteService = new ClienteService(new ClienteRepository(new AppDbContext()));
             
 
         }
@@ -149,6 +151,7 @@ namespace Integrador.Services.Email
 
         public void SalvarEmailsNoBancoDeDados(List<EmailModel> lista)
         {
+            EmailModelList = _emailRepository.GetAll();
             foreach (var item in lista)
             {
                 if (EmailModelList.Any(idMail => idMail.IdEmailBox == item.IdEmailBox))
@@ -205,7 +208,7 @@ namespace Integrador.Services.Email
                             if (cli != null && cli.nome != null)
                             {
 
-                                _clienteRepository.Add(cli);
+                                _clienteService.Add(cli);
 
                             }
 

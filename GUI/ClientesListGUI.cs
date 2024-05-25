@@ -1,5 +1,6 @@
 ﻿using Integrador.Domain.Cliente;
 using Integrador.Repository.Cliente;
+using Integrador.Services;
 using Integrador.Services.Cliente;
 using Integrador.WebService;
 
@@ -24,7 +25,7 @@ namespace Integrador.GUI
         public ClientesListGUI()
         {
             InitializeComponent();
-            _clienteService = new ClienteService(new ClienteRepository());
+            _clienteService = new ClienteService(new ClienteRepository(new AppDbContext()));
         }
 
         private void ClientesListGUI_Load(object sender, EventArgs e)

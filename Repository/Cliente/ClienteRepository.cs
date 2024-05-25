@@ -18,9 +18,9 @@ namespace Integrador.Repository.Cliente
         private ClienteModel cliente;
 
 
-        public ClienteRepository()
+        public ClienteRepository(AppDbContext context)
         {
-            _context = new AppDbContext();
+            _context = context;
         }
         public ClienteModel Add(IClienteModel clienteModel)
         {

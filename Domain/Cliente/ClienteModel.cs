@@ -16,6 +16,7 @@ namespace Integrador.Domain.Cliente
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long Id { get; set; }
+        
         [JsonIgnore]
         public long IdOnBlox { get; set; }
         public string nome { get; set; }

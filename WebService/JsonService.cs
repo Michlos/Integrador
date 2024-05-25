@@ -1,9 +1,12 @@
 ﻿using Integrador.Domain.Cliente;
 using Integrador.Domain.EmailConfigure;
 using Integrador.Domain.LogIntegracao;
+using Integrador.Domain.OnBloxConfigure;
+using Integrador.Repository.Cliente;
 using Integrador.Repository.EmailConfigure;
 using Integrador.Repository.OnBloxConfigure;
 using Integrador.Services;
+using Integrador.Services.Cliente;
 using Integrador.Services.EmailConfigure;
 using Integrador.Services.OnBloxConfigure;
 
@@ -15,6 +18,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,20 +28,28 @@ namespace Integrador.WebService
 {
     public class JsonService
     {
-        private static readonly HttpClient client = new HttpClient();
+        private static readonly HttpClient httpClient = new HttpClient();
         private HttpResponseMessage ResponseMessage = new HttpResponseMessage();
         private readonly OnBloxService _onBloxConfigureService;
+        private readonly EmailConfigureService _emailConfigureService;
+        private OnBloxConfigureModel _onBloxConfigureModel;
+        private EmailConfigureModel _emailConfigureModel;
+        private readonly ClienteService _clienteService;
 
         public JsonService()
         {
             _onBloxConfigureService = new OnBloxService(new OnBloxConfigureRepository(new AppDbContext()));
+            _clienteService = new ClienteService(new ClienteRepository(new AppDbContext()));
+            _emailConfigureService = new EmailConfigureService(new EmailConfigureRepository(new AppDbContext()));
+            _onBloxConfigureModel = _onBloxConfigureService.GetOnBloxConfigure();
+            _emailConfigureModel = _emailConfigureService.GetEmailConfigure();
         }
 
         public async void SendData(ClienteModel clienteModel)
         {
             ClienteModel cliEnviar = new ClienteModel()
             {
-                Id = clienteModel.Id,
+                Id = clienteModel.IdOnBlox,
                 nome = clienteModel.nome,
                 codigo = clienteModel.codigo,
                 integracao = clienteModel.integracao,
@@ -54,13 +66,30 @@ namespace Integrador.WebService
 
             };
 
+            //DADOS A SER INTEGRADO
             var json = JsonConvert.SerializeObject(cliEnviar);
-            var data = new StringContent(json, Encoding.UTF8, "application/json");
-            //SaveJsonToFile(json);
+            var dataToSend = new StringContent(json, Encoding.UTF8, "application/json");
+            SaveDataContent(dataToSend);
+
+            //DADOS DE AUTENTICAÇÃO
+            var byteArray = Encoding.ASCII.GetBytes($"{_onBloxConfigureModel.Usuario}:{_onBloxConfigureModel.Senha}");
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
+
+            SaveJsonToFile(json);
 
             try
             {
-                ResponseMessage = await client.PostAsync(_onBloxConfigureService.GetOnBloxConfigure().ClienteURIPost.ToString(), data);
+                //POSTANDO OS DADOS NA API
+                ResponseMessage = await httpClient.PostAsync(_onBloxConfigureService.GetOnBloxConfigure().ClienteURIPost.ToString(), dataToSend);
+
+                //TESTE DE AUTENTICAÇÃO
+                //var responseMessage = await httpClient.GetAsync(_onBloxConfigureModel.ClienteURIPost.ToString());
+
+                //MARCAR O CLIENTE COMO INTEGRADO SE RESPOSTA FOR OK
+                int statusRetorno = (int)ResponseMessage.StatusCode;
+                if (statusRetorno == 200)
+                    _clienteService.SetIntegrado(clienteModel);
+
 
             }
             catch (Exception e)
@@ -71,6 +100,7 @@ namespace Integrador.WebService
             finally
             {
                 SaveLogFile();
+                //SaveJsonToFile();
                 ResponseMessage = null;
             }
 
@@ -89,7 +119,7 @@ namespace Integrador.WebService
 
             try
             {
-                using (StreamWriter file = File.AppendText(@"C:\INTEGRADOR\LogIntegrador.json"))
+                using (StreamWriter file = File.AppendText($@"{_emailConfigureModel.PastaTemporaria}\LogIntegrador.json"))
                 {
                     await file.WriteAsync(json);
 
@@ -115,6 +145,23 @@ namespace Integrador.WebService
             catch (Exception e)
             {
                 throw new Exception($"Erro ao salvar o arquivo JSON. MessageError: {e.Message} InnerException: {e.InnerException}");
+            }
+        }
+
+        public async void SaveDataContent(StringContent data)
+        {
+            var content = data.ReadAsStringAsync().Result;
+            try
+            {
+                using (StreamWriter file = File.CreateText($@"{_emailConfigureModel.PastaTemporaria}\contentdata.txt"))
+                {
+                    await file.WriteAsync(content.ToString());
+
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception($"Erro ao salvar os dados do httcontent: MessageError: {e.Message} InnerException: {e.InnerException}");
             }
         }
     }

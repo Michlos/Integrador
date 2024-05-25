@@ -60,7 +60,6 @@
             this.listaEmailDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listaEmailDataGridView.Location = new System.Drawing.Point(0, 0);
             this.listaEmailDataGridView.Name = "listaEmailDataGridView";
-            this.listaEmailDataGridView.ReadOnly = true;
             this.listaEmailDataGridView.RowHeadersVisible = false;
             this.listaEmailDataGridView.RowHeadersWidth = 100;
             this.listaEmailDataGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
