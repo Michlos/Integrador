@@ -3,17 +3,7 @@ using Integrador.Repository.EmailConfigure;
 using Integrador.Services;
 using Integrador.Services.EmailConfigure;
 
-using Microsoft.EntityFrameworkCore;
-
 using System;
-using System.CodeDom;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Integrador.GUI
@@ -21,7 +11,7 @@ namespace Integrador.GUI
     public partial class EmailConfigureGUI : Form
     {
         private EmailConfigureModel emailConfigureModel;
-        private EmailConfigureService _emailConfigureService;
+        private readonly EmailConfigureService _emailConfigureService;
 
 
 
@@ -34,6 +24,7 @@ namespace Integrador.GUI
         {
             InitializeComponent();
             _emailConfigureService = new EmailConfigureService(new EmailConfigureRepository(new AppDbContext()));
+            this.emailConfigureModel = new EmailConfigureModel();
         }
         private void EmailConfigureGUI_Load(object sender, EventArgs e)
         {
@@ -50,7 +41,7 @@ namespace Integrador.GUI
 
         private void SalvarDadosEmailConfigure()
         {
-            
+            emailConfigureModel = new EmailConfigureModel();
             emailConfigureModel.Email = emailTextBox.Text;
             emailConfigureModel.Senha = senhaTextBox.Text;
             emailConfigureModel.SmtpServer = smtpServerTextBox.Text;
@@ -98,22 +89,26 @@ namespace Integrador.GUI
         }
         private void CarregarCamposEmailConfigure()
         {
+            //emailConfigureModel = new EmailConfigureModel();
             emailConfigureModel = _emailConfigureService.GetEmailConfigure();
+            if (emailConfigureModel != null)
+            {
 
-            emailTextBox.Text = emailConfigureModel.Email;
-            senhaTextBox.Text = emailConfigureModel.Senha;
-            smtpServerTextBox.Text = emailConfigureModel.SmtpServer;
-            smtpPortaTextBox.Text = emailConfigureModel.SmtpPorta.ToString();
-            sslSaidaCheckBox.Checked = emailConfigureModel.SslSaidaHabilitado;
-            entradaServerTextBox.Text = emailConfigureModel.EntradaServer;
-            entradaPortaTextBox.Text = emailConfigureModel.EntradaPorta.ToString();
-            sslEntradaCheckBox.Checked = emailConfigureModel.SslEntradaHabilitado;
-            caixaDeEmailTextBox.Text = emailConfigureModel.CaixaDeEmail; //"INBOX"
-            emailAssuntoTextBox.Text = emailConfigureModel.AssuntoEmail; //Relatório: [TI] Clientes Faturamento executar em XX/XX/XXXX
-            inicioRelatoiroTextBox.Text = emailConfigureModel.InicioRelatorio; //"<!-- Start report output -->"
-            finalRelatorioTextBox.Text = emailConfigureModel.FinalRelatorio;  //"Totais gerais"
-            tagsExtracaoTextBox.Text = emailConfigureModel.TagExtracao; // "//tr//td"
-            pastaTemporairaTextBox.Text = emailConfigureModel.PastaTemporaria;
+                emailTextBox.Text = emailConfigureModel.Email;
+                senhaTextBox.Text = emailConfigureModel.Senha;
+                smtpServerTextBox.Text = emailConfigureModel.SmtpServer;
+                smtpPortaTextBox.Text = emailConfigureModel.SmtpPorta.ToString();
+                sslSaidaCheckBox.Checked = emailConfigureModel.SslSaidaHabilitado;
+                entradaServerTextBox.Text = emailConfigureModel.EntradaServer;
+                entradaPortaTextBox.Text = emailConfigureModel.EntradaPorta.ToString();
+                sslEntradaCheckBox.Checked = emailConfigureModel.SslEntradaHabilitado;
+                caixaDeEmailTextBox.Text = emailConfigureModel.CaixaDeEmail; //"INBOX"
+                emailAssuntoTextBox.Text = emailConfigureModel.AssuntoEmail; //Relatório: [TI] Clientes Faturamento executar em XX/XX/XXXX
+                inicioRelatoiroTextBox.Text = emailConfigureModel.InicioRelatorio; //"<!-- Start report output -->"
+                finalRelatorioTextBox.Text = emailConfigureModel.FinalRelatorio;  //"Totais gerais"
+                tagsExtracaoTextBox.Text = emailConfigureModel.TagExtracao; // "//tr//td"
+                pastaTemporairaTextBox.Text = emailConfigureModel.PastaTemporaria;
+            }
 
         }
 

@@ -1,16 +1,10 @@
 ﻿using Integrador.Domain.Email;
 using Integrador.Domain.EmailConfigure;
 using Integrador.Repository.EmailConfigure;
-using Integrador.Services.Email;
 using Integrador.Services.EmailConfigure;
 
 using System;
-using System.CodeDom;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Integrador.Services.ArquivoTemporario
 {

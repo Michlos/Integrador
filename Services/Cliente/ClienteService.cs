@@ -4,11 +4,7 @@ using Integrador.Repository.Cliente;
 using Integrador.Repository.OnBloxConfigure;
 using Integrador.Services.OnBloxConfigure;
 
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Integrador.Services.Cliente
 {

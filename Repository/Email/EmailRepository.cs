@@ -1,15 +1,12 @@
 ﻿using Integrador.Domain.Email;
 using Integrador.Services;
-using Integrador.Services.Email;
 
 using Microsoft.EntityFrameworkCore;
 
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace Integrador.Repository.Email
 {

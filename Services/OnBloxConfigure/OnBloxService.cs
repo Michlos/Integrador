@@ -1,12 +1,6 @@
 ﻿using Integrador.Domain.OnBloxConfigure;
 using Integrador.Repository.OnBloxConfigure;
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace Integrador.Services.OnBloxConfigure
 {
     public class OnBloxService : IOnBloxConfigureRepository

@@ -6,12 +6,8 @@ using Integrador.WebService;
 
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Integrador.GUI
@@ -19,9 +15,10 @@ namespace Integrador.GUI
     public partial class ClientesListGUI : Form
     {
         private List<ClienteModel> clienteModelList;
-        private ClienteService _clienteService;
+        private readonly ClienteService _clienteService;
         private IEnumerable<ClienteModel> clienteListDGVEnum;
         int indexOfDGV = 0;
+        bool integrado;
         public ClientesListGUI()
         {
             InitializeComponent();
@@ -38,7 +35,7 @@ namespace Integrador.GUI
         {
             clienteListDGVEnum = clienteModelList;
 
-            
+
 
             DataTable tableClientes = ModelaTable();
             ModelaRowTable(tableClientes, clienteListDGVEnum);
@@ -53,7 +50,6 @@ namespace Integrador.GUI
             {
                 foreach (var model in clienteListDGV)
                 {
-                    bool integrado;
                     row = tableClientes.NewRow();
                     row["ClienteId"] = int.Parse(model.Id.ToString());
                     row["Codigo"] = model.codigo;
@@ -88,10 +84,7 @@ namespace Integrador.GUI
             return table;
         }
 
-        private IEnumerable<ClienteModel> ConfiguraDGV(IEnumerable<ClienteModel> clienteListDGV)
-        {
-            throw new NotImplementedException();
-        }
+
 
         private void LerDadosClientesParaDataGridView()
         {
@@ -110,12 +103,11 @@ namespace Integrador.GUI
         private void IntegraButton_Click(object sender, EventArgs e)
         {
             JsonService json = new JsonService();
-            ClienteModel clienteModel = new ClienteModel();
-            clienteModel = _clienteService.GetById(int.Parse(clientesDataGridView.CurrentRow.Cells[0].Value.ToString()));
+            ClienteModel clienteModel = _clienteService.GetById(int.Parse(clientesDataGridView.CurrentRow.Cells[0].Value.ToString()));
             if (clienteModel != null)
             {
                 json.SendData(clienteModel);
-                
+
             }
 
         }

@@ -8,25 +8,15 @@ using Integrador.Repository.Email;
 using Integrador.Repository.EmailConfigure;
 using Integrador.Services.ArquivoTemporario;
 using Integrador.Services.Cliente;
-using Integrador.Services.EmailConfigure;
 
 using MailKit;
 using MailKit.Net.Imap;
 using MailKit.Security;
 
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Identity.Client;
-
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Net;
-using System.Runtime.InteropServices;
-using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Windows.Forms.VisualStyles;
 
 
 namespace Integrador.Services.Email
