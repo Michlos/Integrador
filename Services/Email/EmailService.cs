@@ -234,10 +234,10 @@ namespace Integrador.Services.Email
                 cliente.fone = valuesExtract[5];
                 cliente.cep = int.Parse(valuesExtract[6]);
                 string[] endreco = valuesExtract[7].Split(',');
-                cliente.logradouro = endreco[0];
+                cliente.logradouro = endreco[0].Trim();
                 string[] numero = endreco[1].Split('-');
-                cliente.numero = numero[0];
-                cliente.bairro = endreco[2];
+                cliente.numero = numero[0].Trim();
+                cliente.bairro = endreco[2].Trim();
                 cliente.cidade = valuesExtract[8];
                 cliente.uf = valuesExtract[9];
 
