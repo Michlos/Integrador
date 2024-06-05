@@ -51,7 +51,9 @@ namespace Integrador.GUI
                 ClienteURIPost = uriPostTextBox.Text,
                 BateladaIntegra = integraBateladaCheckBox.Checked,
                 BateladaLocalArquivo = localArquivoTextBox.Text,
-                HoraExecucao = TimeSpan.Parse(horaExecuçãoMaskedTextBox.Text),
+                HoraExecucao01 = TimeSpan.Parse(horaExecução01MaskedTextBox.Text),
+                HoraExecucao02 = TimeSpan.Parse(horaExecução02MaskedTextBox.Text),
+                HoraExecucao03 = TimeSpan.Parse(horaExecução03MaskedTextBox.Text),
                 ClienteUlimoIdIntegrado = long.Parse(ultimoIdIntegradoTextBox.Text)
             };
 
@@ -80,7 +82,9 @@ namespace Integrador.GUI
             _onBloxConfigureModel.ClienteURIPost = uriPostTextBox.Text;
             _onBloxConfigureModel.BateladaIntegra = integraBateladaCheckBox.Checked;
             _onBloxConfigureModel.BateladaLocalArquivo = localArquivoTextBox.Text;
-            _onBloxConfigureModel.HoraExecucao = TimeSpan.Parse(horaExecuçãoMaskedTextBox.Text);
+            _onBloxConfigureModel.HoraExecucao01 = TimeSpan.Parse(horaExecução01MaskedTextBox.Text);
+            _onBloxConfigureModel.HoraExecucao02 = TimeSpan.Parse(horaExecução02MaskedTextBox.Text);
+            _onBloxConfigureModel.HoraExecucao03 = TimeSpan.Parse(horaExecução03MaskedTextBox.Text);
             _onBloxConfigureModel.ClienteUlimoIdIntegrado = long.Parse(ultimoIdIntegradoTextBox.Text);
 
 
@@ -141,7 +145,9 @@ namespace Integrador.GUI
                 uriPostTextBox.Text = _onBloxConfigureModel.ClienteURIPost;
                 integraBateladaCheckBox.Checked = _onBloxConfigureModel.BateladaIntegra;
                 localArquivoTextBox.Text = _onBloxConfigureModel.BateladaLocalArquivo;
-                horaExecuçãoMaskedTextBox.Text = _onBloxConfigureModel.HoraExecucao.ToString();
+                horaExecução01MaskedTextBox.Text = _onBloxConfigureModel.HoraExecucao01.ToString();
+                horaExecução02MaskedTextBox.Text = _onBloxConfigureModel.HoraExecucao02.ToString();
+                horaExecução03MaskedTextBox.Text = _onBloxConfigureModel.HoraExecucao03.ToString();
                 ultimoIdIntegradoTextBox.Text = _onBloxConfigureModel.ClienteUlimoIdIntegrado.ToString();
             }
 

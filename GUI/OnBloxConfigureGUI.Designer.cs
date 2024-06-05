@@ -50,8 +50,12 @@
             this.salvarButton = new System.Windows.Forms.Button();
             this.idTextBox = new System.Windows.Forms.TextBox();
             this.execuçãoGroupBox = new System.Windows.Forms.GroupBox();
-            this.horaExecuçãoMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.horaExecução01MaskedTextBox = new System.Windows.Forms.MaskedTextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.horaExecução02MaskedTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.horaExecução03MaskedTextBox = new System.Windows.Forms.MaskedTextBox();
             this.clientesGroupBox.SuspendLayout();
             this.bateladaGroupBox.SuspendLayout();
             this.userGroupBox.SuspendLayout();
@@ -69,7 +73,7 @@
             this.clientesGroupBox.Controls.Add(this.label1);
             this.clientesGroupBox.Controls.Add(this.integraClienteCheckBox);
             this.clientesGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clientesGroupBox.Location = new System.Drawing.Point(12, 119);
+            this.clientesGroupBox.Location = new System.Drawing.Point(13, 152);
             this.clientesGroupBox.Name = "clientesGroupBox";
             this.clientesGroupBox.Size = new System.Drawing.Size(496, 110);
             this.clientesGroupBox.TabIndex = 2;
@@ -142,7 +146,7 @@
             this.bateladaGroupBox.Controls.Add(this.label2);
             this.bateladaGroupBox.Controls.Add(this.integraBateladaCheckBox);
             this.bateladaGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bateladaGroupBox.Location = new System.Drawing.Point(12, 248);
+            this.bateladaGroupBox.Location = new System.Drawing.Point(13, 281);
             this.bateladaGroupBox.Name = "bateladaGroupBox";
             this.bateladaGroupBox.Size = new System.Drawing.Size(496, 93);
             this.bateladaGroupBox.TabIndex = 3;
@@ -233,7 +237,7 @@
             // 
             // salvarButton
             // 
-            this.salvarButton.Location = new System.Drawing.Point(433, 357);
+            this.salvarButton.Location = new System.Drawing.Point(434, 390);
             this.salvarButton.Name = "salvarButton";
             this.salvarButton.Size = new System.Drawing.Size(75, 23);
             this.salvarButton.TabIndex = 4;
@@ -243,7 +247,7 @@
             // 
             // idTextBox
             // 
-            this.idTextBox.Location = new System.Drawing.Point(101, 55);
+            this.idTextBox.Location = new System.Drawing.Point(14, 392);
             this.idTextBox.Name = "idTextBox";
             this.idTextBox.Size = new System.Drawing.Size(67, 20);
             this.idTextBox.TabIndex = 0;
@@ -251,41 +255,81 @@
             // 
             // execuçãoGroupBox
             // 
-            this.execuçãoGroupBox.Controls.Add(this.horaExecuçãoMaskedTextBox);
+            this.execuçãoGroupBox.Controls.Add(this.horaExecução03MaskedTextBox);
+            this.execuçãoGroupBox.Controls.Add(this.label9);
+            this.execuçãoGroupBox.Controls.Add(this.horaExecução02MaskedTextBox);
+            this.execuçãoGroupBox.Controls.Add(this.label8);
+            this.execuçãoGroupBox.Controls.Add(this.horaExecução01MaskedTextBox);
             this.execuçãoGroupBox.Controls.Add(this.label6);
-            this.execuçãoGroupBox.Controls.Add(this.idTextBox);
             this.execuçãoGroupBox.Location = new System.Drawing.Point(309, 13);
             this.execuçãoGroupBox.Name = "execuçãoGroupBox";
-            this.execuçãoGroupBox.Size = new System.Drawing.Size(199, 88);
+            this.execuçãoGroupBox.Size = new System.Drawing.Size(199, 133);
             this.execuçãoGroupBox.TabIndex = 1;
             this.execuçãoGroupBox.TabStop = false;
             this.execuçãoGroupBox.Text = "Configuração de Execução";
             // 
-            // horaExecuçãoMaskedTextBox
+            // horaExecução01MaskedTextBox
             // 
-            this.horaExecuçãoMaskedTextBox.Location = new System.Drawing.Point(101, 19);
-            this.horaExecuçãoMaskedTextBox.Mask = "00:00";
-            this.horaExecuçãoMaskedTextBox.Name = "horaExecuçãoMaskedTextBox";
-            this.horaExecuçãoMaskedTextBox.Size = new System.Drawing.Size(44, 20);
-            this.horaExecuçãoMaskedTextBox.TabIndex = 0;
-            this.horaExecuçãoMaskedTextBox.ValidatingType = typeof(System.DateTime);
+            this.horaExecução01MaskedTextBox.Location = new System.Drawing.Point(101, 19);
+            this.horaExecução01MaskedTextBox.Mask = "00:00";
+            this.horaExecução01MaskedTextBox.Name = "horaExecução01MaskedTextBox";
+            this.horaExecução01MaskedTextBox.Size = new System.Drawing.Size(44, 20);
+            this.horaExecução01MaskedTextBox.TabIndex = 0;
+            this.horaExecução01MaskedTextBox.ValidatingType = typeof(System.DateTime);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 22);
+            this.label6.Location = new System.Drawing.Point(36, 22);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(93, 13);
+            this.label6.Size = new System.Drawing.Size(59, 13);
             this.label6.TabIndex = 1;
-            this.label6.Text = "Hora de Exeução:";
+            this.label6.Text = "Horário 01:";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(36, 48);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(59, 13);
+            this.label8.TabIndex = 1;
+            this.label8.Text = "Horário 02:";
+            // 
+            // horaExecução02MaskedTextBox
+            // 
+            this.horaExecução02MaskedTextBox.Location = new System.Drawing.Point(101, 45);
+            this.horaExecução02MaskedTextBox.Mask = "00:00";
+            this.horaExecução02MaskedTextBox.Name = "horaExecução02MaskedTextBox";
+            this.horaExecução02MaskedTextBox.Size = new System.Drawing.Size(44, 20);
+            this.horaExecução02MaskedTextBox.TabIndex = 0;
+            this.horaExecução02MaskedTextBox.ValidatingType = typeof(System.DateTime);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(36, 74);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(59, 13);
+            this.label9.TabIndex = 1;
+            this.label9.Text = "Horário 03:";
+            // 
+            // horaExecução03MaskedTextBox
+            // 
+            this.horaExecução03MaskedTextBox.Location = new System.Drawing.Point(101, 71);
+            this.horaExecução03MaskedTextBox.Mask = "00:00";
+            this.horaExecução03MaskedTextBox.Name = "horaExecução03MaskedTextBox";
+            this.horaExecução03MaskedTextBox.Size = new System.Drawing.Size(44, 20);
+            this.horaExecução03MaskedTextBox.TabIndex = 0;
+            this.horaExecução03MaskedTextBox.ValidatingType = typeof(System.DateTime);
             // 
             // OnBloxConfigureGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(521, 392);
+            this.ClientSize = new System.Drawing.Size(521, 424);
             this.Controls.Add(this.execuçãoGroupBox);
             this.Controls.Add(this.salvarButton);
+            this.Controls.Add(this.idTextBox);
             this.Controls.Add(this.userGroupBox);
             this.Controls.Add(this.bateladaGroupBox);
             this.Controls.Add(this.clientesGroupBox);
@@ -301,6 +345,7 @@
             this.execuçãoGroupBox.ResumeLayout(false);
             this.execuçãoGroupBox.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -327,8 +372,12 @@
         private System.Windows.Forms.TextBox idTextBox;
         private System.Windows.Forms.GroupBox execuçãoGroupBox;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.MaskedTextBox horaExecuçãoMaskedTextBox;
+        private System.Windows.Forms.MaskedTextBox horaExecução01MaskedTextBox;
         private System.Windows.Forms.TextBox ultimoIdIntegradoTextBox;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.MaskedTextBox horaExecução03MaskedTextBox;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.MaskedTextBox horaExecução02MaskedTextBox;
+        private System.Windows.Forms.Label label8;
     }
 }

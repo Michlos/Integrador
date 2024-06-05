@@ -1,6 +1,7 @@
 ﻿using Integrador.Domain.Email;
 using Integrador.Domain.EmailConfigure;
 using Integrador.Repository.Email;
+using Integrador.Services;
 using Integrador.Services.Email;
 
 using System;
@@ -22,7 +23,7 @@ namespace Integrador.GUI
         public MailViewGUI(EmailConfigureModel emailConfigureModel)
         {
             _emailConfigureModel = emailConfigureModel;
-            _emailReponsitory = new EmailRepository(new EmailModel());
+            _emailReponsitory = new EmailRepository(new AppDbContext());
             EmailListData = new List<EmailModel>();
             InitializeComponent();
 

@@ -44,7 +44,7 @@ namespace Integrador.Services.Email
             _emailConfigureModel = emailConfigureModel;
             //_clienteRepository = new ClienteRepository();
             _clienteService = new ClienteService(new ClienteRepository(new AppDbContext()));
-            
+
 
         }
 
@@ -141,14 +141,25 @@ namespace Integrador.Services.Email
 
         public void SalvarEmailsNoBancoDeDados(List<EmailModel> lista)
         {
+
             EmailModelList = _emailRepository.GetAll();
-            foreach (var item in lista)
+            try
             {
-                if (EmailModelList.Any(idMail => idMail.IdEmailBox == item.IdEmailBox))
+                foreach (var item in lista)
                 {
-                    _emailRepository.Add(item);
+                    if (!EmailModelList.Any(em => em.IdEmailBox == item.IdEmailBox))
+                    {
+                        _emailRepository.Add(item);
+                    }
+
                 }
             }
+            catch (Exception e)
+            {
+                throw new Exception($"Ocorreu um proglema ao tentar salvar os e-mails no banco de dados.\nMessage Error: {e.Message}" +
+                    $"\nInnerException: {e.InnerException}");
+            }
+
         }
 
         public void SalvarClienteNoBanco()

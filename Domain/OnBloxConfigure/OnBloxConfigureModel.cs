@@ -12,7 +12,10 @@ namespace Integrador.Domain.OnBloxConfigure
         public string Senha { get; set; }
 
         //HORA DE EXECUÇÃO
-        public TimeSpan HoraExecucao { get; set; }
+        public TimeSpan HoraExecucao01 { get; set; }
+        public TimeSpan HoraExecucao02 { get; set; }
+        public TimeSpan HoraExecucao03 { get; set; }
+
 
         //INTEGRAÇÃO DE CLIENTES
         public long ClienteUlimoIdIntegrado { get; set; }

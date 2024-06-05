@@ -49,7 +49,7 @@ namespace Integrador.WebService
         {
             ClienteModel cliEnviar = new ClienteModel()
             {
-                Id = clienteModel.IdOnBlox,
+                
                 nome = clienteModel.nome,
                 codigo = clienteModel.codigo,
                 integracao = clienteModel.integracao,
@@ -72,8 +72,11 @@ namespace Integrador.WebService
             SaveDataContent(dataToSend);
 
             //DADOS DE AUTENTICAÇÃO
-            var byteArray = Encoding.ASCII.GetBytes($"{_onBloxConfigureModel.Usuario}:{_onBloxConfigureModel.Senha}");
-            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
+            if (!string.IsNullOrEmpty(_onBloxConfigureModel.Usuario))
+            {
+                var byteArray = Encoding.ASCII.GetBytes($"{_onBloxConfigureModel.Usuario}:{_onBloxConfigureModel.Senha}");
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
+            }
 
             SaveJsonToFile(json);
 
@@ -99,7 +102,7 @@ namespace Integrador.WebService
             }
             finally
             {
-                SaveLogFile();
+                SaveLogFile(json);
                 //SaveJsonToFile();
                 ResponseMessage = null;
             }
@@ -108,27 +111,29 @@ namespace Integrador.WebService
 
         }
 
-        private async void SaveLogFile()
+        private async void SaveLogFile(string json)
         {
             LogIntegracao logIntegracao = new LogIntegracao()
             {
                 Codigo = (int)ResponseMessage.StatusCode,
+                DadosEnviados = json,
                 Mensagem = ResponseMessage.ReasonPhrase
             };
-            string json = JsonConvert.SerializeObject(logIntegracao, Formatting.Indented);
+
+            string logSerializado = JsonConvert.SerializeObject(logIntegracao, Formatting.Indented);
 
             try
             {
                 using (StreamWriter file = File.AppendText($@"{_emailConfigureModel.PastaTemporaria}\LogIntegrador.json"))
                 {
-                    await file.WriteAsync(json);
+                    await file.WriteAsync("\n" + logSerializado);
 
                 }
             }
             catch (Exception e)
             {
 
-                throw new Exception($"Erro ao salvar o arquivo de Log. MessageError: {e.Message} / InnerException: {e.InnerException}");
+                throw new Exception($"Erro ao salvar o arquivo de Log. MessageError: {e.Message} \n InnerException: {e.InnerException}");
             }
         }
 

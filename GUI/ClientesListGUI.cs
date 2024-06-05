@@ -107,6 +107,7 @@ namespace Integrador.GUI
             if (clienteModel != null)
             {
                 json.SendData(clienteModel);
+                clientesDataGridView.InvalidateRow(indexOfDGV);
 
             }
 

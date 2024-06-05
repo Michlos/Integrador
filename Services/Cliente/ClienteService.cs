@@ -30,6 +30,11 @@ namespace Integrador.Services.Cliente
             return _clienteRepository.Add(clienteModel);
         }
 
+        public bool ClienteExists(string codigo)
+        {
+            return _clienteRepository.ClienteExists(codigo);
+        }
+
         public IEnumerable<IClienteModel> GetAll()
         {
             return _clienteRepository.GetAll();

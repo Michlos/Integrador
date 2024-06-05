@@ -15,9 +15,9 @@ namespace Integrador.Repository.Email
         private readonly AppDbContext _context;
         private EmailModel emailModel;
 
-        public EmailRepository(EmailModel model)
+        public EmailRepository(AppDbContext context)
         {
-            _context = new AppDbContext();
+            _context = context;
         }
 
         //TRATAMENTO DE DADOS NO BANCO DE DADOS
@@ -26,6 +26,7 @@ namespace Integrador.Repository.Email
             emailModel = new EmailModel();
             emailModel = model as EmailModel;
             _context.Email.Add(emailModel);
+            _context.SaveChanges();
             return emailModel;
         }
 

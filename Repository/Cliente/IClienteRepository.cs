@@ -15,5 +15,6 @@ namespace Integrador.Repository.Cliente
 
         ClienteModel GetById(int id);
         ClienteModel SetIntegrado(ClienteModel clienteModel);
+        bool ClienteExists(string codigo);
     }
 }

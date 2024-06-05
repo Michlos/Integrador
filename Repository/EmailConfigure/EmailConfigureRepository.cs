@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace Integrador.Repository.EmailConfigure
 {
-    internal class EmailConfigureRepository : IEmailConfigureRepository
+    public class EmailConfigureRepository : IEmailConfigureRepository
     {
         private readonly AppDbContext _context;
 

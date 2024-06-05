@@ -27,6 +27,11 @@ namespace Integrador.Repository.Cliente
             return cliente;
         }
 
+        public bool ClienteExists(string codigo)
+        {
+            return _context.Cliente.Any(cli => cli.codigo == codigo);
+        }
+
         public IEnumerable<IClienteModel> GetAll()
         {
             List<ClienteModel> list = new List<ClienteModel>();
