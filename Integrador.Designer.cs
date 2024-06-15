@@ -36,9 +36,10 @@
             this.sistemasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.onBloxToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.napisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bancoDeDadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.mainPanel = new System.Windows.Forms.Panel();
-            this.bancoDeDadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.executarServiçoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -72,7 +73,8 @@
             this.configuraçãoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.emailToolStripMenuItem,
             this.sistemasToolStripMenuItem,
-            this.bancoDeDadosToolStripMenuItem});
+            this.bancoDeDadosToolStripMenuItem,
+            this.executarServiçoToolStripMenuItem});
             this.configuraçãoToolStripMenuItem.Name = "configuraçãoToolStripMenuItem";
             this.configuraçãoToolStripMenuItem.Size = new System.Drawing.Size(96, 20);
             this.configuraçãoToolStripMenuItem.Text = "&Configurações";
@@ -97,15 +99,21 @@
             // 
             this.onBloxToolStripMenuItem.Enabled = false;
             this.onBloxToolStripMenuItem.Name = "onBloxToolStripMenuItem";
-            this.onBloxToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.onBloxToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
             this.onBloxToolStripMenuItem.Text = "&Napis";
             // 
             // napisToolStripMenuItem
             // 
             this.napisToolStripMenuItem.Name = "napisToolStripMenuItem";
-            this.napisToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.napisToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
             this.napisToolStripMenuItem.Text = "&OnBlox";
             this.napisToolStripMenuItem.Click += new System.EventHandler(this.napisToolStripMenuItem_Click);
+            // 
+            // bancoDeDadosToolStripMenuItem
+            // 
+            this.bancoDeDadosToolStripMenuItem.Name = "bancoDeDadosToolStripMenuItem";
+            this.bancoDeDadosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.bancoDeDadosToolStripMenuItem.Text = "&Banco de Dados";
             // 
             // statusStrip1
             // 
@@ -124,11 +132,12 @@
             this.mainPanel.Size = new System.Drawing.Size(800, 404);
             this.mainPanel.TabIndex = 2;
             // 
-            // bancoDeDadosToolStripMenuItem
+            // executarServiçoToolStripMenuItem
             // 
-            this.bancoDeDadosToolStripMenuItem.Name = "bancoDeDadosToolStripMenuItem";
-            this.bancoDeDadosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.bancoDeDadosToolStripMenuItem.Text = "&Banco de Dados";
+            this.executarServiçoToolStripMenuItem.Name = "executarServiçoToolStripMenuItem";
+            this.executarServiçoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.executarServiçoToolStripMenuItem.Text = "ExecutarServiço";
+            this.executarServiçoToolStripMenuItem.Click += new System.EventHandler(this.executarServiçoToolStripMenuItem_Click);
             // 
             // Integrador
             // 
@@ -161,5 +170,6 @@
         private System.Windows.Forms.Panel mainPanel;
         private System.Windows.Forms.ToolStripMenuItem napisToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem bancoDeDadosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem executarServiçoToolStripMenuItem;
     }
 }

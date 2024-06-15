@@ -19,6 +19,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Net.Security;
 using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
@@ -43,13 +44,16 @@ namespace Integrador.WebService
             _emailConfigureService = new EmailConfigureService(new EmailConfigureRepository(new AppDbContext()));
             _onBloxConfigureModel = _onBloxConfigureService.GetOnBloxConfigure();
             _emailConfigureModel = _emailConfigureService.GetEmailConfigure();
+
+            //IGNORA A VALIDAÇÃO DO CERTIFICADO SSL
+            ServicePointManager.ServerCertificateValidationCallback += (sender, cert, chain, SslPolicyErrors) => true;
         }
 
         public async void SendData(ClienteModel clienteModel)
         {
             ClienteModel cliEnviar = new ClienteModel()
             {
-                
+                Id = clienteModel.Id,
                 nome = clienteModel.nome,
                 codigo = clienteModel.codigo,
                 integracao = clienteModel.integracao,
@@ -83,13 +87,17 @@ namespace Integrador.WebService
             try
             {
                 //POSTANDO OS DADOS NA API
-                ResponseMessage = await httpClient.PostAsync(_onBloxConfigureService.GetOnBloxConfigure().ClienteURIPost.ToString(), dataToSend);
+                var responseMessage = httpClient.PostAsync(_onBloxConfigureService.GetOnBloxConfigure().ClienteURIPost.ToString(), 
+                    dataToSend).GetAwaiter().GetResult();
+                if(responseMessage != null)
+                    ResponseMessage = responseMessage;
+
 
                 //TESTE DE AUTENTICAÇÃO
                 //var responseMessage = await httpClient.GetAsync(_onBloxConfigureModel.ClienteURIPost.ToString());
 
                 //MARCAR O CLIENTE COMO INTEGRADO SE RESPOSTA FOR OK
-                int statusRetorno = (int)ResponseMessage.StatusCode;
+                int statusRetorno = (int)responseMessage.StatusCode;
                 if (statusRetorno == 200)
                     _clienteService.SetIntegrado(clienteModel);
 
@@ -121,19 +129,22 @@ namespace Integrador.WebService
             };
 
             string logSerializado = JsonConvert.SerializeObject(logIntegracao, Formatting.Indented);
-
+            StreamWriter file = null;
             try
             {
-                using (StreamWriter file = File.AppendText($@"{_emailConfigureModel.PastaTemporaria}\LogIntegrador.json"))
-                {
-                    await file.WriteAsync("\n" + logSerializado);
-
-                }
+                file = File.AppendText($@"{_emailConfigureModel.PastaTemporaria}\LogIntegrador.json");
+                await file.WriteAsync("\n" + logSerializado);
             }
             catch (Exception e)
             {
-
                 throw new Exception($"Erro ao salvar o arquivo de Log. MessageError: {e.Message} \n InnerException: {e.InnerException}");
+            }
+            finally
+            {
+                if (file != null)
+                {
+                    file.Close();
+                }
             }
         }
 
@@ -155,12 +166,18 @@ namespace Integrador.WebService
 
         public async void SaveDataContent(StringContent data)
         {
-            var content = data.ReadAsStringAsync().Result;
+            var content = await data.ReadAsStringAsync();
             try
             {
-                using (StreamWriter file = File.CreateText($@"{_emailConfigureModel.PastaTemporaria}\contentdata.txt"))
+                string path = $@"{_emailConfigureModel.PastaTemporaria}\contentdata.txt";
+
+                using (FileStream stream = new FileStream(path, FileMode.OpenOrCreate, FileAccess.Write, FileShare.None))
                 {
-                    await file.WriteAsync(content.ToString());
+                    using (StreamWriter file = new StreamWriter(stream))
+                    {
+                        await file.WriteAsync(content);
+                    }
+                    
 
                 }
             }

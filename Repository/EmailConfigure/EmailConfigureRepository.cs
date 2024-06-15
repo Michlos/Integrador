@@ -33,8 +33,16 @@ namespace Integrador.Repository.EmailConfigure
         public EmailConfigureModel Update(IEmailConfigureModel configure)
         {
             var emailConfigureModel = configure as EmailConfigureModel;
-            _context.Entry(emailConfigureModel).State = EntityState.Modified;
-            _context.SaveChanges();
+            
+            //BUSCA A ENTIDADE NO BANCO DE DADOS
+            var existingEntity = _context.EmailConfigure.Find(emailConfigureModel.Id);
+
+            //SE A ENTIDADE EXISTIR ATUALIZA OS VALORES
+            if (existingEntity != null)
+            {
+                _context.Entry(existingEntity).CurrentValues.SetValues(emailConfigureModel);
+                _context.SaveChanges();
+            }
             return emailConfigureModel;
 
         }

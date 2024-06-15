@@ -1,6 +1,7 @@
 ﻿using Integrador.GUI;
 using Integrador.Repository.EmailConfigure;
 
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -49,6 +50,11 @@ namespace Integrador
             //Chamando o formulário OnBloxConfigureGUI no mainPainel
             mainPanel.Controls.Add(onBloxConfigureGUI);
             onBloxConfigureGUI.Show();
+        }
+
+        private void executarServiçoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

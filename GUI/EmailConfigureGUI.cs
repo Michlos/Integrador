@@ -12,6 +12,7 @@ namespace Integrador.GUI
     {
         private EmailConfigureModel emailConfigureModel;
         private readonly EmailConfigureService _emailConfigureService;
+        private int emailConfigId = 0;
 
 
 
@@ -59,8 +60,9 @@ namespace Integrador.GUI
 
 
 
-            if (emailConfigureModel.Id != 0)
+            if (emailConfigId != 0)
             {
+                emailConfigureModel.Id = emailConfigId;
                 _emailConfigureService.Update(emailConfigureModel);
                 MessageBox.Show("Configuração de E-Mail salva com sucesso!");
 
@@ -93,7 +95,7 @@ namespace Integrador.GUI
             emailConfigureModel = _emailConfigureService.GetEmailConfigure();
             if (emailConfigureModel != null)
             {
-
+                emailConfigId = emailConfigureModel.Id;
                 emailTextBox.Text = emailConfigureModel.Email;
                 senhaTextBox.Text = emailConfigureModel.Senha;
                 smtpServerTextBox.Text = emailConfigureModel.SmtpServer;

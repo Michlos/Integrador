@@ -4,6 +4,7 @@ namespace Integrador.Domain.Cliente
 {
     public interface IClienteModel
     {
+        long IdOnBlox { get; set; }
         string bairro { get; set; }
         int cep { get; set; }
         string cgc { get; set; }
@@ -19,6 +20,7 @@ namespace Integrador.Domain.Cliente
         string tpDoc { get; set; }
         string uf { get; set; }
         bool integrado { get; set; }
-        long IdOnBlox { get; set; }
+        DateTime DataCriacao { get; set; }
+        DateTime DataIntegracao { get; set; }
     }
 }

@@ -164,14 +164,14 @@ namespace Integrador.Services.Email
 
         public void SalvarClienteNoBanco()
         {
-            List<EmailModel> emailModelList;
+            List<EmailModel> emailList = new List<EmailModel>();
 
-            emailModelList = _emailRepository.GetAll();
+            emailList = _emailRepository.GetAll();
             string[] valuesExtract = new string[10];
 
             try
             {
-                foreach (var mail in emailModelList)
+                foreach (var mail in emailList)
                 {
                     //verifica se já foi extraido ou não
                     if (!mail.Integrado)
