@@ -107,10 +107,31 @@ namespace Integrador.GUI
             if (clienteModel != null)
             {
                 json.SendData(clienteModel);
+                //_clienteService.SetIntegrado(clienteModel);
                 clientesDataGridView.InvalidateRow(indexOfDGV);
 
             }
 
+        }
+
+        private void integraTodosButton_Click(object sender, EventArgs e)
+        {
+            JsonService json = new JsonService();
+            foreach (DataGridViewRow row in clientesDataGridView.Rows)
+            {
+                if (!row.IsNewRow)
+                {
+                    ClienteModel clienteModel =
+                        _clienteService.GetById(int.Parse(row.Cells[0].Value.ToString()));
+
+                    if (clienteModel != null)
+                    {
+                        json.SendData(clienteModel);
+                        _clienteService.SetIntegrado(clienteModel);
+                    }
+                }
+            }
+            clientesDataGridView.Invalidate();
         }
     }
 }

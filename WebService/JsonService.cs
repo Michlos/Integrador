@@ -66,7 +66,8 @@ namespace Integrador.WebService
                 numero = clienteModel.numero,
                 bairro = clienteModel.bairro,
                 cidade = clienteModel.cidade,
-                uf = clienteModel.uf
+                uf = clienteModel.uf,
+                DataIntegracao = DateTime.Now
 
             };
 
@@ -87,9 +88,9 @@ namespace Integrador.WebService
             try
             {
                 //POSTANDO OS DADOS NA API
-                var responseMessage = httpClient.PostAsync(_onBloxConfigureService.GetOnBloxConfigure().ClienteURIPost.ToString(), 
+                var responseMessage = httpClient.PostAsync(_onBloxConfigureService.GetOnBloxConfigure().ClienteURIPost.ToString(),
                     dataToSend).GetAwaiter().GetResult();
-                if(responseMessage != null)
+                if (responseMessage != null)
                     ResponseMessage = responseMessage;
 
 
@@ -99,7 +100,11 @@ namespace Integrador.WebService
                 //MARCAR O CLIENTE COMO INTEGRADO SE RESPOSTA FOR OK
                 int statusRetorno = (int)responseMessage.StatusCode;
                 if (statusRetorno == 200)
+                {
+                    clienteModel.DataIntegracao = DateTime.Now;
                     _clienteService.SetIntegrado(clienteModel);
+
+                }
 
 
             }
@@ -177,7 +182,7 @@ namespace Integrador.WebService
                     {
                         await file.WriteAsync(content);
                     }
-                    
+
 
                 }
             }

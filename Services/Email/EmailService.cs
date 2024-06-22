@@ -8,6 +8,7 @@ using Integrador.Repository.Email;
 using Integrador.Repository.EmailConfigure;
 using Integrador.Services.ArquivoTemporario;
 using Integrador.Services.Cliente;
+using Integrador.Services.EmailConfigure;
 
 using MailKit;
 using MailKit.Net.Imap;
@@ -17,6 +18,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 
 namespace Integrador.Services.Email
@@ -36,6 +38,7 @@ namespace Integrador.Services.Email
         private EmailConfigureRepository _emailConfigureRepository = new EmailConfigureRepository(new AppDbContext());
         //private readonly IClienteRepository _clienteRepository;
         private readonly ClienteService _clienteService;
+        private readonly EmailConfigureService _emailConfigureService;
 
         public List<EmailModel> EmailModelList;
         public EmailService(IEmailRepository emailReponsitory, EmailConfigureModel emailConfigureModel)
@@ -44,6 +47,7 @@ namespace Integrador.Services.Email
             _emailConfigureModel = emailConfigureModel;
             //_clienteRepository = new ClienteRepository();
             _clienteService = new ClienteService(new ClienteRepository(new AppDbContext()));
+            _emailConfigureService = new EmailConfigureService(_emailConfigureRepository);
 
 
         }
@@ -125,6 +129,7 @@ namespace Integrador.Services.Email
 
             foreach (var item in folder)
             {
+
                 emailModelList.Add(
                     new EmailModel()
                     {
@@ -135,7 +140,8 @@ namespace Integrador.Services.Email
                         ConteudoHtml = item.HtmlBody
                     });
             }
-            emailModelList = emailModelList.Where(sub => sub.Assunto.Contains(assunto)).ToList();
+            
+            emailModelList = emailModelList.Where(sub => sub.Assunto != null && sub.Assunto.Contains(assunto)).ToList();
             return emailModelList;
         }
 
@@ -177,7 +183,7 @@ namespace Integrador.Services.Email
                     if (!mail.Integrado)
                     {
                         ArquivoTemporarioService _arquivoTemporario = new ArquivoTemporarioService(mail);
-                        var lines = _arquivoTemporario.RetornaLInhas();
+                        var lines = _arquivoTemporario.RetornaLInhas(_emailConfigureService);
                         var indice = _arquivoTemporario.GetIndice(lines);
                         for (int indiceLines = indice.inicio; indiceLines < indice.fim; indiceLines++)
                         {
@@ -187,9 +193,14 @@ namespace Integrador.Services.Email
                             int indextExtrat = 0;
                             foreach (var node in htmlNodes)
                             {
+                                
                                 if (indextExtrat < valuesExtract.Length)
                                 {
                                     valuesExtract[indextExtrat] = node.InnerText;
+                                    if(valuesExtract[indextExtrat] == "MARIZA AGUAS MINERAIS LTDA")
+                                    {
+                                        
+                                    }
                                     indextExtrat++;
 
                                 }
@@ -226,6 +237,7 @@ namespace Integrador.Services.Email
 
                 throw new Exception($"ErrorMessage: {e.Message}", e.InnerException);
             }
+
         }
 
 
@@ -243,7 +255,9 @@ namespace Integrador.Services.Email
                 cliente.cgc = cliente.tpDoc.ToString() == "CPF" ? valuesExtract[3].ToString().Substring(3, 11) : valuesExtract[3].ToString().Substring(3, 14);
                 cliente.fantasia = valuesExtract[4];
                 cliente.fone = valuesExtract[5];
-                cliente.cep = int.Parse(valuesExtract[6]);
+                string cep = valuesExtract[6];
+                cep = cep.Replace(".", "").Replace("-", "");
+                cliente.cep = int.Parse(cep);
                 string[] endreco = valuesExtract[7].Split(',');
                 cliente.logradouro = endreco[0].Trim();
                 string[] numero = endreco[1].Split('-');

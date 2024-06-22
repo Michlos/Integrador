@@ -26,11 +26,11 @@ namespace Integrador.Services.ArquivoTemporario
             _emailConfigureModel = _emailConfigureService.GetEmailConfigure();
         }
 
-        public String[] RetornaLInhas()
+        public String[] RetornaLInhas(EmailConfigureService emailConfigService)
         {
-            _emailConfigureService = new EmailConfigureService(new EmailConfigureRepository(new AppDbContext()));
+            //_emailConfigureService = new EmailConfigureService(new EmailConfigureRepository(new AppDbContext()));
             //CRIA ARQUIVO PARA RECEBER O CORPO DO E-MAIL
-            string caminhoDoArquivo = _emailConfigureService.GetEmailConfigure().PastaTemporaria;
+            string caminhoDoArquivo = emailConfigService.GetEmailConfigure().PastaTemporaria;
 
             //CRIA O ARQUIVO TEMPORÁRIO
             StreamWriter sw = new StreamWriter($@"{caminhoDoArquivo}\Temp.txt");

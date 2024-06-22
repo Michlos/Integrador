@@ -25,6 +25,10 @@ namespace Integrador.Services.Cliente
         public ClienteModel Add(IClienteModel clienteModel)
         {
 
+            if (_clienteRepository.ClienteExists(clienteModel.codigo))
+            {
+                return null;
+            }
             clienteModel.IdOnBlox = _onBloxService.SetarUltimoIdIntegrado(++_onBloxConfigureModel.ClienteUlimoIdIntegrado);
         
             return _clienteRepository.Add(clienteModel);
