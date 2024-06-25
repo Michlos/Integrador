@@ -53,7 +53,9 @@ namespace Integrador.WebService
         {
             ClienteModel cliEnviar = new ClienteModel()
             {
-                Id = clienteModel.Id,
+
+                //CONVERTE O CODIGO DO CLIENTE EM ID PARA INTEGRAR NO ONBLOX
+                Id = long.Parse(clienteModel.codigo),
                 nome = clienteModel.nome,
                 codigo = clienteModel.codigo,
                 integracao = clienteModel.integracao,
@@ -74,6 +76,7 @@ namespace Integrador.WebService
             //DADOS A SER INTEGRADO
             var json = JsonConvert.SerializeObject(cliEnviar);
             var dataToSend = new StringContent(json, Encoding.UTF8, "application/json");
+            var uriString = _onBloxConfigureModel.ClienteURIPost.ToString();
             SaveDataContent(dataToSend);
 
             //DADOS DE AUTENTICAÇÃO
@@ -87,15 +90,15 @@ namespace Integrador.WebService
 
             try
             {
+                //TESTE DE AUTENTICAÇÃO
+                var responseMessageLogin = await httpClient.GetAsync(uriString);
+                
                 //POSTANDO OS DADOS NA API
-                var responseMessage = httpClient.PostAsync(_onBloxConfigureService.GetOnBloxConfigure().ClienteURIPost.ToString(),
-                    dataToSend).GetAwaiter().GetResult();
+                var responseMessage = httpClient.PostAsync(uriString, dataToSend).GetAwaiter().GetResult();
                 if (responseMessage != null)
                     ResponseMessage = responseMessage;
 
 
-                //TESTE DE AUTENTICAÇÃO
-                //var responseMessage = await httpClient.GetAsync(_onBloxConfigureModel.ClienteURIPost.ToString());
 
                 //MARCAR O CLIENTE COMO INTEGRADO SE RESPOSTA FOR OK
                 int statusRetorno = (int)responseMessage.StatusCode;

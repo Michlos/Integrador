@@ -1,5 +1,6 @@
 ﻿using Integrador.Domain.Cliente;
 using Integrador.Services;
+using Integrador.Services.Cliente;
 
 using Microsoft.EntityFrameworkCore;
 
@@ -45,9 +46,16 @@ namespace Integrador.Repository.Cliente
             return cliente;
         }
 
+        public ClienteModel GetByCodigo(string codigo)
+        {
+            cliente = _context.Cliente.FirstOrDefault(c => c.codigo == codigo);
+            return cliente;
+        }
+
         public ClienteModel SetIntegrado(ClienteModel clienteModel)
         {
             clienteModel.integrado = true;
+
             _context.Cliente.Attach(clienteModel);
             _context.Entry(clienteModel).State = EntityState.Modified;
             _context.SaveChanges();

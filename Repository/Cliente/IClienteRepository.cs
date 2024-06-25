@@ -14,6 +14,7 @@ namespace Integrador.Repository.Cliente
         IEnumerable<IClienteModel> GetAll();
 
         ClienteModel GetById(int id);
+        ClienteModel GetByCodigo(string codigo);
         ClienteModel SetIntegrado(ClienteModel clienteModel);
         bool ClienteExists(string codigo);
     }
