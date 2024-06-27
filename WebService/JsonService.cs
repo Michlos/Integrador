@@ -1,4 +1,5 @@
 ﻿using Integrador.Domain.Cliente;
+using Integrador.Domain.ClienteOnBlox;
 using Integrador.Domain.EmailConfigure;
 using Integrador.Domain.LogIntegracao;
 using Integrador.Domain.OnBloxConfigure;
@@ -49,13 +50,13 @@ namespace Integrador.WebService
             ServicePointManager.ServerCertificateValidationCallback += (sender, cert, chain, SslPolicyErrors) => true;
         }
 
-        public async void SendData(ClienteModel clienteModel)
+        public void SendData(ClienteModel clienteModel)
         {
-            ClienteModel cliEnviar = new ClienteModel()
+            ClienteOnBloxModel cliEnviar = new ClienteOnBloxModel()
             {
 
                 //CONVERTE O CODIGO DO CLIENTE EM ID PARA INTEGRAR NO ONBLOX
-                Id = long.Parse(clienteModel.codigo),
+                id = long.Parse(clienteModel.codigo),
                 nome = clienteModel.nome,
                 codigo = clienteModel.codigo,
                 integracao = clienteModel.integracao,
@@ -68,8 +69,7 @@ namespace Integrador.WebService
                 numero = clienteModel.numero,
                 bairro = clienteModel.bairro,
                 cidade = clienteModel.cidade,
-                uf = clienteModel.uf,
-                DataIntegracao = DateTime.Now
+                uf = clienteModel.uf
 
             };
 
@@ -91,7 +91,7 @@ namespace Integrador.WebService
             try
             {
                 //TESTE DE AUTENTICAÇÃO
-                var responseMessageLogin = await httpClient.GetAsync(uriString);
+                //var responseMessageLogin = await httpClient.GetAsync(uriString);
                 
                 //POSTANDO OS DADOS NA API
                 var responseMessage = httpClient.PostAsync(uriString, dataToSend).GetAwaiter().GetResult();
@@ -118,7 +118,7 @@ namespace Integrador.WebService
             }
             finally
             {
-                SaveLogFile(json);
+                SaveLogFile(json, uriString);
                 //SaveJsonToFile();
                 ResponseMessage = null;
             }
@@ -127,10 +127,11 @@ namespace Integrador.WebService
 
         }
 
-        private async void SaveLogFile(string json)
+        private async void SaveLogFile(string json, string uri)
         {
             LogIntegracao logIntegracao = new LogIntegracao()
             {
+                Uri = uri,
                 Codigo = (int)ResponseMessage.StatusCode,
                 DadosEnviados = json,
                 Mensagem = ResponseMessage.ReasonPhrase

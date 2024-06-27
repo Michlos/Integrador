@@ -33,7 +33,7 @@
     <PublisherName>Michlos Developers</PublisherName>
     <SuiteName>Integrador</SuiteName>
     <AutorunEnabled>true</AutorunEnabled>
-    <ApplicationRevision>9</ApplicationRevision>
+    <ApplicationRevision>10</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -356,6 +356,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Domain\ClienteOnBlox\ClienteOnBloxModel.cs" />
     <Compile Include="Domain\Cliente\ClienteModel.cs" />
     <Compile Include="Domain\Cliente\IClienteModel.cs" />
     <Compile Include="Domain\EmailConfigure\EmailConfigureModel.cs" />
@@ -538,6 +539,7 @@
       <FileType>Satellite</FileType>
     </PublishFile>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\Microsoft.Data.SqlClient.SNI.1.1.0\build\net46\Microsoft.Data.SqlClient.SNI.targets" Condition="Exists('packages\Microsoft.Data.SqlClient.SNI.1.1.0\build\net46\Microsoft.Data.SqlClient.SNI.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
