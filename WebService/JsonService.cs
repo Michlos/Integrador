@@ -52,6 +52,8 @@ namespace Integrador.WebService
 
         public void SendData(ClienteModel clienteModel)
         {
+
+            //ONBLOX
             ClienteOnBloxModel cliEnviar = new ClienteOnBloxModel()
             {
 
@@ -72,6 +74,29 @@ namespace Integrador.WebService
                 uf = clienteModel.uf
 
             };
+
+
+            //LOCAL
+            //ClienteModel cliEnviar = new ClienteModel()
+            //{
+
+            //    //CONVERTE O CODIGO DO CLIENTE EM ID PARA INTEGRAR NO ONBLOX
+            //    //Id = long.Parse(clienteModel.codigo),
+            //    nome = clienteModel.nome,
+            //    codigo = clienteModel.codigo,
+            //    integracao = clienteModel.integracao,
+            //    tpDoc = clienteModel.tpDoc,
+            //    cgc = clienteModel.cgc,
+            //    fantasia = clienteModel.fantasia,
+            //    fone = clienteModel.fone,
+            //    cep = clienteModel.cep,
+            //    logradouro = clienteModel.logradouro,
+            //    numero = clienteModel.numero,
+            //    bairro = clienteModel.bairro,
+            //    cidade = clienteModel.cidade,
+            //    uf = clienteModel.uf
+
+            //};
 
             //DADOS A SER INTEGRADO
             var json = JsonConvert.SerializeObject(cliEnviar);
