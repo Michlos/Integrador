@@ -5,7 +5,7 @@ namespace Integrador.Services.OnBloxConfigure
 {
     public class OnBloxService : IOnBloxConfigureRepository
     {
-        private IOnBloxConfigureRepository _repository;
+        private readonly IOnBloxConfigureRepository _repository;
 
         public OnBloxService(IOnBloxConfigureRepository repository)
         {

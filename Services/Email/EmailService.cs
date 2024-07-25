@@ -32,10 +32,10 @@ namespace Integrador.Services.Email
     {
 
         //public AppDbContext context = new AppDbContext();
-        private ImapClient _imapClient = new ImapClient();
+        private readonly ImapClient _imapClient = new ImapClient();
         private readonly EmailConfigureModel _emailConfigureModel;
         private readonly IEmailRepository _emailRepository;
-        private EmailConfigureRepository _emailConfigureRepository = new EmailConfigureRepository(new AppDbContext());
+        private readonly EmailConfigureRepository _emailConfigureRepository = new EmailConfigureRepository(new AppDbContext());
         //private readonly IClienteRepository _clienteRepository;
         private readonly ClienteService _clienteService;
         private readonly EmailConfigureService _emailConfigureService;
@@ -77,7 +77,7 @@ namespace Integrador.Services.Email
             }
         }
 
-        public async Task<List<EmailModel>> ReceberMensagensAsync(string caixaDeMensagem, string assunto)
+        public async Task<List<EmailModel>> ReceberMensagensAsync()
         {
             List<EmailModel> emailModelList = new List<EmailModel>();
 
@@ -170,14 +170,14 @@ namespace Integrador.Services.Email
 
         public void SalvarClienteNoBanco()
         {
-            List<EmailModel> emailList = new List<EmailModel>();
+            
 
-            emailList = _emailRepository.GetAll();
+            List<EmailModel> EmailList = _emailRepository.GetAll();
             string[] valuesExtract = new string[10];
 
             try
             {
-                foreach (var mail in emailList)
+                foreach (var mail in EmailList)
                 {
                     //verifica se já foi extraido ou não
                     if (!mail.Integrado)
@@ -197,10 +197,6 @@ namespace Integrador.Services.Email
                                 if (indextExtrat < valuesExtract.Length)
                                 {
                                     valuesExtract[indextExtrat] = node.InnerText;
-                                    if(valuesExtract[indextExtrat] == "MARIZA AGUAS MINERAIS LTDA")
-                                    {
-                                        
-                                    }
                                     indextExtrat++;
 
                                 }
@@ -216,7 +212,7 @@ namespace Integrador.Services.Email
 
 
                             ClienteModel cli = new ClienteModel();
-                            cli = PreparaCliente(valuesExtract, mail);
+                            cli = PreparaCliente(valuesExtract);
                             if (cli != null && cli.nome != null)
                             {
 
@@ -243,7 +239,7 @@ namespace Integrador.Services.Email
 
 
 
-        public ClienteModel PreparaCliente(string[] valuesExtract, EmailModel mail)
+        public ClienteModel PreparaCliente(string[] valuesExtract)
         {
             ClienteModel cliente = new ClienteModel();
             if (!cliente.integrado)

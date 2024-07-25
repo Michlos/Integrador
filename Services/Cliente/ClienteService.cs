@@ -10,9 +10,9 @@ namespace Integrador.Services.Cliente
 {
     public class ClienteService : IClienteRepository
     {
-        private IClienteRepository _clienteRepository;
-        private OnBloxService _onBloxService;
-        private OnBloxConfigureModel _onBloxConfigureModel;
+        private readonly IClienteRepository _clienteRepository;
+        private readonly OnBloxService _onBloxService;
+        private readonly OnBloxConfigureModel _onBloxConfigureModel;
 
 
 
@@ -29,7 +29,7 @@ namespace Integrador.Services.Cliente
             {
                 return null;
             }
-            clienteModel.IdOnBlox = _onBloxService.SetarUltimoIdIntegrado(++_onBloxConfigureModel.ClienteUlimoIdIntegrado);
+            //clienteModel.IdOnBlox = _onBloxService.SetarUltimoIdIntegrado(++_onBloxConfigureModel.ClienteUlimoIdIntegrado);
         
             return _clienteRepository.Add(clienteModel);
         }

@@ -34,12 +34,12 @@ namespace Integrador.WebService
         private HttpResponseMessage ResponseMessage = new HttpResponseMessage();
         private readonly OnBloxService _onBloxConfigureService;
         private readonly EmailConfigureService _emailConfigureService;
-        private OnBloxConfigureModel _onBloxConfigureModel;
-        private EmailConfigureModel _emailConfigureModel;
+        private readonly OnBloxConfigureModel _onBloxConfigureModel;
+        private readonly EmailConfigureModel _emailConfigureModel;
         private readonly ClienteService _clienteService;
 
-        private HttpResponseMessage responseMessage = new HttpResponseMessage();
-        private Task<string> dataSended;
+        private HttpResponseMessage responseMsg = new HttpResponseMessage();
+        //private Task<string> dataSended;
         private string jsonToSend;
         private string uriToSend;
 
@@ -90,13 +90,13 @@ namespace Integrador.WebService
             var jsonArray = new List<ClienteOnBloxModel> { cliEnviar };
 
             //SERIALIZANDO JSON UTILIZANDO O ARRAY
-            var jsonToSend = JsonConvert.SerializeObject(jsonArray);
+            jsonToSend = JsonConvert.SerializeObject(jsonArray);
             
             //CONTEINERIZANDO DADOS A SEREM ENVIADOS
             var content = new StringContent(jsonToSend, Encoding.UTF8 , "application/json");
 
             //DADOS DE AUTENTICAÇÃO
-            if (!string.IsNullOrEmpty(_onBloxConfigureModel.Usuario))
+            if (!string.IsNullOrEmpty(_onBloxConfigureModel.Usuario.Trim()))
             {
                 var byteArray = Encoding.ASCII.GetBytes($"{_onBloxConfigureModel.Usuario}:{_onBloxConfigureModel.Senha}");
                 httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
@@ -109,14 +109,14 @@ namespace Integrador.WebService
                 //var responseMessageLogin = await httpClient.GetAsync(uriString);
 
                 //POSTANDO OS DADOS NA API
-                responseMessage = httpClient.PostAsync(uriToSend.ToString(), content).GetAwaiter().GetResult();
-                if (responseMessage != null)
-                    ResponseMessage = responseMessage;
+                responseMsg = httpClient.PostAsync(uriToSend.ToString(), content).GetAwaiter().GetResult();
+                if (responseMsg != null)
+                    ResponseMessage = responseMsg;
 
 
 
                 //MARCAR O CLIENTE COMO INTEGRADO SE RESPOSTA FOR OK
-                int statusRetorno = (int)responseMessage.StatusCode;
+                int statusRetorno = (int)responseMsg.StatusCode;
                 if (statusRetorno == 200)
                 {
                     clienteModel.DataIntegracao = DateTime.Now;
@@ -170,10 +170,7 @@ namespace Integrador.WebService
             }
             finally
             {
-                if (file != null)
-                {
-                    file.Close();
-                }
+                file?.Close();
             }
         }
 

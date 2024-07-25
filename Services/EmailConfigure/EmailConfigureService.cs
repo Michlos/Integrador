@@ -5,7 +5,7 @@ namespace Integrador.Services.EmailConfigure
 {
     public class EmailConfigureService : IEmailConfigureRepository
     {
-        private IEmailConfigureRepository _emailConfigureRepository;
+        private readonly IEmailConfigureRepository _emailConfigureRepository;
 
         public EmailConfigureService(IEmailConfigureRepository emailConfigureRepository)
         {

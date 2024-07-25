@@ -15,8 +15,8 @@ namespace Integrador.Services.ArquivoTemporario
     }
     public class ArquivoTemporarioService
     {
-        private EmailModel _emailModel = new EmailModel();
-        private EmailConfigureService _emailConfigureService;
+        private readonly EmailModel _emailModel = new EmailModel();
+        private readonly EmailConfigureService _emailConfigureService;
         private readonly EmailConfigureModel _emailConfigureModel;
 
         public ArquivoTemporarioService(EmailModel emailModel)
@@ -49,9 +49,8 @@ namespace Integrador.Services.ArquivoTemporario
 
         public Indice GetIndice(string[] lines)
         {
-            Indice indices = new Indice();
-            indices.inicio = 0;
-            indices.fim = 0;
+            Indice indices = new Indice { inicio = 0, fim = 0 };
+
 
             int linha = 0;
             string textoInicioRelatorio = _emailConfigureService.GetEmailConfigure().InicioRelatorio;
