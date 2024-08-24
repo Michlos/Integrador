@@ -110,6 +110,9 @@ namespace Integrador.GUI
                 clientesDataGridView.InvalidateRow(indexOfDGV);
 
             }
+            
+            //ATUALIZA O DATAGRIDVIEW
+            clientesDataGridView.Refresh();
 
         }
 
@@ -131,6 +134,13 @@ namespace Integrador.GUI
                 }
             }
             clientesDataGridView.Invalidate();
+
+            clientesDataGridView.Refresh();
+        }
+
+        private void closeButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

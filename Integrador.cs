@@ -56,5 +56,10 @@ namespace Integrador
         {
 
         }
+
+        private void configToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

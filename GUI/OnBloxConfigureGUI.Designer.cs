@@ -56,6 +56,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.horaExecução01MaskedTextBox = new System.Windows.Forms.MaskedTextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.closeButton = new System.Windows.Forms.Button();
             this.clientesGroupBox.SuspendLayout();
             this.bateladaGroupBox.SuspendLayout();
             this.userGroupBox.SuspendLayout();
@@ -237,7 +238,7 @@
             // 
             // salvarButton
             // 
-            this.salvarButton.Location = new System.Drawing.Point(434, 390);
+            this.salvarButton.Location = new System.Drawing.Point(348, 389);
             this.salvarButton.Name = "salvarButton";
             this.salvarButton.Size = new System.Drawing.Size(75, 23);
             this.salvarButton.TabIndex = 4;
@@ -322,12 +323,23 @@
             this.label6.TabIndex = 1;
             this.label6.Text = "Horário 01:";
             // 
+            // closeButton
+            // 
+            this.closeButton.Location = new System.Drawing.Point(433, 389);
+            this.closeButton.Name = "closeButton";
+            this.closeButton.Size = new System.Drawing.Size(75, 23);
+            this.closeButton.TabIndex = 4;
+            this.closeButton.Text = "&Fechar";
+            this.closeButton.UseVisualStyleBackColor = true;
+            this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
+            // 
             // OnBloxConfigureGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(521, 424);
             this.Controls.Add(this.execuçãoGroupBox);
+            this.Controls.Add(this.closeButton);
             this.Controls.Add(this.salvarButton);
             this.Controls.Add(this.idTextBox);
             this.Controls.Add(this.userGroupBox);
@@ -379,5 +391,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.MaskedTextBox horaExecução02MaskedTextBox;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button closeButton;
     }
 }

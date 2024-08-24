@@ -30,6 +30,7 @@
         {
             this.mainMenuStrip = new System.Windows.Forms.MenuStrip();
             this.arquivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.configToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sairToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configuraçãoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.emailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -37,9 +38,9 @@
             this.onBloxToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.napisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bancoDeDadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.executarServiçoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.mainPanel = new System.Windows.Forms.Panel();
-            this.executarServiçoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,15 +58,24 @@
             // arquivoToolStripMenuItem
             // 
             this.arquivoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.configToolStripMenuItem,
             this.sairToolStripMenuItem});
             this.arquivoToolStripMenuItem.Name = "arquivoToolStripMenuItem";
             this.arquivoToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.arquivoToolStripMenuItem.Text = "&Arquivo";
+            this.arquivoToolStripMenuItem.Visible = false;
+            // 
+            // configToolStripMenuItem
+            // 
+            this.configToolStripMenuItem.Name = "configToolStripMenuItem";
+            this.configToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.configToolStripMenuItem.Text = "Config";
+            this.configToolStripMenuItem.Click += new System.EventHandler(this.configToolStripMenuItem_Click);
             // 
             // sairToolStripMenuItem
             // 
             this.sairToolStripMenuItem.Name = "sairToolStripMenuItem";
-            this.sairToolStripMenuItem.Size = new System.Drawing.Size(93, 22);
+            this.sairToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.sairToolStripMenuItem.Text = "Sai&r";
             // 
             // configuraçãoToolStripMenuItem
@@ -99,13 +109,14 @@
             // 
             this.onBloxToolStripMenuItem.Enabled = false;
             this.onBloxToolStripMenuItem.Name = "onBloxToolStripMenuItem";
-            this.onBloxToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
+            this.onBloxToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.onBloxToolStripMenuItem.Text = "&Napis";
+            this.onBloxToolStripMenuItem.Visible = false;
             // 
             // napisToolStripMenuItem
             // 
             this.napisToolStripMenuItem.Name = "napisToolStripMenuItem";
-            this.napisToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
+            this.napisToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.napisToolStripMenuItem.Text = "&OnBlox";
             this.napisToolStripMenuItem.Click += new System.EventHandler(this.napisToolStripMenuItem_Click);
             // 
@@ -114,6 +125,15 @@
             this.bancoDeDadosToolStripMenuItem.Name = "bancoDeDadosToolStripMenuItem";
             this.bancoDeDadosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.bancoDeDadosToolStripMenuItem.Text = "&Banco de Dados";
+            this.bancoDeDadosToolStripMenuItem.Visible = false;
+            // 
+            // executarServiçoToolStripMenuItem
+            // 
+            this.executarServiçoToolStripMenuItem.Name = "executarServiçoToolStripMenuItem";
+            this.executarServiçoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.executarServiçoToolStripMenuItem.Text = "ExecutarServiço";
+            this.executarServiçoToolStripMenuItem.Visible = false;
+            this.executarServiçoToolStripMenuItem.Click += new System.EventHandler(this.executarServiçoToolStripMenuItem_Click);
             // 
             // statusStrip1
             // 
@@ -131,13 +151,6 @@
             this.mainPanel.Name = "mainPanel";
             this.mainPanel.Size = new System.Drawing.Size(800, 404);
             this.mainPanel.TabIndex = 2;
-            // 
-            // executarServiçoToolStripMenuItem
-            // 
-            this.executarServiçoToolStripMenuItem.Name = "executarServiçoToolStripMenuItem";
-            this.executarServiçoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.executarServiçoToolStripMenuItem.Text = "ExecutarServiço";
-            this.executarServiçoToolStripMenuItem.Click += new System.EventHandler(this.executarServiçoToolStripMenuItem_Click);
             // 
             // Integrador
             // 
@@ -171,5 +184,6 @@
         private System.Windows.Forms.ToolStripMenuItem napisToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem bancoDeDadosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem executarServiçoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem configToolStripMenuItem;
     }
 }

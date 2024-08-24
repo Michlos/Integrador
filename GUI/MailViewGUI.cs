@@ -62,9 +62,10 @@ namespace Integrador.GUI
         private void receberEmailsButton_Click(object sender, EventArgs e)
         {
             ReceberEmail(GetEmailService());
-            PopulaDataGridView();
-            PreencheDataGridView();
-            
+
+            //ATUALIZA O DATADGRIDVIEW
+            listaEmailDataGridView.Refresh();
+
         }
 
         private void PopulaDataGridView()

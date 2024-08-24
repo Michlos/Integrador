@@ -33,7 +33,7 @@
     <PublisherName>Michlos Developers</PublisherName>
     <SuiteName>Integrador</SuiteName>
     <AutorunEnabled>true</AutorunEnabled>
-    <ApplicationRevision>17</ApplicationRevision>
+    <ApplicationRevision>33</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -359,6 +359,7 @@
     <Compile Include="Domain\ClienteOnBlox\ClienteOnBloxModel.cs" />
     <Compile Include="Domain\Cliente\ClienteModel.cs" />
     <Compile Include="Domain\Cliente\IClienteModel.cs" />
+    <Compile Include="Domain\ConfigSys\ConfigSysModel.cs" />
     <Compile Include="Domain\EmailConfigure\EmailConfigureModel.cs" />
     <Compile Include="Domain\EmailConfigure\IEmailConfigureModel.cs" />
     <Compile Include="Domain\Email\EmailModel.cs" />
@@ -371,6 +372,12 @@
     </Compile>
     <Compile Include="GUI\ClientesListGUI.Designer.cs">
       <DependentUpon>ClientesListGUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ConfigSysGUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ConfigSysGUI.Designer.cs">
+      <DependentUpon>ConfigSysGUI.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\EmailConfigureGUI.cs">
       <SubType>Form</SubType>
@@ -429,6 +436,9 @@
     <EmbeddedResource Include="GUI\ClientesListGUI.resx">
       <DependentUpon>ClientesListGUI.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ConfigSysGUI.resx">
+      <DependentUpon>ConfigSysGUI.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\EmailConfigureGUI.resx">
       <DependentUpon>EmailConfigureGUI.cs</DependentUpon>
     </EmbeddedResource>
@@ -468,11 +478,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <BootstrapperPackage Include=".NETFramework,Version=v4.8">
-      <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4.8 %28x86 and x64%29</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
       <Visible>False</Visible>
       <ProductName>.NET Framework 3.5 SP1</ProductName>

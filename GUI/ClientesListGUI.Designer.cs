@@ -32,6 +32,7 @@
             this.clientesDataGridView = new System.Windows.Forms.DataGridView();
             this.IntegraButton = new System.Windows.Forms.Button();
             this.integraTodosButton = new System.Windows.Forms.Button();
+            this.closeButton = new System.Windows.Forms.Button();
             this.clientListPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.clientesDataGridView)).BeginInit();
             this.SuspendLayout();
@@ -80,11 +81,22 @@
             this.integraTodosButton.UseVisualStyleBackColor = true;
             this.integraTodosButton.Click += new System.EventHandler(this.integraTodosButton_Click);
             // 
+            // closeButton
+            // 
+            this.closeButton.Location = new System.Drawing.Point(12, 415);
+            this.closeButton.Name = "closeButton";
+            this.closeButton.Size = new System.Drawing.Size(75, 23);
+            this.closeButton.TabIndex = 2;
+            this.closeButton.Text = "&Fechar";
+            this.closeButton.UseVisualStyleBackColor = true;
+            this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
+            // 
             // ClientesListGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(449, 450);
+            this.Controls.Add(this.closeButton);
             this.Controls.Add(this.integraTodosButton);
             this.Controls.Add(this.IntegraButton);
             this.Controls.Add(this.clientListPanel);
@@ -103,5 +115,6 @@
         private System.Windows.Forms.DataGridView clientesDataGridView;
         private System.Windows.Forms.Button IntegraButton;
         private System.Windows.Forms.Button integraTodosButton;
+        private System.Windows.Forms.Button closeButton;
     }
 }

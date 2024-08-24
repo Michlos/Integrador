@@ -248,7 +248,7 @@ namespace Integrador.Services.Email
                 cliente.nome = valuesExtract[1];
                 cliente.codigo = valuesExtract[2];
                 cliente.tpDoc = valuesExtract[3].ToString().Length == 23 ? "CPF" : "CNPJ";
-                cliente.cgc = cliente.tpDoc.ToString() == "CPF" ? valuesExtract[3].ToString().Substring(3, 11) : valuesExtract[3].ToString().Substring(3, 14);
+                cliente.cgc = cliente.tpDoc.ToString() == "CPF" ? valuesExtract[3].ToString().Substring(4, 11) : valuesExtract[3].ToString().Substring(4, 14);
                 cliente.fantasia = valuesExtract[4];
                 cliente.fone = valuesExtract[5];
                 string cep = valuesExtract[6];

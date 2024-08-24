@@ -81,17 +81,23 @@ namespace Integrador.WebService
             };
 
 
-            //DADOS A SEREM INTEGRADOS
-            
-
+            /////DADOS A SEREM INTEGRADOS//////
             uriToSend = _onBloxConfigureModel.ClienteURIPost.ToString();
             
             //COLOCANDO O JSON EM UM ARRAY
             var jsonArray = new List<ClienteOnBloxModel> { cliEnviar };
 
-            //SERIALIZANDO JSON UTILIZANDO O ARRAY
+            //SERIALIZANDO JSON UTILIZANDO O ARRAY/// PRD
             jsonToSend = JsonConvert.SerializeObject(jsonArray);
             
+
+            ////DADOS SEM ARRAY PARA QA///// QA 
+            ///LEMBRAR DE COMENTAR ANTES DE DEPLOY
+            //jsonToSend = JsonConvert.SerializeObject(cliEnviar);
+            
+
+
+
             //CONTEINERIZANDO DADOS A SEREM ENVIADOS
             var content = new StringContent(jsonToSend, Encoding.UTF8 , "application/json");
 
@@ -161,7 +167,7 @@ namespace Integrador.WebService
             StreamWriter file = null;
             try
             {
-                file = File.AppendText($@"{_emailConfigureModel.PastaTemporaria}\LogIntegrador.json");
+                file = File.AppendText($@"{_emailConfigureModel.PastaTemporaria}\LogIntegracao{DateTime.Now.Day:D2}{DateTime.Now.Month:D2}{DateTime.Now.Year}.json");
                 await file.WriteAsync("\n" + logSerializado);
             }
             catch (Exception e)
